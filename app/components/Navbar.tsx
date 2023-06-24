@@ -5,7 +5,7 @@ import logo from "../../public/logo.svg";
 export default function Navbar() {
   return (
     <div>
-      <header className="bg-white border-2">
+      <header className="bg-white">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           {/* LOGO HERE */}
           <div className=" flex items-center justify-between">
@@ -45,7 +45,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 ">
+                <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 hidden md:block">
                   Log In with Twitter
                 </button>
               </div>

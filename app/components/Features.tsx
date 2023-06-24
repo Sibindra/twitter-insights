@@ -23,10 +23,10 @@ export default function Features() {
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
               <a
-                className=" bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className=" bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -56,10 +56,10 @@ export default function Features() {
               </a>
 
               <a
-                className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -88,10 +88,10 @@ export default function Features() {
               </a>
 
               <a
-                className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -119,10 +119,10 @@ export default function Features() {
               </a>
 
               <a
-                className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -151,10 +151,10 @@ export default function Features() {
               </a>
 
               <a
-                className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -183,10 +183,10 @@ export default function Features() {
               </a>
 
               <a
-                className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-none border-black border-2 p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
                   <svg
                     className="h-6 w-6"
                     fill="none"

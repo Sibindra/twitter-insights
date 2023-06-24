@@ -6,11 +6,11 @@ export default function Footer() {
   return (
     <div>
       <div>
-        <footer className="flex justify-center px-4 text-gray-800 bg-white">
+        <footer className="flex justify-center px-4 text-gray-800 bg-[#f4f1ed]">
           <div className="container px-6 py-6">
             <h1 className="text-lg font-bold text-center lg:text-2xl">
-              Join 31,000+ others and never miss <br /> out on new tips,
-              tutorials, and more.
+              Join us and never miss <br /> out on new tips,
+              features, and more.
             </h1>
 
             <div className="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">

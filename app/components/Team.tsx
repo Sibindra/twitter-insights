@@ -3,7 +3,7 @@
 export default function Team() {
   return (
     <div>
-      <section className="bg-[#f4f1ed]">
+      <section className="border-2">
         <div className="container px-6 py-8 mx-auto">
           <h2 className="text-2xl font-semibold text-center text-black capitalize lg:text-3xl">
             Our Team
@@ -18,8 +18,7 @@ export default function Team() {
               />
 
               <div className="mt-2">
-                <h3 className="text-lg font-medium  ">Ahmed Omer</h3>
-                <span className="mt-1 font-medium">CEO</span>
+                <h3 className="text-lg font-medium  ">Sibendra Timalsina</h3>
               </div>
             </div>
 
@@ -31,8 +30,7 @@ export default function Team() {
               />
 
               <div className="mt-2">
-                <h3 className="text-lg font-medium ">Jane Doe</h3>
-                <span className="mt-1 font-medium ">Co-founder</span>
+                <h3 className="text-lg font-medium ">Aananda Bhusal</h3>
               </div>
             </div>
 
@@ -44,8 +42,7 @@ export default function Team() {
               />
 
               <div className="mt-2">
-                <h3 className="text-lg font-medium ">Steve Ben</h3>
-                <span className="mt-1 font-medium t">UI/UX</span>
+                <h3 className="text-lg font-medium ">Deepak Rana Magar</h3>
               </div>
             </div>
 
@@ -57,8 +54,7 @@ export default function Team() {
               />
 
               <div className="mt-2">
-                <h3 className="text-lg font-medium ">Patterson Johnson</h3>
-                <span className="mt-1 font-medium ">Software Engineer</span>
+                <h3 className="text-lg font-medium ">Sachit Khadka</h3>
               </div>
             </div>
           </div>

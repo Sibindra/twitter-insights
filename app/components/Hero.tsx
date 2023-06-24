@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import heroimg from "../../public/images/hero-img.svg";
 import Image from "next/image";
 
@@ -15,22 +16,23 @@ export const Hero = () => {
           <path d="M50 0H100L50 100H0L50 0Z" />
         </svg>
 
-        <div
-          style={{ maxWidth: "100%", height: "auto" }}
-          className="hidden md:block"
-        >
-          <Image
-            src={heroimg}
-            alt="Image not found"
-            fill
-            style={{ objectFit: "cover" }}
-          />
+        <div className="hidden lg:block ">
+          <div className="max-w-full">
+            <Image
+              src={heroimg}
+              alt="Image not found"
+              fill
+              style={{ objectFit: "contain" }}
+              className="w-full"
+            />
+          </div>
         </div>
       </div>
       <div className="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
           <p className="inline-block px-3 py-px mb-4 text-xs tracking-wider text-black border-2 uppercase rounded-none bg-[#a4fcf5]">
-            Brand New
+            {/* FIXME: */}
+            <Link href={"/"}>Github</Link>
           </p>
           <h2 className="mb-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
             Unveil Patterns
@@ -42,7 +44,7 @@ export const Hero = () => {
           </h2>
           <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
             Discover Trends and Unleash Insights with Engaging Data
-            Visualizations from your Twitter Account. 
+            Visualizations from your Twitter Account.
           </p>
 
           <div className="flex items-center">
