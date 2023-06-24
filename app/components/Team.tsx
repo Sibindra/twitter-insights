@@ -3,7 +3,7 @@
 export default function Team() {
   return (
     <div>
-      <section className="bg-[#e7e9f8]">
+      <section className="bg-[#f4f1ed]">
         <div className="container px-6 py-8 mx-auto">
           <h2 className="text-2xl font-semibold text-center text-black capitalize lg:text-3xl">
             Our Team

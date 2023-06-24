@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import logo from "../../public/logo.svg";
 
 export default function Navbar() {
   return (
@@ -6,7 +8,17 @@ export default function Navbar() {
       <header className="bg-white border-2">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           {/* LOGO HERE */}
-          <div></div>
+          <div className=" flex items-center justify-between">
+            <Image
+              src={logo}
+              width={40}
+              height={40}
+              alt="not found"
+              className="rounded-none"
+            />
+            <p className="text-lg px-2 font-semibold">INSIGHTS NEPAL</p>
+            {/* <h1 className="text-lg font-bold">INSIGHTS</h1> */}
+          </div>
 
           <div className="flex flex-1 items-center justify-end md:justify-between">
             <nav aria-label="Global" className="hidden md:block">
@@ -34,7 +46,7 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
                 <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 ">
-                  Log In 
+                  Log In with Twitter
                 </button>
               </div>
 

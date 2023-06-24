@@ -5,30 +5,28 @@ import React from "react";
 export default function Features() {
   return (
     <div className="">
-      <section>
-        <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+      <section className="">
+        {/* TOPIC DIV */}
+        <div className="max-w-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
           <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
               <h2 className="text-3xl font-bold sm:text-4xl">
-                Find your career path
+                Powerful Features for Enhanced Data Visualization
               </h2>
 
               <p className="mt-4 text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-                vero aliquid sint distinctio iure ipsum cupiditate? Quis, odit
-                assumenda? Deleniti quasi inventore, libero reiciendis minima
-                aliquid tempora. Obcaecati, autem.
+                Unlock the Full Potential of Twitter Data with Our Comprehensive
+                Feature Set, Empowering You to Visualize and Analyze Data Like
+                Never Before.
               </p>
-
-             
             </div>
 
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
               <a
                 className=" bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-[#adb1eb] text-white p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -47,10 +45,13 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">
+                  Interactive Charts and Graphs
+                </h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Dive deep into the data with interactive charts and graphs
+                  that allow for seamless exploration and analysis.
                 </p>
               </a>
 
@@ -58,7 +59,7 @@ export default function Features() {
                 className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-[#adb1eb] text-white p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -77,10 +78,12 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">Sentiment Analysis</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Gain valuable insights into public opinion with sentiment
+                  analysis capabilities, helping you gauge the overall sentiment
+                  surrounding specific topics or hashtags in Nepali Context
                 </p>
               </a>
 
@@ -88,7 +91,7 @@ export default function Features() {
                 className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-[#adb1eb] p-3 text-white">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -107,10 +110,11 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">Hashtag Tracking</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Track the popularity and engagement of hashtags , allowing you
+                  to identify trending topics and monitor campaign performance
                 </p>
               </a>
 
@@ -118,7 +122,7 @@ export default function Features() {
                 className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="bg-[#adb1eb] text-white inline-block rounded-lg  p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -137,10 +141,12 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">User Engagement Metrics</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Measure and analyze user engagement metrics such as likes,
+                  retweets, and replies, providing valuable insights into the
+                  reach and impact of your tweets
                 </p>
               </a>
 
@@ -148,7 +154,7 @@ export default function Features() {
                 className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-[#adb1eb] text-white p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -167,10 +173,12 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">Cross-platform Compatibility</h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Access and interact with your data visualizations seamlessly
+                  across desktop, tablet, and mobile devices for convenient
+                  monitoring on-the-go
                 </p>
               </a>
 
@@ -178,7 +186,7 @@ export default function Features() {
                 className="bg-[#f4f1ed] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
-                <span className="inline-block rounded-lg bg-[#adb1eb] text-white p-3">
+                <span className="inline-block rounded-none border-black border-2 p-3">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -197,10 +205,15 @@ export default function Features() {
                   </svg>
                 </span>
 
-                <h2 className="mt-2 font-bold">Accountant</h2>
+                <h2 className="mt-2 font-bold">
+                  Eliminate Guesswork and Drive Social Media Growth with
+                  Data-Driven Insights
+                </h2>
 
                 <p className="hidden sm:mt-1 sm:block sm:text-sm sm:text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur.
+                  Leverage data-driven insights to make informed decisions,
+                  optimize your social media strategy, and fuel measurable
+                  growth
                 </p>
               </a>
             </div>

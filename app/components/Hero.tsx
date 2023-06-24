@@ -30,25 +30,24 @@ export const Hero = () => {
       <div className="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
           <p className="inline-block px-3 py-px mb-4 text-xs tracking-wider text-black border-2 uppercase rounded-none bg-[#a4fcf5]">
-            Brand new
+            Brand New
           </p>
           <h2 className="mb-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-            Everything you
+            Unveil Patterns
             <br className="hidden md:block" />
-            can imagine{" "}
-            <span className="inline-block text-deep-purple-accent-400">
-              is real
-            </span>
+            Through Data Visualization
+            {/* <span className="inline-block text-deep-purple-accent-400">
+            
+            </span> */}
           </h2>
           <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae. explicabo.
+            Discover Trends and Unleash Insights with Engaging Data
+            Visualizations from your Twitter Account. 
           </p>
 
           <div className="flex items-center">
             <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 ">
-              Login
+              Login With Twitter
             </button>
           </div>
         </div>

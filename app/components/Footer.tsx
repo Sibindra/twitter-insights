@@ -35,6 +35,8 @@ export default function Footer() {
                   src="https://merakiui.com/images/full-logo.svg"
                   alt=""
                 /> */}
+
+                All Rights Reserved
               </a>
 
               <div className="flex mt-4 md:m-0">
@@ -43,26 +45,26 @@ export default function Footer() {
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
-                    About
+                    GITHUB
                   </a>
                   <a
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
-                    Blog
+                    NCIT
                   </a>
                   <a
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
-                    News
+                    TWITTER
                   </a>
-                  <a
+                  {/* <a
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     Contact
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
