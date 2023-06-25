@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import heroimg from "../../public/images/hero-img.svg";
+import Typewriter from "typewriter-effect";
 import Image from "next/image";
 
 export const Hero = () => {
@@ -32,7 +33,9 @@ export const Hero = () => {
         <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
           <p className="inline-block px-3 py-px mb-4 text-xs tracking-wider text-black border-2 uppercase rounded-none bg-[#a4fcf5]">
             {/* FIXME: */}
-            <Link href={"https://github.com/Sibindra/insights-nepal"}>Github</Link>
+            <Link href={"https://github.com/Sibindra/insights-nepal"}>
+              Github
+            </Link>
           </p>
           <h2 className="mb-5 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
             Unveil Patterns
@@ -43,15 +46,28 @@ export const Hero = () => {
             </span> */}
           </h2>
           <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
-            Discover Trends and Unleash Insights with Engaging Data
-            Visualizations from your Twitter Account.
+            Explore the Power of Social Media with:
+            <Typewriter
+              options={{
+                strings: [
+                  "Real-Time Trends",
+                  "Advanced Sentiment Analysis",
+                  "Engagement Metrics Tracking",
+                  "Hashtag Analysis Tools",
+                  "Competitor Performance Insights",
+                  "Discover Top Performing Tweets",
+                ],
+                autoStart: true,
+                loop: true,
+                deleteSpeed: "natural",
+                delay: 50, // Adjust the delay value to control the typing speed
+              }}
+            />
           </p>
 
           <div className="flex items-center">
             <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 ">
-              <Link href={"/dashboard"}>
-              Login With Twitter
-              </Link>
+              <Link href={"/dashboard"}>Login With Twitter</Link>
             </button>
           </div>
         </div>
