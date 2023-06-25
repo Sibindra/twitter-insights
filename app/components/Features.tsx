@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function Features() {
   return (
@@ -22,7 +23,7 @@ export default function Features() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
-              <a
+              <Link
                 className=" bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -53,9 +54,9 @@ export default function Features() {
                   Dive deep into the data with interactive charts and graphs
                   that allow for seamless exploration and analysis.
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -85,9 +86,9 @@ export default function Features() {
                   analysis capabilities, helping you gauge the overall sentiment
                   surrounding specific topics or hashtags in Nepali Context
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -116,9 +117,9 @@ export default function Features() {
                   Track the popularity and engagement of hashtags , allowing you
                   to identify trending topics and monitor campaign performance
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -148,9 +149,9 @@ export default function Features() {
                   retweets, and replies, providing valuable insights into the
                   reach and impact of your tweets
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -180,9 +181,9 @@ export default function Features() {
                   across desktop, tablet, and mobile devices for convenient
                   monitoring on-the-go
                 </p>
-              </a>
+              </Link>
 
-              <a
+              <Link
                 className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
@@ -215,7 +216,7 @@ export default function Features() {
                   optimize your social media strategy, and fuel measurable
                   growth
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

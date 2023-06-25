@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -29,7 +30,7 @@ export default function Footer() {
             <hr className="h-px bg-black border-none my-7" />
 
             <div className="flex flex-col items-center justify-between md:flex-row">
-              <a href="#">
+              <Link href="#">
                 {/* <img
                   className="w-auto h-7"
                   src="https://merakiui.com/images/full-logo.svg"
@@ -37,34 +38,34 @@ export default function Footer() {
                 /> */}
 
                 All Rights Reserved
-              </a>
+              </Link>
 
               <div className="flex mt-4 md:m-0">
                 <div className="-mx-4">
-                  <a
+                  <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     GITHUB
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     NCIT
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     TWITTER
-                  </a>
-                  {/* <a
+                  </Link>
+                  {/* <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     Contact
-                  </a> */}
+                  </Link> */}
                 </div>
               </div>
             </div>

@@ -1,75 +1,106 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import logo from "../../public/logo.svg";
+import Link from "next/link";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div>
       <header className="bg-white">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           {/* LOGO HERE */}
-          <div className=" flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <Image
               src={logo}
-              width={40}
-              height={40}
+              width={35}
+              height={35}
               alt="not found"
               className="rounded-none"
             />
             <p className="text-lg px-2 font-semibold">INSIGHTS NEPAL</p>
-            {/* <h1 className="text-lg font-bold">INSIGHTS</h1> */}
           </div>
 
-          <div className="flex flex-1 items-center justify-end md:justify-between">
-            <nav aria-label="Global" className="hidden md:block">
+          <div className="hidden md:flex md:items-center md:justify-end flex-grow">
+            <nav aria-label="Global">
               <ul className="flex items-center gap-6 text-md">
                 <li>
-                  <a className="text-black transition" href="/">
+                  <Link className="text-black transition" href="/">
                     Home
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a className="text-black transition" href="/">
+                  <Link className="text-black transition" href="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a className="text-black transition" href="/">
+                  <Link className="text-black transition" href="/contact">
                     Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
+          </div>
 
-            <div className="flex items-center gap-4">
-              <div className="sm:flex sm:gap-4">
-                <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 hidden md:block">
-                  Log In with Twitter
-                </button>
-              </div>
-
-              <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-1 py-1 border border-black rounded-none m-2  md:hidden">
-                <span className="sr-only">Toggle menu</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+          <div className="flex items-center gap-4 ml-auto">
+            <div className="sm:flex sm:gap-4">
+              <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
+                <Link href={"/dashboard"}>Login With Twitter</Link>
               </button>
             </div>
+
+            <button
+              className="hover:bg-[#cfc3fb] hover:text-black text-black px-1 py-1 border border-black rounded-none m-2 md:hidden"
+              onClick={toggleMenu}
+            >
+              <span className="sr-only">Toggle menu</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
           </div>
         </div>
+        {isMenuOpen && (
+          <div className="bg-white px-4 py-2 md:hidden">
+            <ul className="flex flex-col gap-2 text-md border-t-2 border-black animate-fadeIn">
+              <li>
+                <Link className="text-black transition" href="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className="text-black transition" href="/about">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link className="text-black transition" href="/contact">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </header>
     </div>
   );
