@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import logo from "../../public/logo.svg";
+import logo from "../logo.svg";
 import Link from "next/link";
+import { AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,8 +20,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Image
               src={logo}
-              width={35}
-              height={35}
+              width={20}
+              height={20}
               alt="not found"
               className="rounded-none"
             />
@@ -37,9 +38,12 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                  <Link className="text-black transition" href="/about">
-                    About
-                  </Link>
+                  {/* FIXME: */}
+                  <AnimatePresence initial={false} mode="popLayout">
+                    <Link className="text-black transition" href="/about">
+                      About
+                    </Link>
+                  </AnimatePresence>
                 </li>
 
                 <li>

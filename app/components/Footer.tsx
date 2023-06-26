@@ -7,11 +7,10 @@ export default function Footer() {
   return (
     <div>
       <div>
-        <footer className="flex justify-center px-4 text-gray-800 bg-[#f4f1ed]">
+        <footer className="flex justify-center px-4 text-gray-800">
           <div className="container px-6 py-6">
             <h1 className="text-lg font-bold text-center lg:text-2xl">
-              Join us and never miss <br /> out on new tips,
-              features, and more.
+              Join us and never miss <br /> out on new tips, features, and more.
             </h1>
 
             <div className="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
@@ -27,17 +26,16 @@ export default function Footer() {
               </button>
             </div>
 
-            <hr className="h-px bg-black border-none my-7" />
+            <hr className="h-px bg-black border-none mt-12" />
 
             <div className="flex flex-col items-center justify-between md:flex-row">
-              <Link href="#">
+              <Link href="#" className="text-sm">
                 {/* <img
                   className="w-auto h-7"
                   src="https://merakiui.com/images/full-logo.svg"
                   alt=""
                 /> */}
-
-                All Rights Reserved
+                2023 All Rights Reserved Project II @NCIT
               </Link>
 
               <div className="flex mt-4 md:m-0">
@@ -60,12 +58,6 @@ export default function Footer() {
                   >
                     TWITTER
                   </Link>
-                  {/* <Link
-                    href="#"
-                    className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
-                  >
-                    Contact
-                  </Link> */}
                 </div>
               </div>
             </div>
