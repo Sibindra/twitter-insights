@@ -33,7 +33,7 @@ const AllLinks = [
 
 function TeamSection(props: TeamsData) {
   return (
-    <div className="items-center border-2 border-black rounded-none shadow sm:flex">
+    <div  className="items-center border-2 border-black rounded-none shadow sm:flex">
       <Link href="#"></Link>
       <div className="p-5">
         <h3 className="text-xl font-bold tracking-tight text-gray-900">
@@ -85,7 +85,7 @@ function TeamSection(props: TeamsData) {
 
 export default function Team() {
   return (
-    <>
+    <div id="team">
       <section className="bg-white border-2">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
@@ -111,6 +111,6 @@ export default function Team() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

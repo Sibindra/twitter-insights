@@ -2,9 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import logo from "../logo.svg";
-import Link from "next/link";
-
-
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,20 +31,58 @@ export default function Navbar() {
             <nav aria-label="Global">
               <ul className="flex items-center gap-6 text-md">
                 <li>
-                  <Link className="text-black transition" href="/">
+                  <Link
+                    activeClass="active"
+                    to="hero"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
+                  >
                     Home
                   </Link>
                 </li>
 
                 <li>
                   {/* FIXME: */}
-                    <Link className="text-black transition" href="/about">
-                      About
-                    </Link>
+                  <Link
+                    activeClass="active"
+                    to="feature"
+                    spy={true}
+                    smooth={true}
+                    offset={0}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
+                  >
+                    Feature
+                  </Link>
                 </li>
 
                 <li>
-                  <Link className="text-black transition" href="/contact">
+                  <Link
+                    activeClass="active"
+                    to="team"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
+                  >
+                    Team
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    activeClass="active"
+                    to="contact"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
+                  >
                     Contact Us
                   </Link>
                 </li>
@@ -57,7 +93,9 @@ export default function Navbar() {
           <div className="flex items-center gap-4 ml-auto">
             <div className="sm:flex sm:gap-4">
               <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
-                <Link href={"/dashboard"}>Login With Twitter</Link>
+                <Link to="" href={"/dashboard"}>
+                  Login With Twitter
+                </Link>
               </button>
             </div>
 
@@ -87,17 +125,52 @@ export default function Navbar() {
           <div className="bg-white px-4 py-2 md:hidden">
             <ul className="flex flex-col gap-2 text-md border-t-2 border-black animate-fadeIn">
               <li>
-                <Link className="text-black transition" href="/">
+                <Link activeClass="active"
+                    to="hero"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer">
                   Home
                 </Link>
               </li>
+
               <li>
-                <Link className="text-black transition" href="/about">
-                  About
+                <Link activeClass="active"
+                    to="feature"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer">
+                  Feature
                 </Link>
               </li>
+
+              
               <li>
-                <Link className="text-black transition" href="/contact">
+                  <Link
+                    activeClass="active"
+                    to="team"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
+                  >
+                    Team
+                  </Link>
+                </li>
+                
+              <li>
+                <Link activeClass="active"
+                    to="contact"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer">
                   Contact Us
                 </Link>
               </li>

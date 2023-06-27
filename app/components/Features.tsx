@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Features() {
   return (
-    <div className="">
+    <div  id="feature">
       <section className="">
         {/* TOPIC DIV */}
         <div className="max-w-screen px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
