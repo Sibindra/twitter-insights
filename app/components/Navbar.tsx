@@ -3,7 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import logo from "../logo.svg";
 import Link from "next/link";
-import { AnimatePresence } from "framer-motion";
 
 
 
@@ -41,11 +40,9 @@ export default function Navbar() {
 
                 <li>
                   {/* FIXME: */}
-                  <AnimatePresence initial={false} mode="popLayout">
                     <Link className="text-black transition" href="/about">
                       About
                     </Link>
-                  </AnimatePresence>
                 </li>
 
                 <li>
