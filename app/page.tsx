@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import { Hero } from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Team from "./components/Team";
+import Contact from "./components/Contact";
 
 {/*
   TODO:
@@ -17,10 +18,11 @@ import Team from "./components/Team";
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <Hero/>
       <Features/>
       <Team/>
+      <Contact/>
       <Footer/>
     </div>
   );
