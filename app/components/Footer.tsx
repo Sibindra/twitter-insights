@@ -10,7 +10,7 @@ export default function Footer() {
         <footer className="flex justify-center px-4 text-gray-800">
           <div className="container px-6 py-6">
 
-            <hr className="h-px bg-black border-none mt-12" />
+            <hr className="h-px bg-black border-none mt-12 mb-2" />
 
             <div className="flex flex-col items-center justify-between md:flex-row">
               <Link href="#" className="text-sm">

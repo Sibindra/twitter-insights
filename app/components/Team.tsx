@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { FaFacebook, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import Image from "next/image";
 
 interface TeamsData {
+  img: string;
   name: string;
   comment: string;
   facebook: string;
@@ -13,17 +15,38 @@ interface TeamsData {
 
 const AllLinks = [
   {
+    img: "https://avatars.githubusercontent.com/u/59206903?v=4",
     name: "Sibendra Timalsina",
-    comment: "i practice sometimes :) ",
+    comment: "i practice sometimes :)",
     facebook: "https://www.facebook.com/sibindra.timalsina.7",
     github: "https://github.com/Sibindra",
     linkden: "https://www.linkedin.com/in/sibendra-timalsina-b7165b262/",
     mail: "timalsinasibindra@gmail.com",
   },
-
   {
     name: "Aananda Bhusal",
+    img: "https://avatars.githubusercontent.com/u/84623222?v=4",
     comment: "100 rupaya ki pepsi i am sexy",
+    facebook: "https://www.facebook.com/aananda.bhusal",
+    github: "https://github.com/Aananda-git",
+    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
+    mail: "aananda.191701@ncit.edu.np",
+  },
+
+  {
+    name: "Deepak Rana Magar",
+    img: "https://avatars.githubusercontent.com/u/94750400?v=4",
+    comment: "bahana nabanau",
+    facebook: "https://www.facebook.com/aananda.bhusal",
+    github: "https://github.com/Aananda-git",
+    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
+    mail: "aananda.191701@ncit.edu.np",
+  },
+
+  {
+    name: "Sachit Khadka",
+    img: "https://avatars.githubusercontent.com/u/106606778?v=4",
+    comment: "hooah",
     facebook: "https://www.facebook.com/aananda.bhusal",
     github: "https://github.com/Aananda-git",
     linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
@@ -33,9 +56,19 @@ const AllLinks = [
 
 function TeamSection(props: TeamsData) {
   return (
-    <div  className="items-center border-2 border-black rounded-none shadow sm:flex">
-      <Link href="#"></Link>
-      <div className="p-5">
+    <div className="items-center border-2 border-black rounded-none shadow sm:flex">
+      <div className="flex-1 w-full sm:w-48 h-48">
+        <div className="relative w-full h-full">
+          <Image
+            className="rounded-none"
+            src={props.img}
+            alt="Bonnie Avatar"
+            fill
+            style={{ objectFit: "contain" }}
+          />
+        </div>
+      </div>
+      <div className="flex-1 p-5">
         <h3 className="text-xl font-bold tracking-tight text-gray-900">
           {props.name}
         </h3>
@@ -93,13 +126,14 @@ export default function Team() {
               Our Team
             </h2>
             <p className="font-light text-gray-500 lg:mb-16 sm:text-xl">
-            Meet our passionate team behind this app
+              Meet our passionate team behind this app
             </p>
           </div>
           <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
             {AllLinks.map((link) => (
               <TeamSection
                 key={link.name}
+                img={link.img}
                 name={link.name}
                 comment={link.comment}
                 facebook={link.facebook}
