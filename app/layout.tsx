@@ -1,7 +1,7 @@
 import "./globals.css";
-import { IBM_Plex_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const inter = IBM_Plex_Sans({subsets:['latin'],weight:['100','200','300','400','500','600','700']});
+const inter = Inter({subsets:['latin'],weight:['100','200','300','400','500','600','700']});
 
 export const metadata = {
   title: "Insights Nepal",
