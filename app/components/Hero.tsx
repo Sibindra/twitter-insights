@@ -3,8 +3,15 @@ import Link from "next/link";
 import heroimg from "../../public/images/hero-img.svg";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export const Hero = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 border-2">
       <div className="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mb-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
@@ -46,23 +53,24 @@ export const Hero = () => {
             </span> */}
           </h2>
           <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
-            Explore the Power of Social Media with:
-            <Typewriter
-              options={{
-                strings: [
-                  "Real-Time Trends",
-                  "Advanced Sentiment Analysis",
-                  "Engagement Metrics Tracking",
-                  "Hashtag Analysis Tools",
-                  "Competitor Performance Insights",
-                  "Discover Top Performing Tweets",
-                ],
-                autoStart: true,
-                loop: true,
-                deleteSpeed: "natural",
-                delay: 50, // Adjust the delay value to control the typing speed
-              }}
-            />
+            {isMounted && (
+              <Typewriter
+                options={{
+                  strings: [
+                    "Real-Time Trends",
+                    "Advanced Sentiment Analysis",
+                    "Engagement Metrics Tracking",
+                    "Hashtag Analysis Tools",
+                    "Competitor Performance Insights",
+                    "Discover Top Performing Tweets",
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  deleteSpeed: "natural",
+                  delay: 50,
+                }}
+              />
+            )}
           </p>
 
           <div className="flex items-center">

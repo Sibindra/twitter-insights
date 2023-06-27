@@ -5,6 +5,8 @@ import logo from "../logo.svg";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 
+
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
