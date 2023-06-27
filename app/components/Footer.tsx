@@ -19,18 +19,21 @@ export default function Footer() {
 
               <div className="flex mt-4 md:m-0">
                 <div className="-mx-4">
+                  {/* FIXME: */}
                   <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     GITHUB
                   </Link>
+                  {/* FIXME: */}
                   <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
                   >
                     NCIT
                   </Link>
+                  {/* FIXME: */}
                   <Link
                     href="#"
                     className="px-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 hover:underline"
