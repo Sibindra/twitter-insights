@@ -57,18 +57,9 @@ const AllLinks = [
 
 function TeamSection(props: TeamsData) {
   return (
-    <div className="justify-between items-center border-2 border-black rounded-none shadow sm:flex">
-      <div className="flex-1 w-full sm:w-48 h-48 relative">
-        <Image
-          className="w-full h-full rounded-none"
-          src={props.img}
-          alt="Bonnie Avatar"
-          fill
-          style={{ objectFit: "cover" }}
-        />
-      </div>
-
-      <div className="p-5 flex-1">
+    <div className="items-center border-2 border-black rounded-none shadow sm:flex">
+      <Link href="#"></Link>
+      <div className="p-5">
         <h3 className="text-xl font-bold tracking-tight text-gray-900">
           {props.name}
         </h3>
@@ -118,7 +109,7 @@ function TeamSection(props: TeamsData) {
 
 export default function Team() {
   return (
-    <>
+    <div id="team">
       <section className="bg-white border-2">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
@@ -145,6 +136,6 @@ export default function Team() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
