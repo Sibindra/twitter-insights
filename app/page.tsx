@@ -8,11 +8,9 @@ import Contact from "./components/Contact";
 {/*
   TODO:
 
-  - remove routes and use smooth scroll 
-  - make all section single page 
-  - change components for contact us from flowbyte 
-  - change my Team section from flobyte
-  - fix styling for changed components
+  - features icon change 
+  - add link
+  - footer responsiveness 
 */}
 
 export default function Home() {
