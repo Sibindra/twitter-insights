@@ -24,7 +24,7 @@ export default function Features() {
 
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
               <Link
-                className=" bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -57,7 +57,7 @@ export default function Features() {
               </Link>
 
               <Link
-                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -89,7 +89,7 @@ export default function Features() {
               </Link>
 
               <Link
-                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -120,7 +120,7 @@ export default function Features() {
               </Link>
 
               <Link
-                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -152,7 +152,7 @@ export default function Features() {
               </Link>
 
               <Link
-                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -184,7 +184,7 @@ export default function Features() {
               </Link>
 
               <Link
-                className="bg-[#e8f5fa] block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 href="/accountant"
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
