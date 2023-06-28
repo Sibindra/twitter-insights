@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import {FaChartPie} from "react-icons/fa";
+import {GrTechnology} from "react-icons/gr";
+import {FaHashtag} from "react-icons/fa";
+import {GiClockwork} from "react-icons/gi";
+import {GiCrossMark} from "react-icons/gi";
+import {GiUpgrade} from "react-icons/gi";
 
 export default function Features() {
   return (
@@ -22,28 +27,14 @@ export default function Features() {
               </p>
             </div>
 
+            {/* 1. Interactive Charts and Graphs */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
-              <Link
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                <FaChartPie className="w-5 h-5" />
                 </span>
 
                 <h2 className="mt-2 font-bold">
@@ -54,29 +45,15 @@ export default function Features() {
                   Dive deep into the data with interactive charts and graphs
                   that allow for seamless exploration and analysis.
                 </p>
-              </Link>
+              </span>
 
-              <Link
+              {/* 2. Sentiment Analysis */}
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <GrTechnology className="w-5 h-5" />
                 </span>
 
                 <h2 className="mt-2 font-bold">Sentiment Analysis</h2>
@@ -86,29 +63,15 @@ export default function Features() {
                   analysis capabilities, helping you gauge the overall sentiment
                   surrounding specific topics or hashtags in Nepali Context
                 </p>
-              </Link>
+              </span>
 
-              <Link
+              {/* 3. Hashtag Tracking */}
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <FaHashtag className="w-5 h-5" />
                 </span>
 
                 <h2 className="mt-2 font-bold">Hashtag Tracking</h2>
@@ -117,29 +80,15 @@ export default function Features() {
                   Track the popularity and engagement of hashtags , allowing you
                   to identify trending topics and monitor campaign performance
                 </p>
-              </Link>
+              </span>
 
-              <Link
+              {/* 4. User Engagement Metrics */}
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <GiClockwork className="w-5 h-5" />
                 </span>
 
                 <h2 className="mt-2 font-bold">User Engagement Metrics</h2>
@@ -149,30 +98,18 @@ export default function Features() {
                   retweets, and replies, providing valuable insights into the
                   reach and impact of your tweets
                 </p>
-              </Link>
+              </span>
 
-              <Link
+              {/* 6. Cross-platform Compatibility */}
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                 <GiCrossMark className="w-5 h-5" />
                 </span>
+
+                
 
                 <h2 className="mt-2 font-bold">Cross-platform Compatibility</h2>
 
@@ -181,29 +118,18 @@ export default function Features() {
                   across desktop, tablet, and mobile devices for convenient
                   monitoring on-the-go
                 </p>
-              </Link>
+              </span>
 
-              <Link
+              {/* 6. Eliminate Guesswork and Drive Social Media Growth with
+                  Data-Driven Insights */}
+
+
+              <span
                 className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
-                href="/accountant"
+               
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                    ></path>
-                  </svg>
+                  <GiUpgrade className="w-5 h-5" />
                 </span>
 
                 <h2 className="mt-2 font-bold">
@@ -216,7 +142,7 @@ export default function Features() {
                   optimize your social media strategy, and fuel measurable
                   growth
                 </p>
-              </Link>
+              </span>
             </div>
           </div>
         </div>
