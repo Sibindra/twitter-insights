@@ -26,7 +26,7 @@ const AllLinks = [
   {
     name: "Aananda Bhusal",
     img: "https://avatars.githubusercontent.com/u/84623222?v=4",
-    comment: "100 rupaya ki pepsi i am sexy",
+    comment: "lets do it 👍",
     facebook: "https://www.facebook.com/aananda.bhusal",
     github: "https://github.com/Aananda-git",
     linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
@@ -36,21 +36,21 @@ const AllLinks = [
   {
     name: "Deepak Rana Magar",
     img: "https://avatars.githubusercontent.com/u/94750400?v=4",
-    comment: "bahana nabanau",
-    facebook: "https://www.facebook.com/aananda.bhusal",
-    github: "https://github.com/Aananda-git",
-    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
-    mail: "aananda.191701@ncit.edu.np",
+    comment: "an artist simply trying",
+    facebook: "https://www.facebook.com/deepak.rana1234",
+    github: "https://github.com/DeepakRanaMagar",
+    linkden: "#",
+    mail: "dpk.me.123@gmail.com",
   },
 
   {
     name: "Sachit Khadka",
     img: "https://avatars.githubusercontent.com/u/106606778?v=4",
-    comment: "hooah",
-    facebook: "https://www.facebook.com/aananda.bhusal",
-    github: "https://github.com/Aananda-git",
-    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
-    mail: "aananda.191701@ncit.edu.np",
+    comment: "Tryna be useful",
+    facebook: "https://www.facebook.com/sachit.khadka.12/",
+    github: "https://github.com/Sachit56",
+    linkden: "https://www.linkedin.com/in/sachit-khadka-a2913725a/",
+    mail: "sachitkhadka73@gmail.com",
   },
 ];
 

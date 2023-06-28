@@ -41,7 +41,7 @@ export const Hero = () => {
           <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
             <p className="inline-block px-3 py-px mb-4 text-xs tracking-wider text-black border-2 uppercase rounded-none bg-[#a4fcf5]">
               {/* FIXME: */}
-              <Link href={"https://github.com/Sibindra/insights-nepal"}>
+              <Link target="_blank" href={"https://github.com/Sibindra/insights-nepal"}>
                 Github
               </Link>
             </p>
