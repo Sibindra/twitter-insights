@@ -5,13 +5,6 @@ import Navbar from "./components/Navbar";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 
-{/*
-  TODO:
-
-  - features icon change 
-  - add link
-  - footer responsiveness 
-*/}
 
 export default function Home() {
   return (

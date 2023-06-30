@@ -45,7 +45,6 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                  {/* FIXME: */}
                   <Link
                     activeClass="active"
                     to="feature"
