@@ -23,7 +23,7 @@ I-NEPAL is an online application designed to revolutionize Twitter data research
 - Next.Js: JavaScript library for building user interfaces.
 - Python: Programming language used for data processing and analysis.
 - Twitter API: Access Twitter data and perform various operations.
-- Django: Acess API and handle backend tasks
+- FastAPI: Acess API and handle backend tasks
 
 ## License
 
