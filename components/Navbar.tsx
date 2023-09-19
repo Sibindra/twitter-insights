@@ -1,8 +1,11 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import logo from "../logo.svg";
+import logo from "../app/logo.svg";
 import { Link, animateScroll as scroll } from "react-scroll";
+
+
+// FIXME:LINK ISSUE IS A TS ERROR NEED TO DEFINE 
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

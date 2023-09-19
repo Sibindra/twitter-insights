@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import heroimg from "../../public/images/hero-img.svg";
+import heroimg from "../public/images/hero-img.svg";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { useEffect, useState } from "react";

@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import {FaChartPie} from "react-icons/fa";
 import {GrTechnology} from "react-icons/gr";
