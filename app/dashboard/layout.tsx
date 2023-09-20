@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import SideBar from "@/components/SideBar";
+// import SideBar from "@/components/SideBar";
 
 
 interface LayoutProps {
@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-row">
       <div className="flex">
-        <SideBar />
+        {/* <SideBar /> */}
       </div>
 
       {/* Main Content */}
