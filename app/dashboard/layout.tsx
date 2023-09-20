@@ -1,5 +1,5 @@
 
-import SideBar from '@/components/Sidebar';
+import SideBar from '@/components/SideBar';
 import React, { ReactNode } from 'react';
 
 
