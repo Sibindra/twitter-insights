@@ -1,11 +1,36 @@
 "use client";
 import { BiGridAlt, BiUser, BiCog } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchUserData } from "@/lib/uid";
 
 export default function Dashboard() {
   // sidebar state for mobile screens
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const [userData, setUserData] = useState<any | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await fetchUserData();
+        // Do something with the data
+        setUserData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
+
+  // REMOVE LATER
+  console.log(
+    "username = ",
+    userData?.username,
+    " user_id = ",
+    userData?.user_id
+  );
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -45,7 +70,7 @@ export default function Dashboard() {
 
               <li>
                 <a
-                  href="#"
+                  href="/dashboard/profile"
                   className="flex items-center p-2 rounded-none-lg hover:bg-gray-100"
                 >
                   <BiUser className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
@@ -55,7 +80,7 @@ export default function Dashboard() {
 
               <li>
                 <a
-                  href="#"
+                  href="/dashboard/settings"
                   className="flex items-center p-2 rounded-none-lg hover:bg-gray-100"
                 >
                   <BiCog className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
@@ -69,55 +94,7 @@ export default function Dashboard() {
         </aside>
       )}
 
-      <div className="p-4 sm:ml-64">
-        <div className="p-4 border-2  border-black rounded-none-none ">
-          <div className="grid grid-cols-3 gap-4 mb-4">
-            <div className="flex items-center justify-center h-24 rounded-none-none border border-black ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center h-24 rounded-none border border-black ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center h-24 rounded-none border border-black ">
-              <p className="text-2xl  ">+</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center h-48 mb-4 rounded-none border border-black ">
-            <p className="text-2xl  ">+</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-          </div>
-          <div className="flex items-center justify-center h-48 mb-4 rounded-none border border-black ">
-            <p className="text-2xl  ">+</p>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-            <div className="flex items-center justify-center rounded-none border border-black h-28 ">
-              <p className="text-2xl  ">+</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="border"></div>
     </div>
   );
 }

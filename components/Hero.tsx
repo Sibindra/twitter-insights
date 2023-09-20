@@ -4,6 +4,8 @@ import heroimg from "../public/images/hero-img.svg";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { FiUser } from "react-icons/fi";
+import { BsSearch } from "react-icons/bs";
 
 export const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,7 +42,10 @@ export const Hero = () => {
         <div className="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
           <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
             <p className="inline-block px-3 py-px mb-4 text-xs tracking-wider text-black border-2 uppercase rounded-none bg-[#a4fcf5]">
-              <Link target="_blank" href={"https://github.com/Sibindra/insights-nepal"}>
+              <Link
+                target="_blank"
+                href={"https://github.com/Sibindra/insights-nepal"}
+              >
                 Github
               </Link>
             </p>
@@ -73,10 +78,34 @@ export const Hero = () => {
               )}
             </p>
 
-            <div className="flex items-center">
-              <button className="hover:bg-[#cfc3fb]  hover:text-black text-black  px-3 py-1 border border-black rounded-none m-2 ">
-                <Link href={"/dashboard"}>Login With Twitter</Link>
-              </button>
+            <div className="flex flex-col sm:flex-row items-center">
+              <div className="relative w-full">
+                <label
+                  htmlFor="username"
+                  className="hidden mb-2 text-sm font-medium text-gray-900 "
+                >
+                  username
+                </label>
+                <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <FiUser className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                </div>
+                <input
+                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
+                  placeholder="Enter the username without @"
+                  type="username"
+                  id="username"
+                />
+              </div>
+              <div>
+                <button className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none">
+                  <Link href="#">
+                    <div className="flex items-center">
+                      <BsSearch className="mr-2" size={18} />
+                      Search
+                    </div>
+                  </Link>
+                </button>
+              </div>
             </div>
           </div>
         </div>
