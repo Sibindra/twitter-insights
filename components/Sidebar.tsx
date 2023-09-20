@@ -4,7 +4,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import { useState } from "react";
 import Link from 'next/link';
 
-export default function SideBar() {
+export default function Sidebar() {
   // sidebar state for mobile screens
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
