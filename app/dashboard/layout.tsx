@@ -1,20 +1,18 @@
-import React, { ReactNode } from "react";
-// import SideBar from "@/components/SideBar";
+import Sidebar from "@/components/Sidebar";
 
-
-interface LayoutProps {
-  children: ReactNode;
-}
-
-export default function Layout({ children }: LayoutProps) {
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex flex-row">
-      <div className="flex">
-        {/* <SideBar /> */}
+    <div className="flex flex-row h-screen">
+      <div className="w-1/6">
+        <Sidebar />
       </div>
 
       {/* Main Content */}
-      <div className="flex md:relative w-5/6 bg-secondary h-screen border-2 border-red-500 ml-auto overflow-hidden">
+      <div className="flex-1 md:relative bg-secondary border-2  ml-auto overflow-auto">
         {children}
       </div>
     </div>
