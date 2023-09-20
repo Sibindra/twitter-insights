@@ -29,7 +29,7 @@ export default function Features() {
             {/* 1. Interactive Charts and Graphs */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 ">
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring cursor-pointer"
                 
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -48,7 +48,7 @@ export default function Features() {
 
               {/* 2. Sentiment Analysis */}
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="cursor-pointer block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -66,7 +66,7 @@ export default function Features() {
 
               {/* 3. Hashtag Tracking */}
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="cursor-pointer block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -83,7 +83,7 @@ export default function Features() {
 
               {/* 4. User Engagement Metrics */}
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="cursor-pointer block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -101,7 +101,7 @@ export default function Features() {
 
               {/* 6. Cross-platform Compatibility */}
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="cursor-pointer block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                 
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
@@ -124,7 +124,7 @@ export default function Features() {
 
 
               <span
-                className="block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+                className="cursor-pointer block rounded-none border border-black p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
                
               >
                 <span className="inline-block rounded-none border-black border-2 p-3 bg-white">
