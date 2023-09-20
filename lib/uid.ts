@@ -2,17 +2,17 @@ import axios from "axios";
 
 export async function fetchUserData() {
 
-  console.log(process.env.RAPIDAPI_KEY)
+  const username = "iamvkohli"
   
   const options = {
     method: "GET",
     url: "https://twitter154.p.rapidapi.com/user/details",
     params: {
-      username: "iamvkohli",
+      username: username,
     },
     headers: {
-      "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,
-      "X-RapidAPI-Host": process.env.RAPIDAPI_HOST,
+      "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+      "X-RapidAPI-Host": process.env.NETX_PUBLIC_RAPIDAPI_HOST,
     },
   };
 
