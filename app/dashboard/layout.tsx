@@ -1,5 +1,5 @@
-import SideBar from "@/components/SideBar";
 import React, { ReactNode } from "react";
+import SideBar from "@/components/SideBar";
 
 
 interface LayoutProps {
