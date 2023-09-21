@@ -6,7 +6,7 @@ export interface TweetProps {
 
 export default async function getTweets({username,reply,limit}:TweetProps) {
 
-    const url = `https://twitter154.p.rapidapi.com/user/tweets?username=${username}&limit=${limit}include_replies=${reply}&include_pinned=false`
+    const url = `https://twitter154.p.rapidapi.com/user/tweets?username=${username}&limit=${limit}&include_replies=${reply}&include_pinned=false`
 
     const headers = {
         'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
@@ -27,7 +27,7 @@ export default async function getTweets({username,reply,limit}:TweetProps) {
         }
     
         return response.json();
-        console.log(response.json())
+        // console.log(response.json())
       } catch (error: unknown) {
         console.error(error);
         return { error: (error as Error).message } as { error: string };
