@@ -1,10 +1,9 @@
-import TestCard from "@/components/Cards/test.card";
-import TweetCard from "@/components/Cards/tweet.card";
+import TestCard from "@/components/Cards/banner.card";
 
 export default function Dashboard() {
-  return <div><TestCard username={"elonmusk"}/>
-
-
-  <TweetCard username={"elonmusk"} reply={true} limit={10}/>
-  </div>;
+  return (
+    <>
+      <TestCard username={"elonmusk"} />
+    </>
+  );
 }
