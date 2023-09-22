@@ -59,7 +59,7 @@ export default async function AdditionalInfoCard({ username }: UserDataProps) {
             <div className=" p-2 pl-10">
             <p className=" text-slate-500">Account Privacy</p>
             <p className="text-xl font-medium">
-            {isprivate === true ? <p>Private</p> : <p>Public</p>}
+            {isprivate === true ? <span>Private</span> : <span>Public</span>}
               </p>
             </div>
 
@@ -67,7 +67,7 @@ export default async function AdditionalInfoCard({ username }: UserDataProps) {
             <div className=" p-2 pl-10">
             <p className=" text-slate-500">Account Verification</p>
             <p className="text-xl font-medium">
-            {verification === true ? <p>verified</p> : <p>Not verified</p>}
+            {verification === true ? <span>verified</span> : <span>Not verified</span>}
               </p>
             </div>
 
@@ -75,7 +75,7 @@ export default async function AdditionalInfoCard({ username }: UserDataProps) {
             <div className=" p-2 pl-10">
             <p className=" text-slate-500">NFT Avatar</p>
             <p className="text-xl font-medium">
-            {nftAvatar === true ? <p>Yes</p> : <p>No</p>}
+            {nftAvatar === true ? <span>Yes</span> : <span>No</span>}
               </p>
             </div>
 
