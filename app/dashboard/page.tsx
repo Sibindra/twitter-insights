@@ -1,9 +1,9 @@
-
+import TweetGraphCard from "@/components/Cards/graph-test.card";
 
 export default function Dashboard() {
   return (
-  <div>
-    dashboard
-  </div>
-    );
+    <>
+      <TweetGraphCard username={"elonmusk"} reply={false} limit={2}/>
+    </>
+  );
 }
