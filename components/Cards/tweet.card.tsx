@@ -1,4 +1,4 @@
-import getTweets, { TweetProps } from "@/lib/Followers";
+import getTweets, { TweetProps } from "@/lib/getTweets";
 import React from "react";
 
 export default async function TweetCard({
@@ -13,6 +13,7 @@ export default async function TweetCard({
   const tweet_id = data.results[0]?.text;
 
   return <div>{tweet_id && <div>ID: {tweet_id}</div>}</div>;
+  
 }
 
 // SAMPLE RESPONSE

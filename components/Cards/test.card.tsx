@@ -1,3 +1,5 @@
+// user details 
+
 import { UserDataProps, getUserDetails } from "@/lib/userDetails";
 
 export default async function TestCard({ username }: UserDataProps) {
@@ -7,11 +9,16 @@ export default async function TestCard({ username }: UserDataProps) {
   const creation_data = data.creation_date;
   const a = data.follower_count
   const img = data.profile_pic_url
+  const follower_count = data.follower_count;
+  const following_count = data.following_count;
 
   return (
     <main className="border-black border m-3 flex flex-col">
       <p>Name: {name}</p>
       <p>Creation Date: {creation_data}</p>
+      <p>Follower: {follower_count}</p>
+      <p>Following: {following_count}</p>
+
       {a}
 
       <img src={img}></img>
