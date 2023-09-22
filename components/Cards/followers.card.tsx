@@ -40,7 +40,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
     <div className=" flex flex-col gap-3  ">
 
       {/* followers count section */}
-      <div className="flex border border-black bg-white p-3 gap-5">
+      <div className="flex  bg-white p-3 gap-5">
         <div>
           <BsFillPeopleFill className=" h-10 w-10 " />
         </div>
@@ -51,7 +51,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
       </div>
 
       {/* following count section */}
-      <div className="flex gap-5 border border-black bg-white p-3">
+      <div className="flex gap-5  bg-white p-3">
         <div>
           <MdDonutSmall className="h-10 w-10" />
         </div>
@@ -62,7 +62,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
       </div>
 
       {/* facourites count section */}
-      <div className=" flex border border-black bg-white p-3 gap-5">
+      <div className=" flex  bg-white p-3 gap-5">
         <div>
           <BsFillSuitHeartFill className="w-10 h-10" />
         </div>
@@ -74,7 +74,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
       </div>
 
       {/* tweet count section */}
-      <div className="flex gap-5 border border-black bg-white p-3">
+      <div className="flex gap-5  bg-white p-3">
         <div>
           <FaRetweet className="w-10 h-10" />
         </div>

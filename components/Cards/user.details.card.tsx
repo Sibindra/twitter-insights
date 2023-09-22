@@ -69,8 +69,8 @@ export default async function UserDetailCard({ username }: UserDataProps) {
       </div>
 
       {/* social media links */}
-      <div className="flex border border-black ">
-      4
+      <div className="flex  ">
+      <a href="https://www.linkedin.com/in/omarmhaimdat/">Linkedin</a>
       </div>
     </div>
   );

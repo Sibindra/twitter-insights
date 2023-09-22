@@ -5,13 +5,13 @@ import UserDetailCard from "@/components/Cards/user.details.card";
 
 export default function Profile() {
   return (
-    <div className="flex flex-col md:flex-row p-10 bg-slate-50 gap-5">
+    <div className="flex flex-col md:flex-row p-10 bg-slate-200 gap-5">
       <div className="flex flex-1 gap-3 flex-col">
-        <div className="border border-black">
+        <div className="">
           <UserDetailCard username={"omarmhaimdat"} />
         </div>
 
-        <div className="border border-black">
+        <div className="">
         <SummaryCard username={"omarmhaimdat"} />
         </div>
 
@@ -19,10 +19,10 @@ export default function Profile() {
       </div>
 
       <div className="flex flex-1 gap-3 flex-col ">
-        <div className="border border-black">
+        <div className="">
           <FollowerCard username={"omarmhaimdat"} />
         </div>
-        <div className="border border-black">
+        <div className="">
           <AdditionalInfoCard username={"omarmhaimdat"} />
         </div>
       </div>
