@@ -1,9 +1,9 @@
-import TestCard from "@/components/Cards/banner.card";
+import TweetGraphCard from "@/components/Cards/graph-test.card";
 
 export default function Dashboard() {
   return (
     <>
-      <TestCard username={"elonmusk"} />
+      <TweetGraphCard username={"elonmusk"} reply={false} limit={2}/>
     </>
   );
 }

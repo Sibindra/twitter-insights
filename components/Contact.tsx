@@ -8,7 +8,7 @@ export default function Contact() {
 
   const [email,setEmail]=useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     console.log("Email:",email);
