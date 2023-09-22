@@ -1,7 +1,31 @@
+"use client";
+
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Contact() {
+
+  const [email,setEmail]=useState("");
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+
+    console.log("Email:",email);
+
+    const res = await fetch("api/contact",{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json",
+      },
+      body:JSON.stringify({
+        email
+      }),
+      
+
+    });
+
+  };
   return (
     <div id="contact">
       <section className="bg-white">
@@ -14,7 +38,7 @@ export default function Contact() {
               Stay up to date with the features, announcements and
               exclusive insights feel free to sign up with your email.
             </p>
-            <form action="#">
+            <form action="#" onSubmit={handleSubmit}>
               <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
                 <div className="relative w-full">
                   <label
@@ -26,7 +50,8 @@ export default function Contact() {
                   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <MdEmail className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                   </div>
-                  <input
+                  <input onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                     className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black sm:rounded-none focus:ring-primary-500 focus:border-primary-500 "
                     placeholder="Enter your email"
                     type="email"
@@ -49,6 +74,7 @@ export default function Contact() {
                 </a>
                 .
               </div>
+
             </form>
           </div>
         </div>

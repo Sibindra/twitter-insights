@@ -1,10 +1,9 @@
-'use client'
-import LineChartDiagram from "@/components/Cards/graph.card";
-import TweetCard from "@/components/Cards/tweet.card";
+import TweetGraphCard from "@/components/Cards/graph-test.card";
 
 export default function Dashboard() {
   return (
-  <div>
-    <LineChartDiagram username={"elonmusk"} reply={false} limit={10}/>
-  </div>);
+    <>
+      <TweetGraphCard username={"elonmusk"} reply={false} limit={2}/>
+    </>
+  );
 }
