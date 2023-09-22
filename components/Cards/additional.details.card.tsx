@@ -29,29 +29,58 @@ export default async function AdditionalInfoCard({ username }: UserDataProps) {
   const userID = data.user_id
   const creationDate = data.creation_date
   const timeStamp = data.timestamp
-
-
-
-
+  const isprivate =data.is_private
+  const nftAvatar = data.has_nft_avatar
+  const verification = data.is_verified
 
   return (
-        <div className=" flex flex-col gap-1">
-            <h1 className=" text-lg font-bold p-3 mb-3">Additional Details</h1>
+        <div className=" flex flex-col gap-1 bg-white ">
+            <h1 className=" text-lg font-bold p-2 pl-10 mb-3">Additional Details</h1>
 
-            <div className=" p-2">
-            <p className=" text-slate-500">User ID date</p>
+            {/* user ID */}
+            <div className=" p-2 pl-10">
+            <p className=" text-slate-500">User ID</p>
             <p className="text-xl font-medium">{userID}</p>
             </div>
             
-            <div className=" p-2">
+            {/* Creation date */}
+            <div className=" p-2 pl-10">
             <p className=" text-slate-500">Joined Date</p>
             <p className="text-xl font-medium">{creationDate}</p>
             </div>
             
-            <div className=" p-2">
+            {/* time stamp */}
+            <div className=" p-2 pl-10">
             <p className=" text-slate-500">time stamp</p>
-            <p className="text-xl font-normal">{timeStamp}</p>
+            <p className="text-xl font-mediuml">{timeStamp}</p>
             </div>
+
+            {/* Account privacy */}
+            <div className=" p-2 pl-10">
+            <p className=" text-slate-500">Account Privacy</p>
+            <p className="text-xl font-medium">
+            {isprivate === true ? <p>Private</p> : <p>Public</p>}
+              </p>
+            </div>
+
+            {/* Account verification */}
+            <div className=" p-2 pl-10">
+            <p className=" text-slate-500">Account Verification</p>
+            <p className="text-xl font-medium">
+            {verification === true ? <p>verified</p> : <p>Not verified</p>}
+              </p>
+            </div>
+
+            {/* NFT avatar */}
+            <div className=" p-2 pl-10">
+            <p className=" text-slate-500">NFT Avatar</p>
+            <p className="text-xl font-medium">
+            {nftAvatar === true ? <p>Yes</p> : <p>No</p>}
+              </p>
+            </div>
+
+
+
         </div>
   );
 }

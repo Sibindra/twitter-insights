@@ -1,6 +1,9 @@
 // count section in profile
 
 import { UserDataProps, getUserDetails } from "@/lib/userDetails";
+import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
+import { FaRetweet } from "react-icons/fa";
+import { MdDonutSmall } from "react-icons/md";
 
 export default async function FollowerCard({ username }: UserDataProps) {
   // const data = await getUserDetails({ username });
@@ -34,26 +37,51 @@ export default async function FollowerCard({ username }: UserDataProps) {
   const tweetsCount = data.number_of_tweets;
 
   return (
-    <div className=" flex flex-col gap-3 ">
+    <div className=" flex flex-col gap-3  ">
 
-      <div className=" border border-black bg-white p-3">
-        <p className="text-slate-500 ">Followers</p>
-        <p className="text-xl font-medium">{followerCount}</p>
+      {/* followers count section */}
+      <div className="flex border border-black bg-white p-3 gap-5">
+        <div>
+          <BsFillPeopleFill className=" h-10 w-10 " />
+        </div>
+        <div>
+          <p className="text-slate-500 ">Followers</p>
+          <p className="text-xl font-medium">{followerCount}</p>
+        </div>
       </div>
 
-      <div className="border border-black bg-white p-3">
-        <p className=" text-slate-500 m">Following</p>
-        <p className="text-xl font-medium"> {followingCount}</p>
+      {/* following count section */}
+      <div className="flex gap-5 border border-black bg-white p-3">
+        <div>
+          <MdDonutSmall className="h-10 w-10" />
+        </div>
+        <div>
+          <p className=" text-slate-500 m">Following</p>
+          <p className="text-xl font-medium"> {followingCount}</p>
+        </div>
       </div>
 
-      <div className="border border-black bg-white p-3">
-        <p className=" text-slate-500  ">Favourites</p>
-        <p className=" text-xl font-medium">{favouritesCount}</p>
+      {/* facourites count section */}
+      <div className=" flex border border-black bg-white p-3 gap-5">
+        <div>
+          <BsFillSuitHeartFill className="w-10 h-10" />
+        </div>
+
+        <div>
+          <p className=" text-slate-500  ">Favourites</p>
+          <p className=" text-xl font-medium">{favouritesCount}</p>
+        </div>
       </div>
 
-      <div className="border border-black bg-white p-3">
-        <p className=" text-slate-500 font-medium ">tweets</p>
-        <p className="text-xl  font-medium">{tweetsCount}</p>
+      {/* tweet count section */}
+      <div className="flex gap-5 border border-black bg-white p-3">
+        <div>
+          <FaRetweet className="w-10 h-10" />
+        </div>
+        <div>
+          <p className=" text-slate-500 font-medium ">tweets</p>
+          <p className="text-xl  font-medium">{tweetsCount}</p>
+        </div>
       </div>
     </div>
   );
