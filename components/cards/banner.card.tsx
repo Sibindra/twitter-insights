@@ -1,5 +1,5 @@
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/userDetails";
+import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useEffect, useState } from "react";
 
 export default function BannerCard({ username }: UserDataProps) {
