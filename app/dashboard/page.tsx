@@ -1,4 +1,4 @@
-import TweetGraphCard from "@/components/Cards/graph-test.card";
+import TweetGraphCard from "@/components/cards/tweet-graph.card";
 
 export default function Dashboard() {
   return (
