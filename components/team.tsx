@@ -29,7 +29,7 @@ const AllLinks = [
     comment: "lets do it 👍",
     facebook: "https://www.facebook.com/aananda.bhusal",
     github: "https://github.com/Aananda-git",
-    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
+    linkden: "https://www.linkedin.com/in/aananda-bhusal-555354283/",
     mail: "aananda.191701@ncit.edu.np",
   },
 
