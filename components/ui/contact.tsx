@@ -1,17 +1,32 @@
-"use client"
+"use client"; 
+
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
+import Toast from "./toast";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
-  // submission status
-  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [isErrorToast, setIsErrorToast] = useState(false);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // preventing multiple submissions
-    if (isSubmitting) return; 
+    if (isSubmitting) return;
+
+    // Validation
+    if (!email) {
+      setToastMessage("Email Field is Empty! ");
+      setIsErrorToast(true);
+      setShowToast(true);
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -28,18 +43,22 @@ export default function Contact() {
 
       if (res.ok) {
         console.log("Email:", email);
-        // Reset the form after successful submission
         setEmail("");
+        setToastMessage("Thank You for subscribing to Inepal! 🙂");
+        setIsErrorToast(false);
+        setShowToast(true);
       } else {
-        // Handle non-successful response here
-        console.error("Failed to subscribe");
+        console.error("Sorry something went wrong! 😢");
       }
     } catch (error) {
-      // Handle fetch error
       console.error("Fetch error:", error);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const closeToast = () => {
+    setShowToast(false);
   };
 
   return (
@@ -51,8 +70,8 @@ export default function Contact() {
               Sign up for our newsletter
             </h2>
             <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl">
-              Stay up to date with the features, announcements and exclusive
-              insights feel free to sign up with your email.
+              Stay up to date with the features, announcements, and exclusive
+              insights. Feel free to sign up with your email.
             </p>
             <form action="#" onSubmit={handleSubmit}>
               <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
@@ -67,9 +86,11 @@ export default function Contact() {
                     <MdEmail className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                   </div>
                   <input
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                     value={email}
-                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black sm:rounded-none focus:ring-primary-500 focus:border-primary-500 "
+                    className={`block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border ${
+                      isErrorToast ? "border-red-500" : "border-black"
+                    } sm:rounded-none focus:outline-none`}
                     placeholder="Enter your email"
                     type="email"
                     id="email"
@@ -77,8 +98,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <button
-                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none "
-                    disabled={isSubmitting} // Disable the button during submission
+                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none"
+                    disabled={isSubmitting}
                   >
                     <span>Subscribe</span>
                   </button>
@@ -98,6 +119,9 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      {showToast && (
+        <Toast message={toastMessage} isError={isErrorToast} close={closeToast} />
+      )}
     </div>
   );
 }
