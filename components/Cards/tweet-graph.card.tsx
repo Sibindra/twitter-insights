@@ -38,11 +38,9 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     return <p>Loading...</p>;
   }
 
-  // const results = tweetData.results;
-  // console.log(results);
-
 
   const results = tweetData?.results || [];
+
 
   const data = results.map((result) => ({
     name: result.creation_date,
@@ -51,7 +49,7 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
   }));
 
 
-  console.log('data = ',data);
+  // console.log('data = ',data);
 
 
   return <div className="border-black border m-4  p-20">
