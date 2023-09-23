@@ -38,7 +38,6 @@ export default function BannerCard({ username }: UserDataProps) {
       <p>Name: {name}</p>
       <p>Creation Date: {creation_date}</p>
       <p>Follower Count: {follower_count}</p>
-      <img src={profile_pic_url} alt="Profile Pic" />
     </main>
   );
 }
