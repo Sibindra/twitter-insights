@@ -1,5 +1,5 @@
 // Additional information part in profile section
-import { UserDataProps, getUserDetails } from "@/lib/userDetails";
+import { UserDataProps, getUserDetails } from "@/lib/user-details";
 
 
 

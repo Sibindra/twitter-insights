@@ -1,6 +1,6 @@
 // count section in profile
 
-import { UserDataProps, getUserDetails } from "@/lib/userDetails";
+import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
 import { FaRetweet } from "react-icons/fa";
 import { MdDonutSmall } from "react-icons/md";

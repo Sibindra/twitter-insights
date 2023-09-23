@@ -1,18 +1,33 @@
 "use client";
-import Link from "next/link";
-import heroimg from "../public/images/hero-img.svg";
-import Typewriter from "typewriter-effect";
+import heroimg from '@/public/images/hero-img.svg';
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
-import { FiUser } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
+import { FiUser } from "react-icons/fi";
+import Typewriter from "typewriter-effect";
+import { format } from 'url';
 
 export const Hero = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+
+  const handleSearch = () => {
+    // Redirect to /dashboard with the username query parameter
+    const url = format({
+      pathname: '/dashboard',
+      query: { username: username },
+    });
+
+    router.push(url);
+  };
 
   return (
     <div id="hero">
@@ -53,9 +68,7 @@ export const Hero = () => {
               Unveil Patterns
               <br className="hidden md:block" />
               Through Data Visualization
-              {/* <span className="inline-block text-deep-purple-accent-400">
-            
-            </span> */}
+              
             </h2>
             <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
               {isMounted && (
@@ -89,15 +102,21 @@ export const Hero = () => {
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                   <FiUser className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 </div>
+
+                {/* USERNAME HERE */}
                 <input
                   className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
                   placeholder="Enter the username without @"
                   type="username"
                   id="username"
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div>
-                <button className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none">
+                {/* SEND BUTTON HERE  */}
+                <button className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none"
+                 onClick={handleSearch}
+                >
                   <Link href="#">
                     <div className="flex items-center">
                       <BsSearch className="mr-2" size={18} />
