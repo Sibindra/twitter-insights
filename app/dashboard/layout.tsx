@@ -9,31 +9,32 @@ import {
   useState,
 } from "react";
 
-// Define the context type
+// context type
 type UsernameContextType = {
   username: string;
   setUsername: (username: string) => void;
 };
 
-// Create a context with an initial value
+// context with an initial value
 const UsernameContext = createContext<UsernameContextType | undefined>(
   undefined
 );
 
-// Custom hook to access the context
+// custom hook to access the context
 export const useUsernameContext = (): UsernameContextType => {
   const context = useContext(UsernameContext);
 
   if (context === undefined) {
+    // useUsernameContext must be used within a UsernameProvider
     throw new Error(
-      "useUsernameContext must be used within a UsernameProvider"
+      "username is undefined"
     );
   }
 
   return context;
 };
 
-// Provider component
+// provider component
 type UsernameProviderProps = {
   children: ReactNode;
 };
@@ -44,7 +45,7 @@ export const UsernameProvider: React.FC<UsernameProviderProps> = ({
   const [username, setUsername] = useState<string>("");
   const searchParams = useSearchParams();
 
-  // Update the username state when the query parameter changes
+  // updating username state when the query parameter changes
   useEffect(() => {
     const newUsername = searchParams.get("username") || "";
     setUsername(newUsername);
