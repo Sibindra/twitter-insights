@@ -6,45 +6,16 @@ import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
 import { FaRetweet } from "react-icons/fa";
 import { MdDonutSmall } from "react-icons/md";
 
-export default function BannerCard({ username }: UserDataProps) {
-  const [userData, setUserData] = useState<UserDataProps | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getUserDetails({ username });
-        setUserData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError("An error occurred while fetching data. Please try again later.");
-      }
-    };
-
-    fetchData();
-  }, [username]);
-
-  if (error) {
-    // error display code here (e.g., error banner or animation)
-    return <p>Error: {error}</p>;
-  }
-
-  if (!userData) {
-    // Loading section code here
-    return <p>Loading...</p>;
-  }
-
-  const { follower_count, following_count, favourites_count, number_of_tweets } = userData;
+export default function BannerCard({ follower_count, following_count, favourites_count, number_of_tweets }: UserDataProps) {
  
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2">
 
       {/* followers count section */}
       {follower_count !== undefined && (
-        <div className="flex bg-white p-3 gap-5">
+        <div className="flex bg-slate-200 p-3 gap-5 items-center">
           <div>
-            <BsFillPeopleFill className="h-10 w-10" />
+            <BsFillPeopleFill size={35} className="text-gray-600" />
           </div>
           <div>
             <p className="text-slate-500">Followers</p>
@@ -55,9 +26,9 @@ export default function BannerCard({ username }: UserDataProps) {
 
       {/* following count section */}
       {following_count !== undefined && (
-        <div className="flex gap-5 bg-white p-3">
+        <div className="flex gap-5 bg-slate-200 p-3 items-center">
           <div>
-            <MdDonutSmall className="h-10 w-10" />
+            <MdDonutSmall size={35} className=" text-gray-600 " />
           </div>
           <div>
             <p className="text-slate-500">Following</p>
@@ -68,12 +39,12 @@ export default function BannerCard({ username }: UserDataProps) {
 
       {/* favorites count section */}
       {favourites_count !== undefined && (
-        <div className="flex bg-white p-3 gap-5">
+        <div className="flex  bg-slate-200	 p-3 gap-5 items-center">
           <div>
-            <BsFillSuitHeartFill className="w-10 h-10" />
+            <BsFillSuitHeartFill size={35} className="text-gray-600" />
           </div>
           <div>
-            <p className="text-slate-500">Favorites</p>
+            <p className="text-slate-500 ">Favourites</p>
             <p className="text-xl font-medium">{favourites_count}</p>
           </div>
         </div>
@@ -81,9 +52,9 @@ export default function BannerCard({ username }: UserDataProps) {
 
       {/* tweet count section */}
       {number_of_tweets !== undefined && (
-        <div className="flex gap-5 bg-white p-3">
+        <div className="flex gap-5 items-center bg-slate-200 p-3">
           <div>
-            <FaRetweet className="w-10 h-10" />
+            <FaRetweet size={35} className="text-gray-600" />
           </div>
           <div>
             <p className="text-slate-500">Tweets</p>
