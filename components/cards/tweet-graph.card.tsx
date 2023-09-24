@@ -2,13 +2,13 @@
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
 import { useEffect, useState } from "react";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
   CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
   Tooltip,
-  Legend
+  XAxis,
+  YAxis
 } from "recharts";
 
 export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
@@ -47,9 +47,6 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     views: result.views,
     retweetCount: result.retweet_count,
   }));
-
-
-  // console.log('data = ',data);
 
 
   return <div className="border-black border m-4  p-20">

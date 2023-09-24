@@ -7,8 +7,11 @@ import UserDetailCard from "@/components/cards/user.details.card";
 // import BannerCard from "@/components/cards/banner.card";
 import { useUsernameContext } from "../layout";
 
+import { useAppSelector } from "@/store/store";
+
 export default function Profile() {
-  const { username } = useUsernameContext();
+
+  const username = useAppSelector((state)=>state.usernameReducer.username);
 
   return (
     <div className="flex flex-col md:flex-row p-10 bg-slate-200 gap-5">
