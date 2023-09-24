@@ -2,17 +2,23 @@
 import heroimg from '@/public/images/hero-img.svg';
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
-import { format } from 'url';
+
+import { setStoreUsername } from '@/store/features/username-slice';
+import { AppDispatch } from '@/store/store';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const router = useRouter();
+
+  const dispatch = useDispatch<AppDispatch>();
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -20,13 +26,9 @@ export const Hero = () => {
 
 
   const handleSearch = () => {
-    // Redirect to /dashboard with the username query parameter
-    const url = format({
-      pathname: '/dashboard',
-      query: { username: username },
-    });
+    dispatch(setStoreUsername(username));
 
-    router.push(url);
+    router.push('/dashboard')
   };
 
   return (

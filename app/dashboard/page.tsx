@@ -1,13 +1,14 @@
 "use client"
 import TweetGraphCard from "@/components/cards/tweet-graph.card";
-import { useSearchParams } from "next/navigation";
+import { useAppSelector } from "@/store/store";
 
 export default function Dashboard() {
-  const searchedUsername = useSearchParams().get("username");
+
+  const username = useAppSelector((state)=>state.usernameReducer.username);
 
   return (
     <>
-      <TweetGraphCard username={searchedUsername as string} reply={false} limit={2} />
+      <TweetGraphCard username={username} reply={false} limit={4}/>
     </>
   );
 }
