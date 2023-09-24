@@ -4,8 +4,7 @@ import FollowerCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user.details.card";
 
-// import BannerCard from "@/components/cards/banner.card";
-import { useUsernameContext } from "../layout";
+// import BannerCard from "@/components/cards/banner.card
 
 import { useAppSelector } from "@/store/store";
 
@@ -35,11 +34,7 @@ export default function Profile() {
           <AdditionalInfoCard username={username} />
         </div>
       </div>
-    {/* <div>
-      <BannerCard username={username} />
-    </div> */}
   </div>
   );
 }
 
- {/* <TweetCard username={"omarmhaimdat"} reply={true} limit={1} /> */}

@@ -37,7 +37,7 @@ export default function BannerCard({ username }: UserDataProps) {
 
   const {  follower_count, following_count, favourites_count, number_of_tweets } = userData;
  
-
+  console.log("a=",follower_count);
   return (
     <div className=" flex flex-col gap-3  ">
 

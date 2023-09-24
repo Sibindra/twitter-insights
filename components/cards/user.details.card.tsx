@@ -37,6 +37,7 @@ export default function BannerCard({ username }: UserDataProps) {
   }
 
   const { name, profile_pic_url, location, profile_banner_url } = userData;
+  console.log(profile_pic_url)
 
   // const name = userData.name;
   // const profileImage = userData.profile_pic_url;
@@ -69,7 +70,7 @@ export default function BannerCard({ username }: UserDataProps) {
               alt="User Image"
               width={100}
               height={100}
-              className="rounded-full h-2/3  "
+              className="rounded-full h-3/5  "
             />
           )}
         </div>

@@ -35,6 +35,7 @@ export default function BannerCard({ username }: UserDataProps) {
   }
 
   const { description } = userData;
+  console.log(username)
 
   return (
     <div className="flex flex-col bg-white p-5">
