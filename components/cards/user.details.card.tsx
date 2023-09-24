@@ -23,7 +23,7 @@ export default function BannerCard({ username }: UserDataProps) {
     };
 
     fetchData();
-  }, [username]);
+  }, []);
 
   if (error) {
     // error display code here (e.g., error banner or animation)
@@ -36,6 +36,8 @@ export default function BannerCard({ username }: UserDataProps) {
   }
 
   const { name, profile_pic_url, location, profile_banner_url, description } = userData;
+
+  console.log(userData)
 
   return (
     <div className="flex flex-col bg-white">

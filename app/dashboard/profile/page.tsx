@@ -1,16 +1,13 @@
 "use client";
+
 import AdditionalInfoCard from "@/components/cards/additional.details.card";
 import FollowerCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user.details.card";
-
-// import BannerCard from "@/components/cards/banner.card
-
 import { useAppSelector } from "@/store/store";
 
 export default function Profile() {
-
-  const username = useAppSelector((state)=>state.usernameReducer.username);
+  const username = useAppSelector((state) => state.username.username);
 
   return (
     <div className="flex flex-col md:flex-row p-10 bg-slate-200 gap-5">
@@ -20,7 +17,7 @@ export default function Profile() {
         </div>
 
         <div className="">
-        <SummaryCard username={username} />
+          <SummaryCard username={username} />
         </div>
 
         <div className="border border-black">Recent Hashtags</div>
@@ -34,7 +31,6 @@ export default function Profile() {
           <AdditionalInfoCard username={username} />
         </div>
       </div>
-  </div>
+    </div>
   );
 }
-

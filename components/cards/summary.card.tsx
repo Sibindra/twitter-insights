@@ -22,7 +22,7 @@ export default function BannerCard({ username }: UserDataProps) {
     };
 
     fetchData();
-  }, [username]);
+  }, []);
 
   if (error) {
     // error display code here (e.g., error banner or animation)

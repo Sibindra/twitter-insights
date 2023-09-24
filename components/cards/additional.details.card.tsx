@@ -3,6 +3,7 @@
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useEffect, useState } from "react";
 
+
 export default function BannerCard({ username }: UserDataProps) {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +21,7 @@ export default function BannerCard({ username }: UserDataProps) {
     };
 
     fetchData();
-  }, [username]);
+  }, []);
 
   if (error) {
     // error display code here (e.g., error banner or animation)

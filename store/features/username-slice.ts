@@ -1,4 +1,3 @@
-// username-slice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type UsernameState = {
@@ -9,8 +8,8 @@ const initialState: UsernameState = {
   username: "",
 };
 
-export const usernameSlice = createSlice({
-  name: 'username',
+const usernameSlice = createSlice({
+  name: "username",
   initialState,
   reducers: {
     setStoreUsername: (state, action: PayloadAction<string>) => {
