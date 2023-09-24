@@ -1,5 +1,5 @@
 // summary section in profile page
-"use client";
+"use client"
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,7 @@ export default function BannerCard({ username }: UserDataProps) {
   }, [username]);
 
   if (error) {
-    // error diplay code here (eg: error banenr or animation)
+    // error display code here (e.g., error banner or animation)
     return <p>Error: {error}</p>;
   }
 
@@ -35,12 +35,15 @@ export default function BannerCard({ username }: UserDataProps) {
   }
 
   const { description } = userData;
-  console.log(username)
 
   return (
     <div className="flex flex-col bg-white p-5">
-      <h1 className=" text-lg font-bold mb-3">Summary</h1>
-      {description}
+      <h1 className="text-lg font-bold mb-3">Summary</h1>
+      {description ? (
+        <p className="text-slate-500">{description}</p>
+      ) : (
+        <p className="text-slate-500">No summary available</p>
+      )}
     </div>
   );
 }
