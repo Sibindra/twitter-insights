@@ -1,7 +1,11 @@
-import "./globals.css";
+import { ReduxProvider } from "@/store/provider";
 import { Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({subsets:['latin'],weight:['100','200','300','400','500','600','700']});
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
 
 export const metadata = {
   title: "Insights Nepal",
@@ -16,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="logo.svg" sizes="any" />
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   );
 }

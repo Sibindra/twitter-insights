@@ -1,3 +1,14 @@
+"use client";
+
+import TweetGraphCard from "@/components/cards/tweet-graph.card";
+import { useAppSelector } from "@/store/store";
+
 export default function Dashboard() {
-  return <div>Dashboard here</div>;
+  const username = useAppSelector((state) => state.username.username);
+
+  return (
+    <>
+      <TweetGraphCard username={username} reply={false} limit={4} />
+    </>
+  );
 }
