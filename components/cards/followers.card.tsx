@@ -1,40 +1,42 @@
 // count section in profile
-
+"use client"
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
 import { FaRetweet } from "react-icons/fa";
 import { MdDonutSmall } from "react-icons/md";
+import { useEffect, useState } from "react";
 
-export default async function FollowerCard({ username }: UserDataProps) {
-  // const data = await getUserDetails({ username });
-  const data = {
-    creation_date: "Sun Dec 13 03:52:21 +0000 2009",
-    user_id: "96479162",
-    username: "omarmhaimdat",
-    name: "Omar MHAIMDAT",
-    follower_count: 961,
-    following_count: 1185,
-    favourites_count: 6101,
-    is_private: false,
-    is_verified: false,
-    location: "Casablanca, Morocco",
-    profile_pic_url:
-      "https://pbs.twimg.com/profile_images/1271521722945110016/AvKfKpLo_normal.jpg",
-    profile_banner_url:
-      "https://pbs.twimg.com/profile_banners/96479162/1599303392",
-    description:
-      "Data Scientist | Software Engineer | Better programming and Heartbeat contributor",
-    external_url: "https://www.linkedin.com/in/omarmhaimdat/",
-    number_of_tweets: 3159,
-    bot: false,
-    timestamp: 1260676341,
-    has_nft_avatar: false,
-  };
+export default function BannerCard({ username }: UserDataProps) {
+  const [userData, setUserData] = useState<UserDataProps | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const followerCount = data.follower_count;
-  const followingCount = data.following_count;
-  const favouritesCount = data.follower_count;
-  const tweetsCount = data.number_of_tweets;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getUserDetails({ username });
+        setUserData(data);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError("An error occurred while fetching data. Please try again later.");
+      }
+    };
+
+    fetchData();
+  }, [username]);
+
+  if (error) {
+    // error diplay code here (eg: error banenr or animation)
+    return <p>Error: {error}</p>;
+  }
+
+  if (!userData) {
+    // Loading section code here
+    return <p>Loading...</p>;
+  }
+
+  const {  follower_count, following_count, favourites_count, number_of_tweets } = userData;
+ 
 
   return (
     <div className=" flex flex-col gap-3  ">
@@ -46,7 +48,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
         </div>
         <div>
           <p className="text-slate-500 ">Followers</p>
-          <p className="text-xl font-medium">{followerCount}</p>
+          <p className="text-xl font-medium">{follower_count}</p>
         </div>
       </div>
 
@@ -57,7 +59,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
         </div>
         <div>
           <p className=" text-slate-500 m">Following</p>
-          <p className="text-xl font-medium"> {followingCount}</p>
+          <p className="text-xl font-medium"> {following_count}</p>
         </div>
       </div>
 
@@ -69,7 +71,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
 
         <div>
           <p className=" text-slate-500  ">Favourites</p>
-          <p className=" text-xl font-medium">{favouritesCount}</p>
+          <p className=" text-xl font-medium">{favourites_count}</p>
         </div>
       </div>
 
@@ -80,7 +82,7 @@ export default async function FollowerCard({ username }: UserDataProps) {
         </div>
         <div>
           <p className=" text-slate-500 font-medium ">tweets</p>
-          <p className="text-xl  font-medium">{tweetsCount}</p>
+          <p className="text-xl  font-medium">{number_of_tweets}</p>
         </div>
       </div>
     </div>

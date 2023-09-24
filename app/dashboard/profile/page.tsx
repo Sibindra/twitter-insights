@@ -4,7 +4,7 @@ import FollowerCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user.details.card";
 
-import BannerCard from "@/components/cards/banner.card";
+// import BannerCard from "@/components/cards/banner.card";
 import { useUsernameContext } from "../layout";
 
 export default function Profile() {
@@ -14,11 +14,11 @@ export default function Profile() {
     <div className="flex flex-col md:flex-row p-10 bg-slate-200 gap-5">
       <div className="flex flex-1 gap-3 flex-col">
         <div className="">
-          <UserDetailCard username={"omarmhaimdat"} />
+          <UserDetailCard username={username} />
         </div>
 
         <div className="">
-        <SummaryCard username={"omarmhaimdat"} />
+        <SummaryCard username={username} />
         </div>
 
         <div className="border border-black">Recent Hashtags</div>
@@ -26,15 +26,15 @@ export default function Profile() {
 
       <div className="flex flex-1 gap-3 flex-col ">
         <div className="">
-          <FollowerCard username={"omarmhaimdat"} />
+          <FollowerCard username={username} />
         </div>
         <div className="">
-          <AdditionalInfoCard username={"omarmhaimdat"} />
+          <AdditionalInfoCard username={username} />
         </div>
       </div>
-    <div>
+    {/* <div>
       <BannerCard username={username} />
-    </div>
+    </div> */}
   </div>
   );
 }
