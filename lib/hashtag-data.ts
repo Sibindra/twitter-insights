@@ -3,9 +3,16 @@ export interface HastagProps {
     limit: number;
 }
 
+export interface HashtagPromiseProps {
+  details?: Array<any>;
+  error?:string;
+  
+
+}
 
 
-export default async function getHashtag({hashtag,limit}: HastagProps) {
+
+export default async function getHashtag({hashtag,limit}: HastagProps) :Promise<HashtagPromiseProps| { error: string }>{
     const url = `https://twitter154.p.rapidapi.com/hashtag/hashtag?hashtag=%23${hashtag}&limit=${limit}&section=top`;
 
     const headers = {

@@ -17,8 +17,7 @@ export default function Settings() {
   const [limit, setLimit] = useState(1); // State for the limit
 
   const handleSearch = () => {
-    // Perform the search action here using 'hashtag' and 'limit'
-    // You can replace this with your actual search logic
+   
     console.log(`Searching for hashtag: ${hashtag} with limit: ${limit}`);
   };
 
