@@ -1,48 +1,14 @@
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { UserDataProps } from "@/lib/user-details";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { MdLocationOn } from "react-icons/md";
 
-export default function BannerCard({ username }: UserDataProps) {
-  const [userData, setUserData] = useState<UserDataProps | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getUserDetails({ username });
-        setUserData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError(
-          "An error occurred while fetching data. Please try again later."
-        );
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (error) {
-    // error display code here (e.g., error banner or animation)
-    return <p>Error: {error}</p>;
-  }
-
-  if (!userData) {
-    // Loading section code here
-    return <p>Loading...</p>;
-  }
-
-  const { name, profile_pic_url, location, profile_banner_url, description } = userData;
-
-  console.log(userData)
+export default function BannerCard({ profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-gray-200">
       {/* Banner */}
-      <div className="flex">
+      <div className="flex border border-b-2 border-b-black">
         {profile_banner_url && (
           <Image
             src={profile_banner_url}
@@ -77,11 +43,11 @@ export default function BannerCard({ username }: UserDataProps) {
           <h2 className="text-xl font-bold mb-2">{name}</h2>
           <p className="text-slate-500"> {username}</p>
           {location && (
-            <p className="flex bg-slate-200 p-1">
-              <MdLocationOn className="w-5 h-5" /> {location}
+            <p className="flex bg-gray-100 p-1">
+              <MdLocationOn size={20} className=" text-gray-600" /> {location}
             </p>
           )}
-          {description && <p className="text-slate-500">{description}</p>}
+          
         </div>
       </div>
 

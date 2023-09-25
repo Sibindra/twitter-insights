@@ -1,49 +1,11 @@
 // Additional information part in profile section
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
-import { useEffect, useState } from "react";
+import { UserDataProps } from "@/lib/user-details";
 
-
-export default function BannerCard({ username }: UserDataProps) {
-  const [userData, setUserData] = useState<UserDataProps | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getUserDetails({ username });
-        setUserData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError("An error occurred while fetching data. Please try again later.");
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (error) {
-    // error display code here (e.g., error banner or animation)
-    return <p>Error: {error}</p>;
-  }
-
-  if (!userData) {
-    // Loading section code here
-    return <p>Loading...</p>;
-  }
-
-  const {
-    user_id,
-    creation_date,
-    timestamp,
-    is_private,
-    has_nft_avatar,
-    is_verified,
-  } = userData;
-
+export default function BannerCard({ user_id, timestamp, creation_date, has_nft_avatar, is_private, is_verified }: UserDataProps) {
+  
   return (
-    <div className="flex flex-col gap-1 bg-white">
+    <div className="flex flex-col gap-1 bg-slate-200">
       <h1 className="text-lg font-bold p-2 pl-10 mb-3">Additional Details</h1>
 
       {/* User ID */}
