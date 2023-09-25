@@ -1,7 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { FaFacebook, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
+import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
 interface TeamsData {
   img: string;
@@ -29,7 +28,7 @@ const AllLinks = [
     comment: "lets do it 👍",
     facebook: "https://www.facebook.com/aananda.bhusal",
     github: "https://github.com/Aananda-git",
-    linkden: "https://www.linkedin.com/in/aananda-bhusal-74228b249/",
+    linkden: "https://www.linkedin.com/in/aananda-bhusal-555354283/",
     mail: "aananda.191701@ncit.edu.np",
   },
 
@@ -39,7 +38,7 @@ const AllLinks = [
     comment: "an artist simply trying",
     facebook: "https://www.facebook.com/deepak.rana1234",
     github: "https://github.com/DeepakRanaMagar",
-    linkden: "#",
+    linkden: "https://www.linkedin.com/in/deepak-rana-magar-aa4667275/",
     mail: "dpk.me.123@gmail.com",
   },
 

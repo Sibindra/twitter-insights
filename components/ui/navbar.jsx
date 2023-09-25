@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import logo from "@/app/logo.svg";
 import Image from "next/image";
-import logo from "../app/logo.svg";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { useState } from "react";
+import { Link } from "react-scroll";
 
 
 // FIXME:LINK ISSUE IS A TS ERROR NEED TO DEFINE 
