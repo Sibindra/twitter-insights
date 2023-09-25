@@ -1,9 +1,15 @@
 // Additional information part in profile section
-"use client"
+"use client";
 import { UserDataProps } from "@/lib/user-details";
 
-export default function BannerCard({ user_id, timestamp, creation_date, has_nft_avatar, is_private, is_verified }: UserDataProps) {
-  
+export default function BannerCard({
+  user_id,
+  timestamp,
+  creation_date,
+  has_nft_avatar,
+  is_private,
+  is_verified,
+}: UserDataProps) {
   return (
     <div className="flex flex-col gap-1 bg-slate-200">
       <h1 className="text-lg font-bold p-2 pl-10 mb-3">Additional Details</h1>
@@ -47,7 +53,11 @@ export default function BannerCard({ user_id, timestamp, creation_date, has_nft_
         <div className="p-2 pl-10">
           <p className="text-slate-500">Account Verification</p>
           <p className="text-xl font-medium">
-            {is_verified === true ? <span>Verified</span> : <span>Not Verified</span>}
+            {is_verified === true ? (
+              <span>Verified</span>
+            ) : (
+              <span>Not Verified</span>
+            )}
           </p>
         </div>
       )}

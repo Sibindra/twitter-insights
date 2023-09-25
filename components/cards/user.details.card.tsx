@@ -1,9 +1,15 @@
-"use client"
+"use client";
 import { UserDataProps } from "@/lib/user-details";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 
-export default function BannerCard({ profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
+export default function BannerCard({
+  profile_banner_url,
+  profile_pic_url,
+  location,
+  name,
+  username,
+}: UserDataProps) {
   return (
     <div className="flex flex-col bg-gray-200">
       {/* Banner */}
@@ -24,7 +30,7 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
       <div className="flex justify-around">
         {/* profile image */}
         <div className="flex -mt-14">
-          {profile_pic_url ? ( // Check if profile_pic_url is defined
+          {profile_pic_url ? (
             <Image
               src={profile_pic_url}
               alt="User Image"
@@ -33,7 +39,7 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
               className="rounded-full h-3/5"
             />
           ) : (
-            <p className="text-xl font-bold mb-2">No profile picture available</p> // Render alternative content
+            <p className="">No profile picture available</p>
           )}
         </div>
 
@@ -46,7 +52,6 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
               <MdLocationOn size={20} className=" text-gray-600" /> {location}
             </p>
           )}
-          
         </div>
       </div>
 
