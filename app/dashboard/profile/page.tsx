@@ -1,17 +1,17 @@
 "use client";
+
 import AdditionalInfoCard from "@/components/cards/additional.details.card";
 import FollowerCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user.details.card";
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useAppSelector } from "@/store/store";
-import { useState, useEffect, use } from "react";
+import { useEffect, useState } from "react";
 
 
 
 export default function Profile() {
-
-  const username = useAppSelector((state)=>state.usernameReducer.username);
+  const username = useAppSelector((state) => state.username.username);
 
   const [userData, setUserData] = useState<UserDataProps | null>(null);
 const [error, setError] = useState<string | null>(null);
@@ -64,7 +64,6 @@ const [error, setError] = useState<string | null>(null);
           <AdditionalInfoCard {...userData}  />
         </div>
       </div>
-  </div>
+    </div>
   );
 }
-

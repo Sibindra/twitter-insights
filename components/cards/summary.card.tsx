@@ -1,6 +1,6 @@
 // summary section in profile page
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { UserDataProps } from "@/lib/user-details";
 
 export default function BannerCard({ description }: UserDataProps) {
 

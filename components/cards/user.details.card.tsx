@@ -1,5 +1,5 @@
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { UserDataProps } from "@/lib/user-details";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 

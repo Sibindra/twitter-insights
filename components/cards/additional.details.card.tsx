@@ -1,7 +1,6 @@
 // Additional information part in profile section
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
-import { useEffect, useState } from "react";
+import { UserDataProps } from "@/lib/user-details";
 
 export default function BannerCard({ user_id, timestamp, creation_date, has_nft_avatar, is_private, is_verified }: UserDataProps) {
   

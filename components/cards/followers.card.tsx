@@ -1,7 +1,6 @@
 // count section in profile
 "use client"
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
-import { useEffect, useState } from "react";
+import { UserDataProps } from "@/lib/user-details";
 import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
 import { FaRetweet } from "react-icons/fa";
 import { MdDonutSmall } from "react-icons/md";
