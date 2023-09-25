@@ -9,7 +9,7 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
     <div className="flex flex-col bg-gray-200">
       {/* Banner */}
       <div className="flex border border-b-2 border-b-black">
-        {profile_banner_url && (
+        {profile_banner_url? ( // check profile banner
           <Image
             src={profile_banner_url}
             alt="Profile Banner"
@@ -18,14 +18,21 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
             height={100}
             className="w-full"
           />
-        )}
+        ):(<Image //If profile banner is not available
+          src={""}
+          alt="Profile Banner"
+          // layout="responsive"
+          width={200}
+          height={65}
+          className="w-full"
+        />)}
       </div>
 
       {/* profile image and user details */}
       <div className="flex justify-around">
         {/* profile image */}
         <div className="flex -mt-14">
-          {profile_pic_url ? ( // Check if profile_pic_url is defined
+          {profile_pic_url && ( // Check if profile_pic_url is defined
             <Image
               src={profile_pic_url}
               alt="User Image"
@@ -33,8 +40,6 @@ export default function BannerCard({ profile_banner_url, profile_pic_url, locati
               height={100}
               className="rounded-full h-3/5"
             />
-          ) : (
-            <p className="text-xl font-bold mb-2">No profile picture available</p> // Render alternative content
           )}
         </div>
 
