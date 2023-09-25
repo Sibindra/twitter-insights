@@ -13,7 +13,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="">
+    <div className=" bg-slate-50">
       <button
         data-drawer-target="default-sidebar"
         data-drawer-toggle="default-sidebar"

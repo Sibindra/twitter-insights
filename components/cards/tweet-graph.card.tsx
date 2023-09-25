@@ -49,16 +49,18 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
   }));
 
 
-  return <div className="border-black border m-4  p-20">
+  return <div className="border-black border m-4  p-5">
     <LineChart
-      width={800}
-      height={500}
+      width={1100}
+      height={400}
       data={data}
+      className=" bg-sky-100 "
       margin={{
         top: 5,
-        right: 30,
-        left: 20,
+        right: 3,
+        left: 2,
         bottom: 5
+      
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
@@ -71,11 +73,12 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
         dataKey="retweetCount"
         stroke="#8884d8"
         activeDot={{ r: 8 }}
+        
       />
-      <Line type="monotone" dataKey="views" stroke="#82ca9d" 
+      {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
         activeDot={{ r: 8 }}
       
-      />
+      /> */}
     </LineChart>
   </div>;
 }
