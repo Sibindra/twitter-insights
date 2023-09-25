@@ -4,7 +4,6 @@ import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 
 export default function BannerCard({ profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
-
   return (
     <div className="flex flex-col bg-gray-200">
       {/* Banner */}
