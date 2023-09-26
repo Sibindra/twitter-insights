@@ -1,9 +1,9 @@
 "use client";
 
 import AdditionalInfoCard from "@/components/cards/additional.details.card";
-import FollowerCard from "@/components/cards/followers.card";
+import RecentFollowersCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
-import UserDetailCard from "@/components/cards/user.details.card";
+import UserDetailCard from "@/components/cards/user-details.card";
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
@@ -31,6 +31,7 @@ const [error, setError] = useState<string | null>(null);
     fetchData();
   }, []);
 
+   console.log(userData)
   if (error) {
     // error display code here (e.g., error banner or animation)
     return <p>Error: {error}</p>;
@@ -42,25 +43,25 @@ const [error, setError] = useState<string | null>(null);
   }
 
   return (
-    <div className="flex flex-col md:flex-row p-10 bg-white gap-10">
+    <div className="flex flex-col md:flex-row p-10 bg-violet-200 gap-10">
       <div className="flex flex-1 gap-3 flex-col">
-        <div className="">
+        <div className=" rounded-sm">
           <UserDetailCard {...userData}
           />
         </div>
 
-        <div className="">
+        <div className="rounded-sm">
         <SummaryCard {...userData} />
         </div>
 
-        <div className="border border-black">Recent Hashtags</div>
+        <div className="border rounded-sm border-black">Recent Hashtags</div>
       </div>
 
-      <div className="flex flex-1 gap-3 flex-col ">
+      <div className="flex rounded-sm flex-1 gap-3 flex-col ">
         <div className="">
-          <FollowerCard {...userData}  />
+          <RecentFollowersCard   />
         </div>
-        <div className="">
+        <div className="rounded-sm">
           <AdditionalInfoCard {...userData}  />
         </div>
       </div>
