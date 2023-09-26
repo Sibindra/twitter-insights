@@ -1,6 +1,6 @@
 "use client";
 
-import AdditionalInfoCard from "@/components/cards/additional.details.card";
+import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import RecentFollowersCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user-details.card";

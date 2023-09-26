@@ -22,8 +22,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Image
               src={logo}
-              width={20}
-              height={20}
+              width={30}
+              height={30}
               alt="not found"
               className="rounded-none"
             />
@@ -94,11 +94,11 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 ml-auto">
             <div className="sm:flex sm:gap-4">
-              <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
+              {/* <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
                 <Link to="" href={"/dashboard"}>
                   Login With Twitter
                 </Link>
-              </button>
+              </button> */}
             </div>
 
             <button
