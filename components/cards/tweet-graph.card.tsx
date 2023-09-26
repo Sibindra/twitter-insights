@@ -49,7 +49,7 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
   }));
 
 
-  return <div className="border-black border m-4  p-5">
+  return <div className="border-black border m-4 rounded p-5">
     <LineChart
       width={1100}
       height={400}

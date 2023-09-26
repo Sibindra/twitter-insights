@@ -7,7 +7,7 @@ import { MdLocationOn } from "react-icons/md";
 export default function UserDetailCard({follower_count, profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
 
   return (
-    <div className="flex flex-col bg-slate-50 ">
+    <div className="flex flex-col bg-slate-50 rounded">
       {/* Banner */}
       <div className="flex  ">
         {profile_banner_url? ( // check profile banner
@@ -28,16 +28,16 @@ export default function UserDetailCard({follower_count, profile_banner_url, prof
       </div>
 
       {/* profile image and user details */}
-      <div className="flex justify-center items-center p-3">
+      <div className="flex gap-3 items-center p-3">
         {/* profile image */}
-        <div className="flex -mt-1/2 p-2">
+        <div className="flex -mt-28 ml-5">
           {profile_pic_url && ( // Check if profile_pic_url is defined
             <Image
               src={profile_pic_url}
               alt="User Image"
-              width={500}
-              height={500}
-              className=" w-full rounded-full "
+              width={100}
+              height={100}
+              className="  rounded-full "
             />
           )}
         </div>
@@ -50,8 +50,8 @@ export default function UserDetailCard({follower_count, profile_banner_url, prof
           </h2>
           <p className="text-slate-500"> {username}</p>
           {location && (
-            <p className="flex bg-gray-100 p-1">
-              <MdLocationOn size={20} className=" text-gray-600" /> {location}
+            <p className="flex bg-violet-200 p-1 rounded">
+              <MdLocationOn size={20} className="  text-gray-600" /> {location}
             </p>
           )}
           

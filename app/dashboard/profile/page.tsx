@@ -43,25 +43,25 @@ const [error, setError] = useState<string | null>(null);
   }
 
   return (
-    <div className="flex flex-col md:flex-row p-10 bg-violet-200 gap-10">
-      <div className="flex flex-1 gap-3 flex-col">
-        <div className=" rounded-sm">
+    <div className="flex flex-col md:flex-row p-10 bg-violet-100 gap-10">
+      <div className="flex flex-1 gap-3 flex-col ">
+        <div className=" ">
           <UserDetailCard {...userData}
           />
         </div>
 
-        <div className="rounded-sm">
+        <div className="">
         <SummaryCard {...userData} />
         </div>
 
-        <div className="border rounded-sm border-black">Recent Hashtags</div>
+        <div className="border rounded border-black">Recent Hashtags</div>
       </div>
 
-      <div className="flex rounded-sm flex-1 gap-3 flex-col ">
+      <div className="flex  flex-1 gap-3 flex-col ">
         <div className="">
           <RecentFollowersCard   />
         </div>
-        <div className="rounded-sm">
+        <div className="">
           <AdditionalInfoCard {...userData}  />
         </div>
       </div>
