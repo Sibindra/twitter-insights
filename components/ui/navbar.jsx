@@ -22,8 +22,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Image
               src={logo}
-              width={20}
-              height={20}
+              width={30}
+              height={30}
               alt="not found"
               className="rounded-none"
             />
