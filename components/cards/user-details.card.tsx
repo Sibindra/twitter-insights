@@ -7,7 +7,7 @@ import { MdLocationOn } from "react-icons/md";
 export default function UserDetailCard({follower_count, profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
 
   return (
-    <div className="flex flex-col bg-slate-50 rounded">
+    <div className="flex flex-col bg-slate-50 ">
       {/* Banner */}
       <div className="flex  ">
         {profile_banner_url? ( // check profile banner
