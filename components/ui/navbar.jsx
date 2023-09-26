@@ -94,11 +94,11 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 ml-auto">
             <div className="sm:flex sm:gap-4">
-              <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
+              {/* <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
                 <Link to="" href={"/dashboard"}>
                   Login With Twitter
                 </Link>
-              </button>
+              </button> */}
             </div>
 
             <button

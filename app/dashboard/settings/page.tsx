@@ -10,7 +10,7 @@
 
 'use client';
 import React, { useState } from 'react';
-import Card from '@/components/cards/hashtag.details';
+import Card from '@/components/cards/hashtag-details';
 
 export default function Settings() {
   const [hashtag, setHashtag] = useState(''); // State for the hashtag

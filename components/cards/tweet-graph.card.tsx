@@ -8,12 +8,13 @@ import {
   LineChart,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from "recharts";
 
 export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +24,9 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
         setError(null);
       } catch (error) {
         console.error("Error fetching user data:", error);
-        setError("An error occurred while fetching data. Please try again later.");
+        setError(
+          "An error occurred while fetching data. Please try again later."
+        );
       }
     };
 
@@ -38,9 +41,9 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     return <p>Loading...</p>;
   }
 
-
   const results = tweetData?.results || [];
 
+  console.log(results);
 
   const data = results.map((result) => ({
     name: result.creation_date,
@@ -48,6 +51,7 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     retweetCount: result.retweet_count,
   }));
 
+<<<<<<< HEAD
 
   return <div className="border-black border m-4  p-5">
     <LineChart
@@ -76,9 +80,37 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
         
       />
       {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
+=======
+  return (
+    <div className="border-black border m-4  p-20">
+      <LineChart
+        width={800}
+        height={500}
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="retweetCount"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
+        {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
+>>>>>>> origin/fetching-data
         activeDot={{ r: 8 }}
       
       /> */}
-    </LineChart>
-  </div>;
+      </LineChart>
+    </div>
+  );
 }

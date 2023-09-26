@@ -1,5 +1,5 @@
 'use client';
-import { HashtagPromiseProps, HastagProps, default as getHashtag, default as hashtag } from '@/lib/hashtag-data';
+import { HashtagPromiseProps, HastagProps, default as getHashtag, default as hashtag } from '@/lib/hashtag';
 import { useEffect, useState } from 'react';
 
 export default function Card({hashtag, limit}: HastagProps) {
