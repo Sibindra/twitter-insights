@@ -1,24 +1,18 @@
-export interface TweetProps {
-  username: string;
-  reply: boolean;
+export interface HastagProps {
+  hashtag: string;
   limit: number;
-  data?: TweetPromiseProps | { error: string }; 
 }
 
-// promised output 
-export interface TweetPromiseProps {
-  results?: Array<any>; 
-  continuation_token?: string; 
-  error?: string; 
+export interface HashtagPromiseProps {
+  details?: Array<any>;
+  error?: string;
 }
 
-
-export default async function getTweets({
-  username,
-  reply,
+export default async function getHashtag({
+  hashtag,
   limit,
-}: TweetProps):Promise<TweetPromiseProps | { error: string }> {
-  const url = `https://twitter154.p.rapidapi.com/user/tweets?username=${username}&limit=${limit}&include_replies=${reply}&include_pinned=false`;
+}: HastagProps): Promise<HashtagPromiseProps | { error: string }> {
+  const url = `https://twitter154.p.rapidapi.com/hashtag/hashtag?hashtag=%23${hashtag}&limit=${limit}&section=top`;
 
   const headers = {
     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
@@ -38,6 +32,7 @@ export default async function getTweets({
     }
 
     return response.json();
+    // console.log(response.json())
   } catch (error: unknown) {
     console.error(error);
     return { error: (error as Error).message } as { error: string };

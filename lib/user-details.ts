@@ -8,12 +8,15 @@ export interface UserDataProps{
   is_private?: boolean;
   is_verified?: boolean;
   location?: string;
+  profile_banner_url?:string;
   profile_pic_url?: string;
   description?: string;
   external_url?: string;
   number_of_tweets?: number;
   bot?: boolean;
   timestamp?: number;
+  has_nft_avatar?: boolean;
+  favourites_count?: number;
 }
 
 export async function getUserDetails({ username }: UserDataProps) {
