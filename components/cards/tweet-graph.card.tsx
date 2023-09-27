@@ -78,11 +78,7 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
         activeDot={{ r: 8 }}
         
       />
-      {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
-        activeDot={{ r: 8 }}
-      
-      /> */}
       </LineChart>
     </div>
-  );
+  
 }
