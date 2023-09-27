@@ -13,7 +13,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Input } from "./input";
 import { Button } from "./button";
-import { Label } from "recharts";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
@@ -118,7 +117,7 @@ export const Hero = () => {
                   {/* USERNAME HERE */}
 
                   <Input
-                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
+                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none focus:outline-none focus:ring-0 "
                     placeholder="Enter the username without @"
                     type="username"
                     id="username"
@@ -127,7 +126,7 @@ export const Hero = () => {
 
                   {/* SEND BUTTON HERE  */}
                   <Button
-                    className=" rounded-none mx-2 bg-primary"
+                    className=" rounded-none mx-2 bg-white hover:bg-primary border-black border text-black"
                     onClick={handleSearch}
                   >
                     <Link href="#">
@@ -141,7 +140,7 @@ export const Hero = () => {
               </div>
             </div>
             {!usernameValidity && (
-              <p className=" text-red-500">Invalid Username Format</p>
+              <p className=" text-sm text-red-500">Invalid Username Format ! </p>
             )}
           </div>
         </div>

@@ -1,5 +1,5 @@
 "use client";
-import logo from "@/app/logo.svg";
+import logo from "@/app/favicon.ico";
 import Image from "next/image";
 import { useState } from "react";
 import { Link } from "react-scroll";
@@ -19,8 +19,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between ">
             <Image
               src={logo}
-              width={30}
-              height={30}
+              width={20}
+              height={20}
               alt="not found"
               className="rounded-none"
             />
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4 ml-auto">
             <button
-              className="hover:bg-[#cfc3fb] hover:text-black text-black px-1 py-1 rounded-none m-2 md:hidden"
+              className="hover:bg-primary hover:text-black text-black px-1 py-1 rounded-none m-2 md:hidden"
               onClick={toggleMenu}
             >
               <span className="sr-only">Toggle menu</span>
