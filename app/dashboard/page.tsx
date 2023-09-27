@@ -1,10 +1,5 @@
 "use client";
-<<<<<<< HEAD
-=======
 
-import RepliesCard from "@/components/cards/replies.card";
-import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
->>>>>>> origin/Card
 import TweetGraphCard from "@/components/cards/tweet-graph.card";
 import { useAppSelector } from "@/store/store";
 
