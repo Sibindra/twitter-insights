@@ -12,7 +12,9 @@ export default function Dashboard() {
     <>
       <div className="flex  flex-col p-10 border border-black bg-white gap-10">
         <div className="flex gap-3  border border-black p-5">
-          <div className="flex flex-1 border border-black">1-graph</div>
+          <div className="flex flex-1 border border-black">
+            {/* <TrendingHashtagCard woeid={7}/> */}
+            </div>
 
           <div className="flex flex-1 border border-black">2-graph</div>
 
@@ -30,7 +32,7 @@ export default function Dashboard() {
       </div>
       {/* <TweetGraphCard username={username} reply={false} limit={1} /> */}
       {/* NEPAL: 2269179 */}
-      <TrendingHashtagCard woeid={2295377}/>
+      
     </>
   );
 }

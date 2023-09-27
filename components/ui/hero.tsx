@@ -1,5 +1,5 @@
 "use client";
-import heroimg from '@/public/images/hero-img.svg';
+import heroimg from "@/public/images/hero-img.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,10 +7,12 @@ import { BsSearch } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
 
-import { setStoreUsername } from '@/store/features/username-slice';
-import { AppDispatch } from '@/store/store';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
+import { setStoreUsername } from "@/store/features/username-slice";
+import { AppDispatch } from "@/store/store";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { Input } from "./input";
+import { Button } from "./button";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
@@ -19,16 +21,14 @@ export const Hero = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-
   const handleSearch = () => {
     dispatch(setStoreUsername(username));
 
-    router.push('/dashboard')
+    router.push("/dashboard");
   };
 
   return (
@@ -70,7 +70,6 @@ export const Hero = () => {
               Unveil Patterns
               <br className="hidden md:block" />
               Through Data Visualization
-              
             </h2>
             <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
               {isMounted && (
@@ -105,27 +104,26 @@ export const Hero = () => {
                   <FiUser className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 </div>
 
-                {/* USERNAME HERE */}
-                <input
+                <div className="flex">
+                  {/* USERNAME HERE */}
+                <Input
                   className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
                   placeholder="Enter the username without @"
                   type="username"
                   id="username"
                   onChange={(e) => setUsername(e.target.value)}
                 />
-              </div>
-              <div>
+
                 {/* SEND BUTTON HERE  */}
-                <button className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none"
-                 onClick={handleSearch}
-                >
+                <Button className=" rounded-none" onClick={handleSearch}>
                   <Link href="#">
                     <div className="flex items-center">
                       <BsSearch className="mr-2" size={18} />
                       Search
                     </div>
                   </Link>
-                </button>
+                </Button>
+                </div>
               </div>
             </div>
           </div>
