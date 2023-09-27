@@ -46,13 +46,13 @@ export default function Navbar() {
 
                 <li>
                   <Link
-                   activeClass="active"
-                   to="feature"
-                   spy={true}
-                   smooth={true}
-                   offset={-70}
-                   duration={500}
-                   className="text-black transition cursor-pointer"
+                    activeClass="active"
+                    to="feature"
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration={500}
+                    className="text-black transition cursor-pointer"
                   >
                     Features
                   </Link>
@@ -90,14 +90,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4 ml-auto">
-            {/* <div className="sm:flex sm:gap-4">
-               <button className="hover:bg-[#cfc3fb] hover:text-black text-black px-3 py-1 border border-black rounded-none m-2 hidden md:block">
-                <Link to="" href={"/dashboard"}>
-                  Login With Twitter
-                </Link>
-              </button> 
-            </div> */}
-
             <button
               className="hover:bg-[#cfc3fb] hover:text-black text-black px-1 py-1 rounded-none m-2 md:hidden"
               onClick={toggleMenu}
