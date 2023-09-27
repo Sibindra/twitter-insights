@@ -32,7 +32,7 @@ export default async function getHashtag({
     }
 
     return response.json();
-    // console.log(response.json())
+    console.log(response.json())
   } catch (error: unknown) {
     console.error(error);
     return { error: (error as Error).message } as { error: string };
