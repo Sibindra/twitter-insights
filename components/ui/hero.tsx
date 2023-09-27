@@ -18,7 +18,8 @@ import { Label } from "recharts";
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [usernameLabel, setUsernameLabel] = useState<string>("");
+  const [usernameValidity, setUsernameValidity] = useState<boolean>(true);
+
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -28,15 +29,16 @@ export const Hero = () => {
   }, []);
 
   const handleSearch = () => {
-    if (username.length < 3) {
-      setUsernameLabel("Username Invalid");
+    console.log("username:", username);
+    if (username.trim() === "" || username.length < 3) {
+      setUsernameValidity(false);
+      console.log("usernameValidity set to false");
     } else {
+      setUsernameValidity(true);
+      console.log("usernameValidity set to true");
       dispatch(setStoreUsername(username));
       router.push("/dashboard");
-      setUsernameLabel("");
     }
-
-    console.log(usernameLabel);
   };
 
   return (
@@ -135,11 +137,12 @@ export const Hero = () => {
                       </div>
                     </Link>
                   </Button>
-
-                  {/* <Label className=" text-red-500">{usernameLabel}</Label> */}
                 </div>
               </div>
             </div>
+            {!usernameValidity && (
+              <p className=" text-red-500">Invalid Username Format</p>
+            )}
           </div>
         </div>
       </div>
