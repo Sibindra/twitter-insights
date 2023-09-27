@@ -28,17 +28,23 @@ export const Hero = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("username:", username);
-    if (username.trim() === "" || username.length < 3) {
+    const trimmedUsername = username.trim();
+  
+    // twitter username regex
+    const usernamePattern = /^[a-zA-Z][a-zA-Z0-9_\-]{0,14}$/;
+  
+    if (trimmedUsername === "" || !usernamePattern.test(trimmedUsername)) {
       setUsernameValidity(false);
-      console.log("usernameValidity set to false");
+      console.log("Invalid username");
     } else {
       setUsernameValidity(true);
-      console.log("usernameValidity set to true");
-      dispatch(setStoreUsername(username));
+      console.log("Valid username");
+      
+      dispatch(setStoreUsername(trimmedUsername));
       router.push("/dashboard");
     }
   };
+  
 
   return (
     <div id="hero">
