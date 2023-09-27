@@ -1,6 +1,5 @@
 "use client";
 
-import SentimentAnalysisCard from "@/components/cards/sentiment-test.card";
 import { useAppSelector } from "@/store/store";
 
 export default function Dashboard() {
@@ -8,7 +7,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <SentimentAnalysisCard input={["bad work" , "good work"]} />
     </>
   );
 }
