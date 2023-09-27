@@ -13,10 +13,12 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Input } from "./input";
 import { Button } from "./button";
+import { Label } from "recharts";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [usernameLabel, setUsernameLabel] = useState<string>("");
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -26,9 +28,15 @@ export const Hero = () => {
   }, []);
 
   const handleSearch = () => {
-    dispatch(setStoreUsername(username));
+    if (username.length < 3) {
+      setUsernameLabel("Username Invalid");
+    } else {
+      dispatch(setStoreUsername(username));
+      router.push("/dashboard");
+      setUsernameLabel("");
+    }
 
-    router.push("/dashboard");
+    console.log(usernameLabel);
   };
 
   return (
@@ -106,23 +114,29 @@ export const Hero = () => {
 
                 <div className="flex">
                   {/* USERNAME HERE */}
-                <Input
-                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
-                  placeholder="Enter the username without @"
-                  type="username"
-                  id="username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
 
-                {/* SEND BUTTON HERE  */}
-                <Button className=" rounded-none" onClick={handleSearch}>
-                  <Link href="#">
-                    <div className="flex items-center">
-                      <BsSearch className="mr-2" size={18} />
-                      Search
-                    </div>
-                  </Link>
-                </Button>
+                  <Input
+                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
+                    placeholder="Enter the username without @"
+                    type="username"
+                    id="username"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+
+                  {/* SEND BUTTON HERE  */}
+                  <Button
+                    className=" rounded-none mx-2 bg-primary"
+                    onClick={handleSearch}
+                  >
+                    <Link href="#">
+                      <div className="flex items-center">
+                        <BsSearch className="mr-2" size={18} />
+                        Search
+                      </div>
+                    </Link>
+                  </Button>
+
+                  {/* <Label className=" text-red-500">{usernameLabel}</Label> */}
                 </div>
               </div>
             </div>
