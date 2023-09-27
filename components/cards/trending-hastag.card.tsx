@@ -22,9 +22,6 @@ export default function TrendingHashtagCard({woeid}: TrendingHashtagProps) {
     },[woeid])
 
 
-    // console.log(trendinghashtagData)
-
-
     const hastagName = trendinghashtagData ? trendinghashtagData[0].trends[0].name : null;
     const hashtagCount = trendinghashtagData ? trendinghashtagData[0].trends[0].tweet_volume : null;
     

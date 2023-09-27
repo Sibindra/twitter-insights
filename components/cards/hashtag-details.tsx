@@ -1,8 +1,8 @@
 'use client';
-import { HashtagPromiseProps, HastagProps, default as getHashtag, default as hashtag } from '@/lib/hashtag';
+import getHashtag, { HashtagPromiseProps, HastagProps } from '@/lib/hashtag';
 import { useEffect, useState } from 'react';
 
-export default function Card({hashtag, limit}: HastagProps) {
+export default function HashtagCard({hashtag, limit}: HastagProps) {
 
     const [hashtagData, setHastagData] = useState<HashtagPromiseProps| null>(null);
 
@@ -16,7 +16,6 @@ export default function Card({hashtag, limit}: HastagProps) {
           }
         };
 
-
         fetchData();
     },[hashtag, limit])
 
@@ -24,7 +23,6 @@ export default function Card({hashtag, limit}: HastagProps) {
     console.log(hashtagData)
 
     const result = hashtagData?.details || [];
-
 
     return(
       <div>

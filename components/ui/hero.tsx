@@ -13,10 +13,13 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Input } from "./input";
 import { Button } from "./button";
+import { Label } from "recharts";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [usernameValidity, setUsernameValidity] = useState<boolean>(true);
+
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -26,9 +29,16 @@ export const Hero = () => {
   }, []);
 
   const handleSearch = () => {
-    dispatch(setStoreUsername(username));
-
-    router.push("/dashboard");
+    console.log("username:", username);
+    if (username.trim() === "" || username.length < 3) {
+      setUsernameValidity(false);
+      console.log("usernameValidity set to false");
+    } else {
+      setUsernameValidity(true);
+      console.log("usernameValidity set to true");
+      dispatch(setStoreUsername(username));
+      router.push("/dashboard");
+    }
   };
 
   return (
@@ -106,26 +116,33 @@ export const Hero = () => {
 
                 <div className="flex">
                   {/* USERNAME HERE */}
-                <Input
-                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
-                  placeholder="Enter the username without @"
-                  type="username"
-                  id="username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
 
-                {/* SEND BUTTON HERE  */}
-                <Button className=" rounded-none" onClick={handleSearch}>
-                  <Link href="#">
-                    <div className="flex items-center">
-                      <BsSearch className="mr-2" size={18} />
-                      Search
-                    </div>
-                  </Link>
-                </Button>
+                  <Input
+                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
+                    placeholder="Enter the username without @"
+                    type="username"
+                    id="username"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+
+                  {/* SEND BUTTON HERE  */}
+                  <Button
+                    className=" rounded-none mx-2 bg-primary"
+                    onClick={handleSearch}
+                  >
+                    <Link href="#">
+                      <div className="flex items-center">
+                        <BsSearch className="mr-2" size={18} />
+                        Search
+                      </div>
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
+            {!usernameValidity && (
+              <p className=" text-red-500">Invalid Username Format</p>
+            )}
           </div>
         </div>
       </div>

@@ -1,7 +1,5 @@
 "use client";
 
-import RepliesCard from "@/components/cards/replies.card";
-import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import TweetGraphCard from "@/components/cards/tweet-graph.card";
 import { useAppSelector } from "@/store/store";
 

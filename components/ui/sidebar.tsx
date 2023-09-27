@@ -29,7 +29,7 @@ export default function Sidebar() {
       {sidebarOpen && (
         <aside
           id="default-sidebar"
-          className="border-black border h-screen"
+          className="h-screen"
           aria-label="Sidebar"
         >
           <div className="h-full px-3 py-4 overflow-y-auto bg-gray-5">
