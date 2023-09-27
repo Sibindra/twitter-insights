@@ -1,30 +1,42 @@
-"use client"
+"use client";
 import { UserDataProps } from "@/lib/user-details";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 
-export default function UserDetailCard({follower_count, profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
-
+export default function UserDetailCard({
+  follower_count,
+  profile_banner_url,
+  profile_pic_url,
+  location,
+  name,
+  username,
+}: UserDataProps) {
   return (
     <div className="flex flex-col rounded  bg-slate-50 ">
       {/* Banner */}
       <div className="flex rounded ">
-        {profile_banner_url? ( // check profile banner
-          <Image
-            src={profile_banner_url}
-            alt="Profile Banner"
-            width={500}
-            height={500}
-            className=" w-full"
-          />
-        ):(<Image //If profile banner is not available
-          src={""}
-          alt="Profile Banner"
-          width={500}
-          height={500}
-          className="w-full"
-        />)}
+        {profile_banner_url ? ( // check profile banner
+          <AspectRatio ratio={16/6}>
+            <Image
+              src={profile_banner_url}
+              alt="Profile Banner"
+              fill = {true}
+              className=" w-full "
+            />
+          </AspectRatio>
+        ) : (
+          <AspectRatio>
+            <Image //If profile banner is not available
+              src={""}
+              alt="Profile Banner"
+              width={500}
+              height={500}
+              className="w-full"
+            />
+          </AspectRatio>
+        )}
       </div>
 
       {/* profile image and user details */}
@@ -45,10 +57,16 @@ export default function UserDetailCard({follower_count, profile_banner_url, prof
         {/* user details */}
         <div className="flex flex-col justify-center items-center ml-4  p-2">
           {follower_count !== undefined && (
-          <h2 className="flex text-xl font-bold mb-2 justify-center gap-2 items-center ">{name}
-          {follower_count >=500000 ? <span><BsFillPatchCheckFill  size={25} className=" text-blue-500"/></span> : <span></span>}
-          
-          </h2>
+            <h2 className="flex text-xl font-bold mb-2 justify-center gap-2 items-center ">
+              {name}
+              {follower_count >= 500000 ? (
+                <span>
+                  <BsFillPatchCheckFill size={25} className=" text-blue-500" />
+                </span>
+              ) : (
+                <span></span>
+              )}
+            </h2>
           )}
           <p className="text-slate-500"> {username}</p>
           {location && (
@@ -56,8 +74,6 @@ export default function UserDetailCard({follower_count, profile_banner_url, prof
               <MdLocationOn size={20} className="  text-gray-600" /> {location}
             </p>
           )}
-          
-          
         </div>
       </div>
 
