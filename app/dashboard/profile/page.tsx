@@ -43,7 +43,7 @@ const [error, setError] = useState<string | null>(null);
   }
 
   return (
-    <div className="flex flex-col md:flex-row p-10 bg-violet-100 gap-10">
+    <div className="flex flex-col md:flex-row lg:p-10 md:p-2 sm:p-1 bg-white gap-10 ">
       <div className="flex flex-1 gap-3 flex-col ">
         <div className=" ">
           <UserDetailCard {...userData}
@@ -59,7 +59,7 @@ const [error, setError] = useState<string | null>(null);
 
       <div className="flex  flex-1 gap-3 flex-col ">
         <div className="">
-          <RecentFollowersCard   />
+          <RecentFollowersCard    />
         </div>
         <div className="">
           <AdditionalInfoCard {...userData}  />
