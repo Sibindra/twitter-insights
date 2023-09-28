@@ -1,5 +1,5 @@
 "use client";
-import heroimg from '@/public/images/hero-img.svg';
+import heroimg from "@/public/images/hero-img.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -7,28 +7,38 @@ import { BsSearch } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
 
-import { setStoreUsername } from '@/store/features/username-slice';
-import { AppDispatch } from '@/store/store';
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
+import { setStoreUsername } from "@/store/features/username-slice";
+import { AppDispatch } from "@/store/store";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { Input } from "./input";
+import { Button } from "./button";
+import { Label } from "recharts";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [usernameValidity, setUsernameValidity] = useState<boolean>(true);
+
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
-
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-
   const handleSearch = () => {
-    dispatch(setStoreUsername(username));
-
-    router.push('/dashboard')
+    console.log("username:", username);
+    if (username.trim() === "" || username.length < 3) {
+      setUsernameValidity(false);
+      console.log("usernameValidity set to false");
+    } else {
+      setUsernameValidity(true);
+      console.log("usernameValidity set to true");
+      dispatch(setStoreUsername(username));
+      router.push("/dashboard");
+    }
   };
 
   return (
@@ -70,7 +80,6 @@ export const Hero = () => {
               Unveil Patterns
               <br className="hidden md:block" />
               Through Data Visualization
-              
             </h2>
             <p className="pr-5 mb-5 text-base text-gray-700 md:text-lg">
               {isMounted && (
@@ -105,29 +114,35 @@ export const Hero = () => {
                   <FiUser className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 </div>
 
-                {/* USERNAME HERE */}
-                <input
-                  className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
-                  placeholder="Enter the username without @"
-                  type="username"
-                  id="username"
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div>
-                {/* SEND BUTTON HERE  */}
-                <button className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#cfc3fb] hover:text-black text-black border-black rounded-none"
-                 onClick={handleSearch}
-                >
-                  <Link href="#">
-                    <div className="flex items-center">
-                      <BsSearch className="mr-2" size={18} />
-                      Search
-                    </div>
-                  </Link>
-                </button>
+                <div className="flex">
+                  {/* USERNAME HERE */}
+
+                  <Input
+                    className="block p-3 pl-10 w-full text-sm text-gray-900 bg-gray-50 border border-black rounded-none"
+                    placeholder="Enter the username without @"
+                    type="username"
+                    id="username"
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+
+                  {/* SEND BUTTON HERE  */}
+                  <Button
+                    className=" rounded-none mx-2 bg-primary"
+                    onClick={handleSearch}
+                  >
+                    <Link href="#">
+                      <div className="flex items-center">
+                        <BsSearch className="mr-2" size={18} />
+                        Search
+                      </div>
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
+            {!usernameValidity && (
+              <p className=" text-red-500">Invalid Username Format</p>
+            )}
           </div>
         </div>
       </div>
