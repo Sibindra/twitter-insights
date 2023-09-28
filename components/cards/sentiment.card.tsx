@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 async function query(data: any) {
@@ -29,31 +30,57 @@ interface SentimentAnalysisCardProps {
 
 const SentimentAnalysisCard: React.FC<SentimentAnalysisCardProps> = ({ input }) => {
   const [queryResults, setQueryResults] = useState<any[] | null>(null);
-
+  
   useEffect(() => {
     Promise.all(input.map((text) => query({ "inputs": text })))
-      .then((responses) => {
-        setQueryResults(responses);
-        console.log(responses);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    .then((responses) => {
+      setQueryResults(responses);
+      console.log(responses);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }, [input]);
+
+  const maxScore = queryResults?.map((result: any) => {
+  console.log('max:',maxScore)
+
+
+  // Function to find the maximum sentiment score
+  const findMaxSentimentScore = (sentiments: any[]) => {
+    let maxScore = sentiments[0].score;
+    let maxLabel = sentiments[0].label;
+
+    for (const sentiment of sentiments) {
+      if (sentiment.score > maxScore) {
+        maxScore = sentiment.score;
+        maxLabel = sentiment.label;
+      }
+    }
+
+    return { label: maxLabel, score: maxScore };
+  };
 
   return (
     <div className="card">
       {queryResults ? (
+        
         <div>
           {queryResults.map((result: any, index: number) => (
+            
             <div key={index}>
-              <p>Input Text: {input[index]}</p>
+              <p>Input Text: "{input[index]}"</p>
+              
               {result.map((sentiment: any, sentimentIndex: number) => (
+                
                 <div key={sentimentIndex}>
                   {sentiment.map((item: any, itemIndex: number) => (
+                    
                     <div key={itemIndex}>
-                      <p>Sentiment Label: {item.label}</p>
-                      <p>Sentiment Score: {item.score}</p>
+                      
+                      
+                      <p>Sentiment Label: {findMaxSentimentScore(result).label}</p>
+                      <p>Sentiment Score: {findMaxSentimentScore(result).score}</p>
                       <br/>
                     </div>
                   ))}
