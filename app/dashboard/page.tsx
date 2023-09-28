@@ -1,6 +1,6 @@
 "use client";
 
-import FavCountGraph from "@/components/cards/fav-count.linegraph";
+import FavCountGraph from "@/components/cards/fav-count.linegraph.card";
 import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import TweetGraphCard from "@/components/cards/tweet-linegraph.card";
 import { useAppSelector } from "@/store/store";
@@ -10,10 +10,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <TweetGraphCard username={username} reply={false} limit={1} />
+      {/* <TweetGraphCard username={username} reply={false} limit={1} /> */}
       {/* <TrendingHashtagCard woeid={1}/> */}
       {/* <CountGraphCard username={username} reply={false} limit={1}/> */}
-      {/* <FavCountGraph username={username} reply={false} limit={1}/> */}
+      <FavCountGraph username={username} reply={false} limit={1}/>
+
     </>
   );
 }
