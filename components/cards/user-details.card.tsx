@@ -37,8 +37,8 @@ export default function UserDetailCard({
             src={""}
             alt="Profile Banner"
             width={500}
-            height={500}
-            className="w-full"
+            height={150}
+            className="w-full bg-primary"
           />
         )}
       </div>
