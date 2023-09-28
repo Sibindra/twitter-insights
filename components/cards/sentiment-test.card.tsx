@@ -47,7 +47,7 @@ const SentimentAnalysisCard: React.FC<SentimentAnalysisCardProps> = ({ input }) 
         <div>
           {queryResults.map((result: any, index: number) => (
             <div key={index}>
-              <p>Input Text: "{input[index]}"</p>
+              <p>Input Text: {input[index]}</p>
               {result.map((sentiment: any, sentimentIndex: number) => (
                 <div key={sentimentIndex}>
                   {sentiment.map((item: any, itemIndex: number) => (
