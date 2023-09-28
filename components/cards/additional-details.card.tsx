@@ -7,6 +7,7 @@ import { GiTimeBomb } from "react-icons/gi";
 import {RiUserSharedFill, RiVerifiedBadgeFill} from "react-icons/ri"
 import {MdPrivacyTip} from "react-icons/md"
 import { BiSolidUser } from "react-icons/bi";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export default function BannerCard({
   follower_count,
@@ -21,91 +22,95 @@ export default function BannerCard({
   is_verified,
 }: UserDataProps) {
   return (
-    <div className="flex flex-col  bg-slate-50 rounded">
-      <h1 className="text-lg font-bold p-3 ">Additional Details</h1>
+    <Card>
+      <CardHeader>
+        <CardTitle>
+        Additional Details
+        </CardTitle>
+      </CardHeader>
 
       {/* followers count */}
       {follower_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <BsFillPeopleFill size={20} className=" text-gray-500"/>
           <div >
           <p className="text-slate-500">Followers</p>
           <p className="text-xl font-medium">{follower_count}</p>
           </div>
         
-        </div>
+        </CardContent>
       )}
 
       {/* following count */}
       {following_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex  gap-4 items-center">
           <RiUserSharedFill size={20} className=" text-gray-500"/> 
           <div >
           <p className="text-slate-500">Following</p>
           <p className="text-xl font-medium">{following_count}</p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* number of tweets */}
       {number_of_tweets !== undefined && (
         
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <FaRetweet size={20} className=" text-gray-500"/>
          <div>
          <p className="text-slate-500">Tweets</p>
           <p className="text-xl font-medium">{number_of_tweets}</p>
          </div>
-        </div>
+        </CardContent>
       )}
 
       {/* favourites count */}
       {favourites_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex  gap-4 items-center">
           <BsHeartFill size={20} className=" text-gray-500"/>
           <div>
           <p className="text-slate-500">Favourites</p>
           <p className="text-xl font-medium">{favourites_count}</p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* User ID */}
       {user_id !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <BiSolidUser size={20} className=" text-gray-500"/>
          <div>
          <p className="text-slate-500">User ID</p>
           <p className="text-xl font-medium">{user_id}</p>
          </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Creation date */}
       {creation_date !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <BsFillCalendarDateFill size={20} className=" text-gray-500"/>
           <div>
           <p className="text-slate-500">Joined Date</p>
           <p className="text-xl font-medium">{creation_date}</p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Time stamp */}
       {timestamp !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <GiTimeBomb size={20} className=" text-gray-500"/>
           <div>
           <p className="text-slate-500">Time Stamp</p>
           <p className="text-xl font-medium">{timestamp}</p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Account privacy */}
       {is_private !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <MdPrivacyTip size={20} className=" text-gray-500"/>
           <div>
           <p className="text-slate-500">Account Privacy</p>
@@ -113,12 +118,12 @@ export default function BannerCard({
             {is_private === true ? <span>Private</span> : <span>Public</span>}
           </p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Account verification */}
       {follower_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <RiVerifiedBadgeFill size={20} className=" text-gray-500"/>
          <div>
          <p className="text-slate-500">Account Verification</p>
@@ -130,12 +135,12 @@ export default function BannerCard({
             )}
           </p>
          </div>
-        </div>
+        </CardContent>
       )}
 
       {/* NFT avatar */}
       {has_nft_avatar !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
+        <CardContent className="flex gap-4 items-center">
           <FaRobot size={20} className=" text-gray-500"/>
          <div>
          <p className="text-slate-500">NFT Avatar</p>
@@ -143,8 +148,8 @@ export default function BannerCard({
             {has_nft_avatar === true ? <span>Yes</span> : <span>No</span>}
           </p>
          </div>
-        </div>
+        </CardContent>
       )}
-    </div>
+    </Card>
   );
 }
