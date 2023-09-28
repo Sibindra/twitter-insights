@@ -41,7 +41,11 @@ const SentimentAnalysisCard: React.FC<SentimentAnalysisCardProps> = ({ input }) 
       console.error('Error:', error);
     });
   }, [input]);
-  
+
+  const maxScore = queryResults?.map((result: any) => {
+  console.log('max:',maxScore)
+
+
   // Function to find the maximum sentiment score
   const findMaxSentimentScore = (sentiments: any[]) => {
     let maxScore = sentiments[0].score;
@@ -55,9 +59,7 @@ const SentimentAnalysisCard: React.FC<SentimentAnalysisCardProps> = ({ input }) 
     }
 
     return { label: maxLabel, score: maxScore };
-    console.log('max',maxLabel);
-  }
-  ;
+  };
 
   return (
     <div className="card">
