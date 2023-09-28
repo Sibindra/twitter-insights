@@ -51,36 +51,6 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     retweetCount: result.retweet_count,
   }));
 
-<<<<<<< HEAD
-
-  return <div className="border-black border m-4  p-5">
-    <LineChart
-      width={1100}
-      height={400}
-      data={data}
-      className=" bg-sky-100 "
-      margin={{
-        top: 5,
-        right: 3,
-        left: 2,
-        bottom: 5
-      
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="retweetCount"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-        
-      />
-      {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
-=======
   return (
     <div className="border-black border m-4  p-20">
       <LineChart
@@ -106,7 +76,6 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
           activeDot={{ r: 8 }}
         />
         {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
->>>>>>> origin/fetching-data
         activeDot={{ r: 8 }}
       
       /> */}

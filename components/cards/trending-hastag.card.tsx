@@ -25,14 +25,14 @@ export default function TrendingHashtagCard({woeid}: TrendingHashtagProps) {
     // console.log(trendinghashtagData)
 
 
-    const hastagName = trendinghashtagData ? trendinghashtagData[0].trends[0].name : null;
-    const hashtagCount = trendinghashtagData ? trendinghashtagData[0].trends[0].tweet_volume : null;
+    const hashtagName = trendinghashtagData && trendinghashtagData[0]?.trends[0]?.name || null;
+    const hashtagCount = trendinghashtagData && trendinghashtagData[0]?.trends[0]?.tweet_volume || null;
     
 
 
     return(
       <div>
-        Name: {hastagName}
+        Name: {hashtagName}
 
         <br>
         </br>

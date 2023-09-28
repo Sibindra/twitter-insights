@@ -3,10 +3,6 @@ import { UserDataProps } from "@/lib/user-details";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 
-<<<<<<< HEAD
-export default function BannerCard({ profile_banner_url, profile_pic_url, location, name, username  }: UserDataProps) {
-
-=======
 export default function BannerCard({
   profile_banner_url,
   profile_pic_url,
@@ -14,7 +10,6 @@ export default function BannerCard({
   name,
   username,
 }: UserDataProps) {
->>>>>>> origin/fetching-data
   return (
     <div className="flex flex-col bg-gray-200">
       {/* Banner */}
@@ -42,11 +37,7 @@ export default function BannerCard({
       <div className="flex justify-around">
         {/* profile image */}
         <div className="flex -mt-14">
-<<<<<<< HEAD
-          {profile_pic_url && ( // Check if profile_pic_url is defined
-=======
           {profile_pic_url ? (
->>>>>>> origin/fetching-data
             <Image
               src={profile_pic_url}
               alt="User Image"
@@ -54,11 +45,8 @@ export default function BannerCard({
               height={100}
               className="rounded-full h-3/5"
             />
-<<<<<<< HEAD
-=======
           ) : (
             <p className="">No profile picture available</p>
->>>>>>> origin/fetching-data
           )}
         </div>
 

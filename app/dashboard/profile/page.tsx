@@ -3,7 +3,7 @@
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import FollowerCard from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
-import UserDetailCard from "@/components/cards/user.details.card";
+import UserDetailCard from "@/components/cards/user-details.card";
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
