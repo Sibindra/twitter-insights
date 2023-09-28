@@ -24,7 +24,7 @@ export default function Dashboard() {
         </div>
 
         <div className="flex gap-3 border border-black bg-slate-100">
-          <TweetGraphCard username={username} reply={false} limit={1} />
+          {/* <TweetGraphCard username={username} reply={false} limit={1} /> */}
         </div>
 
         <div className="flex gap-3  border border-black p-5">

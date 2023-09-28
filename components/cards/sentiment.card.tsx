@@ -1,100 +1,37 @@
-
-import React, { useState, useEffect } from 'react';
-
-async function query(data: any) {
-  try {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/dpkrm/NepaliSentimentAnalysis",
-      {
-        headers: { Authorization: process.env.NEXT_PUBLIC_HUGGINGFACE_KEY as string },
-        method: "POST",
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error(`Request failed with status ${response.status}`);
-    }
-
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
-  }
-}
+import { getSentiment } from "@/lib/sentiment";
+import React, { useState, useEffect } from "react";
 
 interface SentimentAnalysisCardProps {
   input: string[];
 }
 
-const SentimentAnalysisCard: React.FC<SentimentAnalysisCardProps> = ({ input }) => {
-  const [queryResults, setQueryResults] = useState<any[] | null>(null);
-  
+export default function SentimentAnalysisCard({ input }: SentimentAnalysisCardProps) {
+  const [maxLabel, setMaxLabel] = useState<string | null>(null);
+  const [maxScore, setMaxScore] = useState<number | null>(null);
+
   useEffect(() => {
-    Promise.all(input.map((text) => query({ "inputs": text })))
-    .then((responses) => {
-      setQueryResults(responses);
-      console.log(responses);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-  }, [input]);
-
-  const maxScore = queryResults?.map((result: any) => {
-  console.log('max:',maxScore)
-
-
-  // Function to find the maximum sentiment score
-  const findMaxSentimentScore = (sentiments: any[]) => {
-    let maxScore = sentiments[0].score;
-    let maxLabel = sentiments[0].label;
-
-    for (const sentiment of sentiments) {
-      if (sentiment.score > maxScore) {
-        maxScore = sentiment.score;
-        maxLabel = sentiment.label;
+    async function fetchData() {
+      try {
+        const [label, score] = await getSentiment(input);
+        setMaxLabel(label);
+        setMaxScore(score);
+      } catch (error) {
+        console.error("Error:", error);
       }
     }
 
-    return { label: maxLabel, score: maxScore };
-  };
+    fetchData();
+  }, [input]);
 
   return (
-    <div className="card">
-      {queryResults ? (
-        
-        <div>
-          {queryResults.map((result: any, index: number) => (
-            
-            <div key={index}>
-              <p>Input Text: "{input[index]}"</p>
-              
-              {result.map((sentiment: any, sentimentIndex: number) => (
-                
-                <div key={sentimentIndex}>
-                  {sentiment.map((item: any, itemIndex: number) => (
-                    
-                    <div key={itemIndex}>
-                      
-                      
-                      <p>Sentiment Label: {findMaxSentimentScore(result).label}</p>
-                      <p>Sentiment Score: {findMaxSentimentScore(result).score}</p>
-                      <br/>
-                    </div>
-                  ))}
-                  <hr />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>Loading sentiment analysis results...</p>
+    <div>
+      {maxLabel !== null && maxScore !== null && (
+        <>
+          <p>Max Label: {maxLabel}</p>
+          <p>Max Score: {maxScore}</p>
+        </>
       )}
     </div>
   );
-};
+}
 
-export default SentimentAnalysisCard;
