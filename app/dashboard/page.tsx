@@ -1,9 +1,9 @@
 "use client";
 
-import FavCountGraph from "@/components/cards/fav-count.linegraph.card";
+import FavCountGraph from "@/components/cards/graph/fav-count.linegraph.card";
 import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
-import TweetAreaGraphCard from "@/components/cards/tweet-areagraph.card";
-import TweetGraphCard from "@/components/cards/tweet-linegraph.card";
+import TweetAreaGraphCard from "@/components/cards/graph/tweet.areagraph.card";
+import TweetGraphCard from "@/components/cards/graph/tweet.linegraph.card";
 import { useAppSelector } from "@/store/store";
 
 export default function Dashboard() {
