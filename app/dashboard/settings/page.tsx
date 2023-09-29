@@ -10,7 +10,6 @@
 
 'use client';
 import React, { useState } from 'react';
-import Card from '@/components/cards/hashtag-details';
 
 export default function Settings() {
   const [hashtag, setHashtag] = useState(''); // State for the hashtag
@@ -38,7 +37,6 @@ export default function Settings() {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-      <Card hashtag={hashtag} limit={limit} />
       {/* Other content here */}
     </div>
   );

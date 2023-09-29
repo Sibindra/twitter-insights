@@ -32,11 +32,7 @@ export default function Dashboard() {
           <div className="flex flex-1 border border-black">graph-6</div>
         </div>
       </div>
-      {/* <TweetGraphCard username={username} reply={false} limit={1} /> */}
-      {/* NEPAL: 2269179 */}
-      <SentimentAnalysisCard input={["I like food", "I don't like food"]} />
 
-      {/* <TrendingHashtagCard woeid={2295377}/> */}
     </>
   );
 }
