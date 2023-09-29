@@ -43,8 +43,11 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
     name: result.creation_date,
     views: result.views,
     retweetCount: result.retweet_count,
+    favorite_count: result.favorite_count,
+    reply_count:result.reply_count,
   }));
-
+  
+  console.log(data);
   return (
     <div className="border-black border m-4  p-20">
       <AreaChart
@@ -62,16 +65,30 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
+        
         <Area
           type="monotone"
-          dataKey="retweetCount"
+          dataKey="favorite_count"
+          stackId="1"
           stroke="#8884d8"
-          activeDot={{ r: 8 }}
+          fill="#8884d8"
         />
-        {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
-        activeDot={{ r: 8 }}
-      
-      /> */}
+        <Area
+        type="monotone"
+        dataKey="retweetCount"
+        stackId="1"
+        stroke="#82ca9d"
+        fill="#82ca9d"
+        />
+        <Area
+        type="monotone"
+        dataKey="reply_count"
+        stackId="1"
+        stroke="#ffc658"
+        fill="#ffc658"
+        />
+        
+        
       </AreaChart>
     </div>
   );
