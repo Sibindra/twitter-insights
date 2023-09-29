@@ -1,19 +1,19 @@
 "use client";
 import { UserDataProps } from "@/lib/user-details";
 import Image from "next/image";
-import { BsFillPatchCheckFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import {
   Card,
   CardContent,
   
 } from "@/components/ui/card";
+import { BsFillPatchCheckFill } from "react-icons/bs";
 
-export default function UserDetailCard({
-  follower_count,
+export default function BannerCard({
   profile_banner_url,
   profile_pic_url,
   location,
+  follower_count,
   name,
   username,
 }: UserDataProps) {
@@ -57,6 +57,8 @@ export default function UserDetailCard({
               height={100}
               className=" rounded-full "
             />
+          )} : {(
+            <p className="">No profile picture available</p>
           )}
         
         </CardContent>
@@ -86,7 +88,7 @@ export default function UserDetailCard({
       
 
       {/* social media links */}
-      <div className="flex justify-center items-center p-3">
+      <div className="flex">
         <a href="https://www.linkedin.com/in/omarmhaimdat/">Linkedin</a>
       </div>
     </Card>

@@ -42,4 +42,5 @@ export default async function getTweets({
     console.error(error);
     return { error: (error as Error).message } as { error: string };
   }
+
 }

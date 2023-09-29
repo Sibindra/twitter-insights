@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
+import SentimentAnalysisCard from "./sentiment.card";
 
 export default function RepliesCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
@@ -42,6 +43,7 @@ export default function RepliesCard({ username, reply, limit }: TweetProps) {
             <p className=" text-red-600">
               Retweets Count: {tweet.retweet_count}
             </p>
+
           </li>
         ))}
       </ul>

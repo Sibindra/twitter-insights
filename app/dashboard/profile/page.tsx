@@ -29,7 +29,7 @@ const [error, setError] = useState<string | null>(null);
     };
 
     fetchData();
-  }, []);
+  }, [username]);
 
    console.log(userData)
   if (error) {

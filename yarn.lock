@@ -220,6 +220,7 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+<<<<<<< HEAD
 "@radix-ui/react-context@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-context/-/react-context-1.0.1.tgz#fe46e67c96b240de59187dcb7a1a50ce3e2ec00c"
@@ -227,6 +228,8 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
+=======
+>>>>>>> b99dcaad48b6eca6c0fef8a06ae4e1e183232d01
 "@radix-ui/react-primitive@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-1.0.3.tgz#d49ea0f3f0b2fe3ab1cb5667eb03e8b843b914d0"
