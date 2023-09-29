@@ -1,8 +1,7 @@
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
 import { useEffect, useState } from "react";
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer } from "recharts";
-
-export default function FavCountGraph({ username, reply, limit }: TweetProps) {
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+export default function FavCountAreaGraph({ username, reply, limit }: TweetProps) {
 
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -46,8 +45,10 @@ export default function FavCountGraph({ username, reply, limit }: TweetProps) {
 
   return (
     <div>
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart
+      {/* <ResponsiveContainer > */}
+        <AreaChart
+          width={800}
+          height={500}
           data={data}
           className="bg-sky-100"
           margin={{
@@ -61,15 +62,24 @@ export default function FavCountGraph({ username, reply, limit }: TweetProps) {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Legend />
-          <Line
+          
+          <Area
             type="monotone"
             dataKey="favorite_count"
-            stroke="#8884d8"
-            activeDot={{ r: 8 }}
+            stackId="1"
+            stroke="#82ca9d"
+            fill="#82ca9d"
           />
-        </LineChart>
-      </ResponsiveContainer>
+          <Area
+            type="monotone"
+            dataKey="text"
+            stackId="1"
+            stroke="#ffc658"
+            fill="#ffc658"
+          />
+
+        </AreaChart>
+      {/* </ResponsiveContainer> */}
     </div>
   );
 }

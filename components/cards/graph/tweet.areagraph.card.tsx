@@ -43,7 +43,6 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
     name: result.creation_date,
     views: result.views,
     retweetCount: result.retweet_count,
-    favorite_count: result.favorite_count,
     reply_count:result.reply_count,
   }));
   
@@ -66,13 +65,7 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
         <YAxis />
         <Tooltip />
         
-        <Area
-          type="monotone"
-          dataKey="favorite_count"
-          stackId="1"
-          stroke="#8884d8"
-          fill="#8884d8"
-        />
+        
         <Area
         type="monotone"
         dataKey="retweetCount"
@@ -86,6 +79,13 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
         stackId="1"
         stroke="#ffc658"
         fill="#ffc658"
+        />
+        <Area
+          type="monotone"
+          dataKey="views"
+          stackId="1"
+          stroke="#8884d8"
+          fill="#8884d8"
         />
         
         
