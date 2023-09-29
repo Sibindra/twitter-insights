@@ -16,7 +16,6 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,38 +51,33 @@ export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
     retweetCount: result.retweet_count,
   }));
 
-
-  return <div className="border-black border m-4 rounded p-5">
-    <ResponsiveContainer>
-
-    <LineChart
-      width={1100}
-      height={400}
-      data={data}
-      className=" bg-sky-100 "
-      margin={{
-        top: 5,
-        right: 3,
-        left: 2,
-        bottom: 5
-      
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="retweetCount"
-        stroke="#8884d8"
-        activeDot={{ r: 8 }}
-        
-      />
-      </LineChart>
-    </ResponsiveContainer>
-
+  return (
+    <div className="border-black border m-4  p-20">
+      <ResponsiveContainer>
+        <LineChart
+          width={800}
+          height={500}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="retweetCount"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
-  
+  );
 }

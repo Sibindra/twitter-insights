@@ -1,12 +1,9 @@
 "use client";
 import { UserDataProps } from "@/lib/user-details";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
-import { BsFillPatchCheckFill } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 
-export default function UserDetailCard({
-  follower_count,
+export default function BannerCard({
   profile_banner_url,
   profile_pic_url,
   location,
@@ -14,71 +11,59 @@ export default function UserDetailCard({
   username,
 }: UserDataProps) {
   return (
-    <div className="flex flex-col rounded  bg-slate-50 ">
+    <div className="flex flex-col bg-gray-200">
       {/* Banner */}
-      <div className="flex rounded ">
-        {profile_banner_url ? ( // check profile banner
-          <AspectRatio ratio={16/6}>
-            <Image
-              src={profile_banner_url}
-              alt="Profile Banner"
-              fill = {true}
-              className=" w-full "
-            />
-          </AspectRatio>
-        ) : (
-          <AspectRatio>
-            <Image //If profile banner is not available
-              src={""}
-              alt="Profile Banner"
-              width={500}
-              height={500}
-              className="w-full"
-            />
-          </AspectRatio>
-        )}
+      <div className="flex border border-b-2 border-b-black">
+        {profile_banner_url? ( // check profile banner
+          <Image
+            src={profile_banner_url}
+            alt="Profile Banner"
+            // layout="responsive"
+            width={200}
+            height={100}
+            className="w-full"
+          />
+        ):(<Image //If profile banner is not available
+          src={""}
+          alt="Profile Banner"
+          // layout="responsive"
+          width={200}
+          height={65}
+          className="w-full"
+        />)}
       </div>
 
       {/* profile image and user details */}
-      <div className="flex gap-3 items-center p-3">
+      <div className="flex justify-around">
         {/* profile image */}
-        <div className="flex -mt-28 ml-5">
-          {profile_pic_url && ( // Check if profile_pic_url is defined
+        <div className="flex -mt-14">
+          {profile_pic_url ? (
             <Image
               src={profile_pic_url}
               alt="User Image"
               width={100}
               height={100}
-              className="  rounded-full "
+              className="rounded-full h-3/5"
             />
+          ) : (
+            <p className="">No profile picture available</p>
           )}
         </div>
 
         {/* user details */}
-        <div className="flex flex-col justify-center items-center ml-4  p-2">
-          {follower_count !== undefined && (
-            <h2 className="flex text-xl font-bold mb-2 justify-center gap-2 items-center ">
-              {name}
-              {follower_count >= 500000 ? (
-                <span>
-                  <BsFillPatchCheckFill size={25} className=" text-blue-500" />
-                </span>
-              ) : (
-                <span></span>
-              )}
-            </h2>
-          )}
+        <div className="flex flex-col justify-center items-center py-3">
+          <h2 className="text-xl font-bold mb-2">{name}</h2>
           <p className="text-slate-500"> {username}</p>
           {location && (
-            <p className="flex bg-violet-200 p-1 rounded">
-              <MdLocationOn size={20} className="  text-gray-600" /> {location}
+            <p className="flex bg-gray-100 p-1">
+              <MdLocationOn size={20} className=" text-gray-600" /> {location}
             </p>
           )}
         </div>
       </div>
 
       {/* social media links */}
-      <div className="flex justify-center items-center p-3">
+      <div className="flex">
         <a href="https://www.linkedin.com/in/omarmhaimdat/">Linkedin</a>
       </div>
     </div>

@@ -1,9 +1,6 @@
 "use client";
 
-import RepliesCard from "@/components/cards/replies.card";
-import TweetGraphCard from "@/components/cards/tweet-graph.card";
 import { useAppSelector } from "@/store/store";
-import SentimentAnalysisCard from "@/components/cards/sentiment.card";
 export default function Dashboard() {
   const username = useAppSelector((state) => state.username.username);
 
@@ -21,7 +18,6 @@ export default function Dashboard() {
         </div>
 
         <div className="flex gap-3 border border-black bg-slate-100">
-          <TweetGraphCard username={username} reply={false} limit={1} />
         </div>
 
         <div className="flex gap-3  border border-black p-5">
