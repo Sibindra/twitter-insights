@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 
 type ToastProps = {
@@ -18,22 +18,25 @@ const Toast: React.FC<ToastProps> = ({ message, isError, close }) => {
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [close]);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (isVisible && e.target instanceof Element) {
-      if (!e.target.closest(".toast-container")) {
-        close();
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (isVisible && e.target instanceof Element) {
+        if (!e.target.closest(".toast-container")) {
+          close();
+        }
       }
-    }
-  };
+    },
+    [isVisible, close] // Include isVisible and close in the dependency array
+  );
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isVisible]);
+  }, [handleClickOutside]);
 
   return (
     <div
