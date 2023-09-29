@@ -2,14 +2,18 @@
 
 import Sidebar from "@/components/ui/sidebar";
 
+
+
+
+
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-row h-screen">
-      <div className="w-1/6">
+    <div className="flex flex-row h-screen bg-slate-100">
+      <div className="lg:w-1/6 w-auto bg-slate-50 border-black lg:border">
         <Sidebar />
       </div>
 

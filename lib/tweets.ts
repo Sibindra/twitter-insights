@@ -38,9 +38,9 @@ export default async function getTweets({
     }
 
     return response.json();
-    // console.log(response.json())
   } catch (error: unknown) {
     console.error(error);
     return { error: (error as Error).message } as { error: string };
   }
+
 }
