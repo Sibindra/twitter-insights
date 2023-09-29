@@ -1,60 +1,45 @@
-import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
-import { useEffect, useState } from "react";
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import  { TweetPromiseProps } from "@/lib/tweets";
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 
-export default function FavCountGraph({ username, reply, limit }: TweetProps) {
 
-  const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export interface GraphCardProps {
+  width: number | string;
+  height: number | string;
+  data: TweetPromiseProps;
+  className?: string;
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getTweets({ username, reply, limit });
-        setTweetData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError(
-          "An error occurred while fetching data. Please try again later."
-        );
-      }
-    };
+export default function FavCountGraph({ width, height, data,className  }: GraphCardProps) {
+ 
+  const results = data?.results || [];
 
-    fetchData();
-  }, [username, reply, limit]);
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
-  if (!tweetData) {
-    return <p>Loading...</p>;
-  }
-
-  const results = tweetData?.results || [];
-
-  console.log('results = ', results);
-
-  // date vs fav count
-
-  const data = results.map((result) => ({
+  const graph_data = results.map((result) => ({
     name: result.creation_date,
     text: result.text,
     favorite_count: result.favorite_count,
   }));
+  
 
   return (
     <div>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width={width} height={height} className={className}>
         <LineChart
-          data={data}
+          data={graph_data}
           className="bg-sky-100"
           margin={{
             top: 5,
             right: 3,
             left: 2,
-            bottom: 5
+            bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />

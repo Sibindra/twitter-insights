@@ -12,7 +12,7 @@ import {
   YAxis,
 } from "recharts";
 
-export default function TweetGraphCard({ username, reply, limit }: TweetProps) {
+export default function TweetLineGraphCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
