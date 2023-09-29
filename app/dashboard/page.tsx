@@ -49,7 +49,7 @@ export default function Dashboard() {
         width={'90%'}
         height={500}
         data={tweetData}
-        // class lincha yeta bata 
+        // styling here
         className="m-10"
       />
     </>
