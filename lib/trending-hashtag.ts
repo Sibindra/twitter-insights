@@ -1,6 +1,10 @@
 export interface TrendingHashtagProps{
     woeid: number;
   }
+  // export interface TrendingHashtagPromiseProps {
+  //   details?: Array<any>;
+  //   error?: string;
+  // }
   
   export async function getTrendingHashtags({ woeid }: TrendingHashtagProps) {
     const url = `https://twitter154.p.rapidapi.com/trends/?woeid=${woeid}`;
