@@ -7,6 +7,7 @@ import TweetGraphCard from "@/components/cards/graph/tweet.linegraph.card";
 import { useAppSelector } from "@/store/store";
 import FavCountAreaGraph from "@/components/cards/graph/fav.count.areagraph";
 import TweetBarGraphCard from "@/components/cards/graph/tweet.bargraph.card";
+import FavCountBarGraph from "@/components/cards/graph/fav.count.bargraph";
 
 export default function Dashboard() {
   const username = useAppSelector((state) => state.username.username);
@@ -34,9 +35,11 @@ export default function Dashboard() {
 
         <div className="flex gap-3  border border-black p-5">
           <div className="flex flex-1 border border-black">
-            <TweetAreaGraphCard username={""} reply={false} limit={0}/>
+            <TweetAreaGraphCard username={username} reply={false} limit={0}/>
           </div>
-          <div className="flex flex-1 border border-black">graph-6</div>
+          <div className="flex flex-1 border border-black">
+            <FavCountBarGraph username={username} reply={false} limit={0}/>
+          </div>
         </div>
       </div>
     </>
