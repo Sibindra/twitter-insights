@@ -19,11 +19,11 @@ export default function Dashboard() {
         <div className="flex gap-3  border border-black p-5">
           <div className="flex flex-1 border border-black">
             graph 1
-            <FavCountAreaGraph username={username} reply={false} limit={0}/>
+            {/* <FavCountAreaGraph username={username} reply={false} limit={0}/> */}
           </div>
 
           <div className="flex flex-1 border border-black">
-            <FavCountGraph username={username} reply={false} limit={1}/>
+            {/* <FavCountGraph username={username} reply={false} limit={0}/> */}
             graph 2
           </div>
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      {/* <TrendingGraphCard woeid={4118}/> */}
+      <TrendingGraphCard woeid={4118}/>
       {/* <TrendingHashtagCard woeid={4118}/> */}
     </>
   );

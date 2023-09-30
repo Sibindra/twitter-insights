@@ -78,8 +78,8 @@ export default function TrendingGraphCard({ woeid }: TrendingHashtagProps) {
         />
         <Line
           type="monotone"
-          dataKey="url"
-          stroke="#9F9E9E"
+          dataKey="query"
+          stroke="#644245"
           activeDot={{ r: 8 }}
         />
         <Line
