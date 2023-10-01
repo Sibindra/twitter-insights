@@ -10,6 +10,7 @@ import TweetBarGraphCard from "@/components/cards/graph/tweet.bargraph.card";
 import FavCountBarGraph from "@/components/cards/graph/fav.count.bargraph";
 import TrendingGraphCard from "@/components/cards/graph/trending.hashtag.linegraph";
 import TrendingAreaGraphCard from "@/components/cards/graph/trending.hashtag.areagraph";
+import TrendingBarGraphCard from "@/components/cards/graph/trending.hashtag.bargraph";
 
 export default function Dashboard() {
   const username = useAppSelector((state) => state.username.username);
@@ -52,7 +53,8 @@ export default function Dashboard() {
       </div>
       {/* <TrendingGraphCard woeid={4118}/> */}
       {/* <TrendingHashtagCard woeid={4118}/> */}
-      <TrendingAreaGraphCard woeid={4118}/>
+      {/* <TrendingAreaGraphCard woeid={4118}/> */}
+      <TrendingBarGraphCard woeid={4118}/>
     </>
   );
 }
