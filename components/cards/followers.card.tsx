@@ -1,14 +1,41 @@
+'use client'
+import React from 'react';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card";
-import Image from "next/image";
 
-export default function RecentFollowersCard() {
-  const data = {
+import { GoVerified } from "react-icons/go";
+import { BsPeople } from "react-icons/bs";
+
+interface UserData {
+  creation_date: string;
+  user_id: string;
+  username: string;
+  name: string;
+  follower_count: number;
+  following_count: number;
+  is_private: boolean;
+  is_verified: boolean;
+  location: string;
+  profile_pic_url: string;
+  description: string;
+  external_url: string | null;
+  number_of_tweets: number;
+  bot: boolean;
+  timestamp: number;
+}
+
+const data: UserData[] = [
+  {
     creation_date: "Sat Apr 23 03:41:42 +0000 2022",
     user_id: "1517710185594249217",
     username: "papapap51261616",
@@ -18,119 +45,65 @@ export default function RecentFollowersCard() {
     is_private: false,
     is_verified: false,
     location: "",
-    profile_pic_url:
-      "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+    profile_pic_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
     description: "Tout",
-  };
-
-  const data2 = {
-    creation_date: "Tue Jan 31 20:38:03 +0000 2017",
-    user_id: "826530001939992576",
-    username: "uic_hackathon",
-    name: "UIC-HACKATHON",
-    follower_count: 0,
-    following_count: 1,
-    is_private: true,
-    is_verified: false,
-    location: "",
-    profile_pic_url:
-      "https://pbs.twimg.com/profile_images/826530899139362816/yhBVWhvQ_normal.jpg",
-    description: "hello",
     external_url: null,
     number_of_tweets: 0,
     bot: false,
-    timestamp: 1485895083,
-  };
-
-  const data3 = {
-    creation_date: "Fri Nov 05 14:45:18 +0000 2021",
-    user_id: "1456633636208402432",
-    username: "ImagesCv",
-    name: "images.cv",
-    follower_count: 1047,
-    following_count: 4981,
+    timestamp: 1650685302
+  },
+  {
+    creation_date: "Thu Jan 30 15:05:17 +0000 2020",
+    user_id: "1222898521159766016",
+    username: "dregaladoc1708",
+    name: "Diego Regalado",
+    follower_count: 7,
+    following_count: 67,
     is_private: false,
-    is_verified: false,
-    location: "",
-    profile_pic_url:
-      "https://pbs.twimg.com/profile_images/1462178000460521474/dnBuZaeJ_normal.jpg",
-    description: "Tweets about Computer Vision",
-    external_url: "http://linktr.ee/imagescv",
-    number_of_tweets: 713,
+    is_verified: true,
+    location: "Piura, Peru",
+    profile_pic_url: "https://pbs.twimg.com/profile_images/1222902478238179337/lHNtpvtP_normal.jpg",
+    description: "🧑🏻‍🏫 Ingeniero de Sistemas",
+    external_url: null,
+    number_of_tweets: 237,
     bot: false,
-    timestamp: 1636123518,
-  };
+    timestamp: 1580396717
+  }
+];
+
+function RecentFollowers() {
   return (
-    <Card >
+    <Card>
       <CardHeader>
         <CardTitle>Recent Followers</CardTitle>
+        <CardDescription>Your Most Recent Followers</CardDescription>
       </CardHeader>
-
-      {/* recent followers 1 */}
-      <CardContent>
-        <div className="flex gap-5 ">
-          {/* profile image */}
-          <div className="flex ">
-            {data.profile_pic_url && ( // Check if profile_pic_url is defined
-              <Image
-                src={data.profile_pic_url}
-                alt="User Image"
-                width={50}
-                height={50}
-                className=" rounded-full "
-              />
-            )}
+      <CardContent className="grid gap-6">
+        {data.map((item, index) => (
+          <div key={index} className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar className='border'>
+                {item.profile_pic_url !== "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" && item.profile_pic_url !== (null) ? (
+                  <AvatarImage src={item.profile_pic_url} />
+                ) : (
+                  <AvatarFallback>
+                    {item.name.split(" ").map((word) => word.charAt(0)).join("")}
+                  </AvatarFallback>
+                )}
+              </Avatar>
+              <div>
+                <p className="text-sm font-medium leading-none flex gap-2 items-center justify-center">{item.name} {item.is_verified && <span className="text-blue-500"><GoVerified size={15}/></span>}</p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground flex items-center gap-2">{item.follower_count}<BsPeople size={20}/> </p>
+            </div>
           </div>
-          <div>
-            <h1 className="flex text-lg font-bold ">{data.name}</h1>
-            <CardDescription>{data.description}</CardDescription>
-          </div>
-        </div>
-      </CardContent>
-
-      {/* recent followers 2 */}
-      <CardContent>
-        <div className="flex gap-5 ">
-          {/* profile image */}
-          <div className="flex ">
-            {data2.profile_pic_url && ( // Check if profile_pic_url is defined
-              <Image
-                src={data2.profile_pic_url}
-                alt="User Image"
-                width={50}
-                height={50}
-                className=" rounded-full "
-              />
-            )}
-          </div>
-          <div>
-            <h1 className="flex text-lg font-bold  ">{data2.name}</h1>
-            <CardDescription>{data2.description}</CardDescription>
-          </div>
-        </div>
-      </CardContent>
-
-      {/* recent followers 3 */}
-      <CardContent>
-        <div className="flex gap-5 ">
-          {/* profile image */}
-          <div className="flex ">
-            {data3.profile_pic_url && ( // Check if profile_pic_url is defined
-              <Image
-                src={data3.profile_pic_url}
-                alt="User Image"
-                width={50}
-                height={50}
-                className=" rounded-full "
-              />
-            )}
-          </div>
-          <div>
-            <h1 className="flex text-lg font-bold ">{data3.name}</h1>
-            <CardDescription>{data3.description}</CardDescription>
-          </div>
-        </div>
+        ))}
       </CardContent>
     </Card>
   );
 }
+
+export default RecentFollowers;

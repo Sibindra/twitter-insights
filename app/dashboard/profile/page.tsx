@@ -1,7 +1,7 @@
 "use client";
 
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
-import RecentFollowersCard from "@/components/cards/followers.card";
+import RecentFollowers from "@/components/cards/followers.card";
 import SummaryCard from "@/components/cards/summary.card";
 import UserDetailCard from "@/components/cards/user-details.card";
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
@@ -59,7 +59,8 @@ const [error, setError] = useState<string | null>(null);
 
       <div className="flex  flex-1 gap-3 flex-col ">
         <div className="">
-          <RecentFollowersCard    />
+          {/* <RecentFollowersCard    /> */}
+          <RecentFollowers/>
         </div>
         <div className="">
           <AdditionalInfoCard {...userData}  />
