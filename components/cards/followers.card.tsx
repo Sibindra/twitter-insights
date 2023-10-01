@@ -16,7 +16,7 @@ import {
 import { GoVerified } from "react-icons/go";
 import { BsPeople } from "react-icons/bs";
 
-interface UserData {
+export interface FollowerData {
   creation_date: string;
   user_id: string;
   username: string;
@@ -34,44 +34,11 @@ interface UserData {
   timestamp: number;
 }
 
-const data: UserData[] = [
-  {
-    creation_date: "Sat Apr 23 03:41:42 +0000 2022",
-    user_id: "1517710185594249217",
-    username: "papapap51261616",
-    name: "papa papa",
-    follower_count: 4,
-    following_count: 43,
-    is_private: false,
-    is_verified: false,
-    location: "",
-    profile_pic_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
-    description: "Tout",
-    external_url: null,
-    number_of_tweets: 0,
-    bot: false,
-    timestamp: 1650685302
-  },
-  {
-    creation_date: "Thu Jan 30 15:05:17 +0000 2020",
-    user_id: "1222898521159766016",
-    username: "dregaladoc1708",
-    name: "Diego Regalado",
-    follower_count: 7,
-    following_count: 67,
-    is_private: false,
-    is_verified: true,
-    location: "Piura, Peru",
-    profile_pic_url: "https://pbs.twimg.com/profile_images/1222902478238179337/lHNtpvtP_normal.jpg",
-    description: "🧑🏻‍🏫 Ingeniero de Sistemas",
-    external_url: null,
-    number_of_tweets: 237,
-    bot: false,
-    timestamp: 1580396717
-  }
-];
+export interface RecentFollowersProps {
+  data: FollowerData[];
+}
 
-function RecentFollowers() {
+function RecentFollowers({data}:RecentFollowersProps) {
   return (
     <Card>
       <CardHeader>
