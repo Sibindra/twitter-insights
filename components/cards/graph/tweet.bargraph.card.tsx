@@ -2,10 +2,11 @@
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
 import { useEffect, useState } from "react";
 import React, { PureComponent } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 
-export default function TweetAreaGraphCard({ username, reply, limit }: TweetProps) {
+
+export default function TweetBarGraphCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -49,7 +50,7 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
   console.log(data);
   return (
     <div className="border-black border m-4  p-20">
-      <AreaChart
+      <BarChart
         width={800}
         height={500}
         data={data}
@@ -64,32 +65,33 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
+        <Legend/>
         
         
-        <Area
+        <Bar
         type="monotone"
-        dataKey="retweetCount"
+        dataKey="name"
         stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
+        stroke="#C0C0C0"
+        fill="#C0C0C0"
         />
-        <Area
+        <Bar
         type="monotone"
         dataKey="reply_count"
         stackId="1"
         stroke="#ffc658"
         fill="#ffc658"
         />
-        <Area
+        <Bar
           type="monotone"
-          dataKey="views"
+          dataKey="retweetCount"
           stackId="1"
           stroke="#8884d8"
           fill="#8884d8"
         />
         
         
-      </AreaChart>
+      </BarChart>
     </div>
   );
 }

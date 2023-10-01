@@ -53,6 +53,19 @@ export default function FavCountGraph({ width, height, data,className  }: GraphC
             stroke="#8884d8"
             activeDot={{ r: 8 }}
           />
+           <Line
+            type="monotone"
+            dataKey="name"
+            stroke="#ffffff"
+            activeDot={{ r: 8 }}
+          />
+           <Line
+            type="monotone"
+            dataKey="text"
+            stroke="#000000"
+            activeDot={{ r: 8 }}
+          />
+
         </LineChart>
       </ResponsiveContainer>
     </div>

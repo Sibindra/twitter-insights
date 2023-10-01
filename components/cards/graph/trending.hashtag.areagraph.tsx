@@ -1,20 +1,18 @@
 "use client";
-import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
+import  {getTrendingHashtags, TrendingHashtagProps } from "@/lib/trending-hashtag";
 import { useEffect, useState } from "react";
-import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-
-export default function TweetAreaGraphCard({ username, reply, limit }: TweetProps) {
-  const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
+export default function TrendingAreaGraphCard({ woeid }: TrendingHashtagProps) {
+  const [trendinghashtagData, setTrendingHashtagData] = useState<Array<any> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getTweets({ username, reply, limit });
-        setTweetData(data);
+        const data = await getTrendingHashtags({ woeid });
+        setTrendingHashtagData(data);
         setError(null);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -25,28 +23,27 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
     };
 
     fetchData();
-  }, [username, reply, limit]);
+  }, [woeid]);
 
   if (error) {
     return <p>Error: {error}</p>;
   }
 
-  if (!tweetData) {
+  if (!trendinghashtagData) {
     return <p>Loading...</p>;
   }
 
-  const results = tweetData?.results || [];
+  const results = trendinghashtagData[0].trends || [];
 
   console.log(results);
 
-  const data = results.map((result) => ({
-    name: result.creation_date,
-    views: result.views,
-    retweetCount: result.retweet_count,
-    reply_count:result.reply_count,
+  const data = results.map((result:any) => ({
+    name: result.name,
+    tweet_volume: result.tweet_volume,
+    query: result.query,
+    url:result.url,
   }));
-  
-  console.log(data);
+
   return (
     <div className="border-black border m-4  p-20">
       <AreaChart
@@ -65,30 +62,32 @@ export default function TweetAreaGraphCard({ username, reply, limit }: TweetProp
         <YAxis />
         <Tooltip />
         
-        
-        <Area
-        type="monotone"
-        dataKey="retweetCount"
-        stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
-        />
-        <Area
-        type="monotone"
-        dataKey="reply_count"
-        stackId="1"
-        stroke="#ffc658"
-        fill="#ffc658"
-        />
         <Area
           type="monotone"
-          dataKey="views"
-          stackId="1"
+          dataKey="name"
           stroke="#8884d8"
           fill="#8884d8"
         />
+        <Area
+          type="monotone"
+          dataKey="tweet_volume"
+          stroke="#FD7A83"
+          fill="#FD7A83"
+          
+        />
+        <Area
+          type="monotone"
+          dataKey="query"
+          stroke="#644245"
+          fill="#644245"
+          
+        />
         
         
+        {/* <Line type="monotone" dataKey="views" stroke="#82ca9d" 
+        activeDot={{ r: 8 }}
+      
+      /> */}
       </AreaChart>
     </div>
   );
