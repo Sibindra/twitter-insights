@@ -1,12 +1,14 @@
 "use client";
 
 import FavCountGraph from "@/components/cards/graph/fav-count.linegraph.card";
+import TweetAreaGraphCard from "@/components/cards/graph/tweet.areagraph.card";
+import TweetLineGraphCard from "@/components/cards/graph/tweet.linegraph.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
 import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
-// controllers
+  // controllers
   const username = useAppSelector((state) => state.username.username);
   const tweet_input = {
     username: username,
@@ -34,7 +36,6 @@ export default function Dashboard() {
     fetchData();
   }, [tweet_input]);
 
-
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -45,13 +46,35 @@ export default function Dashboard() {
 
   return (
     <>
-      <FavCountGraph
-        width={'90%'}
-        height={500}
-        data={tweetData}
-        // styling here
-        className="m-10"
-      />
+      <div className="flex flex-col">
+        {/* fav count graph */}
+        <div>
+          <FavCountGraph
+            width={"90%"}
+            height={300}
+            data={tweetData}
+            // styling here
+            className="m-10"
+          />
+        </div>
+
+
+{/* Tweet area graph */}
+        <div>
+          <TweetAreaGraphCard 
+          width={"90%"} 
+          height={"300"} 
+          data={tweetData} 
+          className=""
+          />
+        </div>
+
+
+        {/* tweet line Graph */}
+        <div>
+          <TweetLineGraphCard width={"50%"} height={"400"} data={tweetData} />
+        </div>
+      </div>
     </>
   );
 }

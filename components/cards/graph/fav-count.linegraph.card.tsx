@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import  { TweetPromiseProps } from "@/lib/tweets";
 import {
   CartesianGrid,
@@ -30,7 +31,7 @@ export default function FavCountGraph({ width, height, data,className  }: GraphC
   
 
   return (
-    <div>
+    <Card>
       <ResponsiveContainer width={width} height={height} className={className}>
         <LineChart
           data={graph_data}
@@ -55,6 +56,6 @@ export default function FavCountGraph({ width, height, data,className  }: GraphC
           />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </Card>
   );
 }

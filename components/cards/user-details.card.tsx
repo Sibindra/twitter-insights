@@ -57,8 +57,6 @@ export default function BannerCard({
               height={100}
               className=" rounded-full "
             />
-          )} : {(
-            <p className="">No profile picture available</p>
           )}
         
         </CardContent>
