@@ -9,7 +9,7 @@ import {MdPrivacyTip} from "react-icons/md"
 import { BiSolidUser } from "react-icons/bi";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
-export default function BannerCard({
+export default function AdditionalInfoCard({
   follower_count,
   following_count,
   number_of_tweets,

@@ -4,7 +4,7 @@ import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
 import { useEffect, useState } from "react";
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { GraphCardProps } from "./fav-count.linegraph.card";
+import { GraphCardProps } from "./fav.count.linegraph.card";
 
 
 export default function TweetAreaGraphCard({ width, height, data,className}: GraphCardProps) {

@@ -1,6 +1,7 @@
 import { ReduxProvider } from "@/store/provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "./query.provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,11 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <QueryProvider>
+
     <html lang="en">
       <link rel="icon" href="logo.svg" sizes="any" />
       <body className={inter.className}>
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
+    </QueryProvider>
   );
 }

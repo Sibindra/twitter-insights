@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { GraphCardProps } from "./fav-count.linegraph.card";
+import { GraphCardProps } from "./fav.count.linegraph.card";
 
 export default function TweetLineGraphCard({
   width, height, data,className

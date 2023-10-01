@@ -3,7 +3,7 @@
 import { UserDataProps } from "@/lib/user-details";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
-export default function BannerCard({ description }: UserDataProps) {
+export default function SummaryCard({ description }: UserDataProps) {
   return (
     <Card  >
       <CardHeader>
