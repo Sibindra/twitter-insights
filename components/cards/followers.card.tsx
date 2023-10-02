@@ -1,66 +1,76 @@
-// count section in profile
-"use client"
-import { UserDataProps } from "@/lib/user-details";
-import { BsFillPeopleFill, BsFillSuitHeartFill } from "react-icons/bs";
-import { FaRetweet } from "react-icons/fa";
-import { MdDonutSmall } from "react-icons/md";
+'use client'
+import React from 'react';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-export default function BannerCard({ follower_count, following_count, favourites_count, number_of_tweets }: UserDataProps) {
- 
+import { GoVerified } from "react-icons/go";
+import { BsPeople } from "react-icons/bs";
+
+export interface FollowerData {
+  creation_date: string;
+  user_id: string;
+  username: string;
+  name: string;
+  follower_count: number;
+  following_count: number;
+  is_private: boolean;
+  is_verified: boolean;
+  location: string;
+  profile_pic_url: string;
+  description: string;
+  external_url: string | null;
+  number_of_tweets: number;
+  bot: boolean;
+  timestamp: number;
+}
+
+export interface RecentFollowersProps {
+  data: FollowerData[];
+}
+
+function RecentFollowers({data}:RecentFollowersProps) {
   return (
-    <div className="flex flex-col gap-2">
-
-      {/* followers count section */}
-      {follower_count !== undefined && (
-        <div className="flex bg-slate-200 p-3 gap-5 items-center">
-          <div>
-            <BsFillPeopleFill size={35} className="text-gray-600" />
+    <Card>
+      <CardHeader>
+        <CardTitle>Recent Followers</CardTitle>
+        <CardDescription>Your Most Recent Followers</CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-6">
+        {data.map((item, index) => (
+          <div key={index} className="flex items-center justify-between space-x-4">
+            <div className="flex items-center space-x-4">
+              <Avatar className='border'>
+                {item.profile_pic_url !== "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" && item.profile_pic_url !== (null) ? (
+                  <AvatarImage src={item.profile_pic_url} />
+                ) : (
+                  <AvatarFallback>
+                    {item.name.split(" ").map((word) => word.charAt(0)).join("")}
+                  </AvatarFallback>
+                )}
+              </Avatar>
+              <div>
+                <p className="text-sm font-medium leading-none flex gap-2 items-center justify-center">{item.name} {item.is_verified && <span className="text-blue-500"><GoVerified size={15}/></span>}</p>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground flex items-center gap-2">{item.follower_count}<BsPeople size={20}/> </p>
+            </div>
           </div>
-          <div>
-            <p className="text-slate-500">Followers</p>
-            <p className="text-xl font-medium">{follower_count}</p>
-          </div>
-        </div>
-      )}
-
-      {/* following count section */}
-      {following_count !== undefined && (
-        <div className="flex gap-5 bg-slate-200 p-3 items-center">
-          <div>
-            <MdDonutSmall size={35} className=" text-gray-600 " />
-          </div>
-          <div>
-            <p className="text-slate-500">Following</p>
-            <p className="text-xl font-medium">{following_count}</p>
-          </div>
-        </div>
-      )}
-
-      {/* favorites count section */}
-      {favourites_count !== undefined && (
-        <div className="flex  bg-slate-200	 p-3 gap-5 items-center">
-          <div>
-            <BsFillSuitHeartFill size={35} className="text-gray-600" />
-          </div>
-          <div>
-            <p className="text-slate-500 ">Favourites</p>
-            <p className="text-xl font-medium">{favourites_count}</p>
-          </div>
-        </div>
-      )}
-
-      {/* tweet count section */}
-      {number_of_tweets !== undefined && (
-        <div className="flex gap-5 items-center bg-slate-200 p-3">
-          <div>
-            <FaRetweet size={35} className="text-gray-600" />
-          </div>
-          <div>
-            <p className="text-slate-500">Tweets</p>
-            <p className="text-xl font-medium">{number_of_tweets}</p>
-          </div>
-        </div>
-      )}
-    </div>
+        ))}
+      </CardContent>
+    </Card>
   );
 }
+
+export default RecentFollowers;

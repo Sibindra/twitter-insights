@@ -1,7 +1,7 @@
 export interface UserDataProps{
   username: string;
   creation_date?: string;
-  user_id?: string;
+  user_id?: number;
   name?: string;
   follower_count?: number;
   following_count?: number;

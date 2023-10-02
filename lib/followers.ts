@@ -1,18 +1,11 @@
-export interface HastagProps {
-  hashtag: string;
-  limit: number;
-}
-
-export interface HashtagPromiseProps {
-  details?: Array<any>;
-  error?: string;
-}
-
-export default async function getHashtag({
-  hashtag,
+export async function getUsersFollowers({
+  user_id,
   limit,
-}: HastagProps): Promise<HashtagPromiseProps | { error: string }> {
-  const url = `https://twitter154.p.rapidapi.com/hashtag/hashtag?hashtag=%23${hashtag}&limit=${limit}&section=top`;
+}: {
+  user_id?: number;
+  limit: number;
+}) {
+  const url = `https://twitter154.p.rapidapi.com/user/followers?user_id=${user_id}&limit=${limit}`;
 
   const headers = {
     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
@@ -32,7 +25,6 @@ export default async function getHashtag({
     }
 
     return response.json();
-    // console.log(response.json())
   } catch (error: unknown) {
     console.error(error);
     return { error: (error as Error).message } as { error: string };

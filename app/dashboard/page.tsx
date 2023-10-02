@@ -1,63 +1,47 @@
 "use client";
 
-import FavCountGraph from "@/components/cards/graph/fav.count.linegraph.card";
-import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
-import TweetAreaGraphCard from "@/components/cards/graph/tweet.areagraph.card";
-import TweetGraphCard from "@/components/cards/graph/tweet.linegraph.card";
+import getTweets, { TweetPromiseProps } from "@/lib/tweets";
 import { useAppSelector } from "@/store/store";
-import FavCountAreaGraph from "@/components/cards/graph/fav.count.areagraph";
-import TweetBarGraphCard from "@/components/cards/graph/tweet.bargraph.card";
-import FavCountBarGraph from "@/components/cards/graph/fav.count.bargraph";
-import TrendingGraphCard from "@/components/cards/graph/trending.hashtag.linegraph";
-import TrendingAreaGraphCard from "@/components/cards/graph/trending.hashtag.areagraph";
-import TrendingBarGraphCard from "@/components/cards/graph/trending.hashtag.bargraph";
-import LikeRetweetPieChart from "@/components/cards/graph/likes.retweets.piechart";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
+  // controllers
   const username = useAppSelector((state) => state.username.username);
+  const tweet_input = {
+    username: username,
+    reply: false,
+    limit: 1,
+  };
 
-  return (
-    <>
-      <div className="flex  flex-col p-10 border border-black bg-white gap-10">
-        <div className="flex gap-3  border border-black p-5">
-          <div className="flex flex-1 border border-black">
-            graph 1
-            {/* <FavCountAreaGraph username={username} reply={false} limit={0}/> */}
-          </div>
+  // FETCH API AND PASS HERE AND REMOVE API CODE FROM ALL THE GRAPHS
+  const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-          <div className="flex flex-1 border border-black">
-            {/* <FavCountGraph username={username} reply={false} limit={0}/> */}
-            graph 2
-          </div>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getTweets(tweet_input);
+        setTweetData(data);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError(
+          "An error occurred while fetching data. Please try again later."
+        );
+      }
+    };
+    fetchData();
+  }, [tweet_input]);
 
-          <div className="flex flex-1 border border-black">
-            {/* <TweetBarGraphCard username={username} reply={false} limit={0}/> */}
-            graph 3
-          </div>
-        </div>
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
-        <div className="flex gap-3 border border-black bg-slate-100">
-          {/* <TweetGraphCard username={username} reply={false} limit={1} /> */}
-          graph 4
-        </div>
+  if (!tweetData) {
+    return <p>Loading...</p>;
+  }
 
-        <div className="flex gap-3  border border-black p-5">
-          <div className="flex flex-1 border border-black">
-            {/* <TweetAreaGraphCard username={username} reply={false} limit={0}/> */}
-            graph 5
-          </div>
-          <div className="flex flex-1 border border-black">
-            {/* <FavCountBarGraph username={username} reply={false} limit={0}/> */}
-            graph 6
-          </div>
-        </div>
-      </div>
-      {/* <TrendingGraphCard woeid={4118}/> */}
-      {/* <TrendingHashtagCard woeid={4118}/> */}
-      {/* <TrendingAreaGraphCard woeid={4118}/> */}
-      {/* <TrendingBarGraphCard woeid={4118}/> */}
-      <LikeRetweetPieChart username={username} reply={false} limit={1}/>
-
-    </>
-  );
+  return <>
+  GRAPHS HERE
+  </>;
 }
