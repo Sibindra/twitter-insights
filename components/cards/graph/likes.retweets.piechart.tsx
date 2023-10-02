@@ -24,6 +24,7 @@ export default function LikeRetweetPieChart({ username, reply, limit }: TweetPro
 
     fetchData();
   }, [username, reply, limit]);
+  console.log("a",tweetData)
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -33,19 +34,20 @@ export default function LikeRetweetPieChart({ username, reply, limit }: TweetPro
     return <p>Loading...</p>;
   }
 
+
   const results = tweetData?.results || [];
   const views=results[0]?.views || null;
   const retweetCount=results[0]?.retweet_count || null;
   const favorite_count=results[0]?.favorite_count || null;
 
 
-  console.log(results);
+  // console.log(results);
 
-//   const data = results.map((result) => ({
-//     name: result.creation_date,
-//     views: result.views,
-//     retweetCount: result.retweet_count,
-//   }));
+  // const data = results.map((result) => ({
+  //   name: result.creation_date,
+  //   views: result.views,
+  //   retweetCount: result.retweet_count,
+  // }));
 
 //   const data1 = results.map((result) => ({
 //     name: result.creation_date,
@@ -63,6 +65,7 @@ const data02 =[
     {Name:"retweeted",value:retweetCount},
     {Name:"not retweeted",value:(views-retweetCount)}
 ];
+console.log(data01);
   
  
   return (

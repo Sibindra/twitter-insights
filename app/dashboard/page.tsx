@@ -1,5 +1,6 @@
 "use client";
 
+import LikeRetweetPieChart from "@/components/cards/graph/likes.retweets.piechart";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
 import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
@@ -17,21 +18,21 @@ export default function Dashboard() {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getTweets(tweet_input);
-        setTweetData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError(
-          "An error occurred while fetching data. Please try again later."
-        );
-      }
-    };
-    fetchData();
-  }, [tweet_input]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await getTweets(tweet_input);
+  //       setTweetData(data);
+  //       setError(null);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setError(
+  //         "An error occurred while fetching data. Please try again later."
+  //       );
+  //     }
+  //   };
+  //   fetchData();
+  // }, [tweet_input]);
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -42,6 +43,6 @@ export default function Dashboard() {
   }
 
   return <>
-  GRAPHS HERE
+  <LikeRetweetPieChart username={username} reply={false} limit={1}/>
   </>;
 }
