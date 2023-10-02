@@ -1,5 +1,7 @@
 "use client";
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
+import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { PieChart, Pie } from "recharts";
 
@@ -8,31 +10,47 @@ export default function LikeRetweetPieChart({ username, reply, limit }: TweetPro
   const [error, setError] = useState<string | null>(null);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getTweets({ username, reply, limit });
-        setTweetData(data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setError(
-          "An error occurred while fetching data. Please try again later."
-        );
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const data = await getTweets({ username, reply, limit });
+  //       setTweetData(data);
+  //       setError(null);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //       setError(
+  //         "An error occurred while fetching data. Please try again later."
+  //       );
+  //     }
+  //   };
 
-    fetchData();
-  }, [username, reply, limit]);
-  console.log("a",tweetData)
+  //   fetchData();
+  // }, [username, reply, limit]);
+  // console.log("a",tweetData)
 
-  if (error) {
-    return <p>Error: {error}</p>;
+  // if (error) {
+  //   return <p>Error: {error}</p>;
+  // }
+
+  // if (!tweetData) {
+  //   return <p>Loading...</p>;
+  // }
+
+  const {data , status} = useQuery<UserDataProps>({
+    queryKey: ["user-details", username],
+    queryFn: () => getUserDetails({username}),
+  });
+
+  if (status === "loading") {
+    return <div>loading...</div>;
   }
 
-  if (!tweetData) {
-    return <p>Loading...</p>;
+
+  if (status === "error") {
+    return <div>error</div>;
   }
+
+  console.log(data)
 
 
   const results = tweetData?.results || [];

@@ -34,13 +34,13 @@ export default function Dashboard() {
   //   fetchData();
   // }, [tweet_input]);
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  // if (error) {
+  //   return <p>Error: {error}</p>;
+  // }
 
-  if (!tweetData) {
-    return <p>Loading...</p>;
-  }
+  // if (!tweetData) {
+  //   return <p>Loading...</p>;
+  // }
 
   return <>
   <LikeRetweetPieChart username={username} reply={false} limit={1}/>
