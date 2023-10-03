@@ -1,4 +1,4 @@
-'use client'
+
 import React from 'react';
 import {
   Avatar,
@@ -36,38 +36,47 @@ export interface FollowerData {
 
 export interface RecentFollowersProps {
   data: FollowerData[];
+  limit: number;
 }
 
-function RecentFollowers({data}:RecentFollowersProps) {
+function RecentFollowers({ data, limit }: RecentFollowersProps) {
+
+
+
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Recent Followers</CardTitle>
-        <CardDescription>Your Most Recent Followers</CardDescription>
+        <CardDescription>Your Most Popular Followers</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
-        {data.map((item, index) => (
-          <div key={index} className="flex items-center justify-between space-x-4">
-            <div className="flex items-center space-x-4">
-              <Avatar className='border'>
-                {item.profile_pic_url !== "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" && item.profile_pic_url !== (null) ? (
-                  <AvatarImage src={item.profile_pic_url} />
-                ) : (
-                  <AvatarFallback>
-                    {item.name.split(" ").map((word) => word.charAt(0)).join("")}
-                  </AvatarFallback>
-                )}
-              </Avatar>
+        {Array.isArray(data) ? (
+          data.slice(0, limit).map((item, index) => (
+            <div key={index} className="flex items-center justify-between space-x-4">
+              <div className="flex items-center space-x-4">
+                <Avatar className='border'>
+                  {item.profile_pic_url !== "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" && item.profile_pic_url !== (null) ? (
+                    <AvatarImage src={item.profile_pic_url} />
+                  ) : (
+                    <AvatarFallback>
+                      {item.name.split(" ").map((word) => word.charAt(0)).join("")}
+                    </AvatarFallback>
+                  )}
+                </Avatar>
+                <div>
+                  <p className="text-md font-medium leading-none flex gap-2 items-center">{item.name} {item.is_verified && <span className="text-blue-500"><GoVerified size={15} /></span>}</p>
+                  <p className="text-sm text-muted-foreground w-64 truncate">{item.description}</p>
+                </div>
+              </div>
               <div>
-                <p className="text-sm font-medium leading-none flex gap-2 items-center justify-center">{item.name} {item.is_verified && <span className="text-blue-500"><GoVerified size={15}/></span>}</p>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <p className="text-sm text-muted-foreground flex items-center gap-4">{item.follower_count.toLocaleString()}<BsPeople size={20} /> </p>
               </div>
             </div>
-            <div>
-              <p className="text-sm text-muted-foreground flex items-center gap-2">{item.follower_count}<BsPeople size={20}/> </p>
-            </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>Loading ....</p>
+        )}
       </CardContent>
     </Card>
   );
