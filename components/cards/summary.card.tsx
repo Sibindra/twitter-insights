@@ -14,7 +14,7 @@ export default function SummaryCard({ description }: UserDataProps) {
         {description ? (
           <p className="">{description}</p>
         ) : (
-          <p className="text-slate-500">No summary available</p>
+          <p className="text-slate-500">The user has no summary ....🕵️</p>
         )}
       </CardContent>
     </Card>

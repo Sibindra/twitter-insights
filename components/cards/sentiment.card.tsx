@@ -1,37 +1,74 @@
 import { getSentiment } from "@/lib/sentiment";
-import React, { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 interface SentimentAnalysisCardProps {
   input: string[];
 }
 
-export default function SentimentAnalysisCard({ input }: SentimentAnalysisCardProps) {
-  const [maxLabel, setMaxLabel] = useState<string | null>(null);
-  const [maxScore, setMaxScore] = useState<number | null>(null);
+export default function SentimentAnalysisCard({
+  input,
+}: SentimentAnalysisCardProps) {
+  const { data, status } = useQuery({
+    queryKey: ["sentiment", input],
+    queryFn: async () => await getSentiment(input),
+  });
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const [label, score] = await getSentiment(input);
-        setMaxLabel(label);
-        setMaxScore(score);
-      } catch (error) {
-        console.error("Error:", error);
+  if (status === "loading") {
+    <p>loading ....</p>;
+  }
+
+  if (status === "error") {
+    return <p>error</p>;
+  }
+
+  const result = data?.map((subArray) => {
+    let maxScore = -1;
+    let maxScoreLabel = "";
+
+    (subArray as unknown as { label: string; score: number }[]).forEach(
+      (obj) => {
+        if (typeof obj === "object" && obj.score > maxScore) {
+          maxScore = obj.score;
+          maxScoreLabel = obj.label;
+        }
       }
+    );
+
+    return { label: maxScoreLabel, score: maxScore.toFixed(4) };
+  });
+
+  const sentimentData = result?.map((obj) => {
+    if (obj.label === "LABEL_0") {
+      obj.label = "Negative";
+    } else if (obj.label === "LABEL_1") {
+      obj.label = "Positive";
+    } else {
+      obj.label = "Neutral";
     }
 
-    fetchData();
-  }, [input]);
+    return obj;
+  });
 
   return (
     <div>
-      {maxLabel !== null && maxScore !== null && (
-        <>
-          <p>Max Label: {maxLabel}</p>
-          <p>Max Score: {maxScore}</p>
-        </>
-      )}
+      {input?.map((item) => {
+        return (
+          <>
+            <p>{item}</p>
+            ----
+          </>
+        );
+      })}
+
+      {sentimentData?.map((obj) => {
+        return (
+          <>
+            <p>Label: {obj.label}</p>
+            <p>Score {obj.score}</p>
+            -------
+          </>
+        );
+      })}
     </div>
   );
 }
-

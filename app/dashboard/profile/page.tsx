@@ -1,17 +1,14 @@
 "use client";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
-import RecentFollowers from "@/components/cards/followers.card";
-import SummaryCard from "@/components/cards/summary.card";
-import BannerCard from "@/components/cards/user-details.card";
-import { getUsersFollowers } from "@/lib/followers";
+import BannerCard from "@/components/cards/banner.card";
 import { UserDataProps, getUserDetails } from "@/lib/user-details";
 import { useAppSelector } from "@/store/store";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import RecentFollowers from "@/components/cards/followers.card";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
-  const [userDetailsLoaded, setUserDetailsLoaded] = useState<boolean>(false);
+  // const [userDetailsLoaded, setUserDetailsLoaded] = useState<boolean>(false);
 
 
   const {data , status} = useQuery<UserDataProps>({
@@ -22,22 +19,22 @@ export default function Profile() {
   const user_id = data?.user_id as number;
 
 
-  // logic to wait 3 secs before loading followers
-  useEffect(() => {
-    if (user_id && !userDetailsLoaded) {
-      const delayTime = 3000;
+  // // logic to wait 3 secs before loading followers
+  // useEffect(() => {
+  //   if (user_id && !userDetailsLoaded) {
+  //     const delayTime = 3000;
 
-      setTimeout(() => {
-        setUserDetailsLoaded(true);
-      }, delayTime);
-    }
-  }, [user_id, userDetailsLoaded]);
+  //     setTimeout(() => {
+  //       setUserDetailsLoaded(true);
+  //     }, delayTime);
+  //   }
+  // }, [user_id, userDetailsLoaded]);
 
-  const { data: followersData } = useQuery({
-    queryKey: ["followers", user_id],
-    queryFn: async () => await getUsersFollowers({ user_id: user_id, limit: 1 }),
-    enabled: userDetailsLoaded, // Enable the query only when userDetailsLoaded is true
-  });
+  // const { data: followersData } = useQuery({
+  //   queryKey: ["followers", user_id],
+  //   queryFn: async () => await getUsersFollowers({ user_id: user_id, limit: 1 }),
+  //   enabled: userDetailsLoaded, // Enable the query only when userDetailsLoaded is true
+  // });
 
 
 
@@ -51,6 +48,36 @@ export default function Profile() {
   if (status === "error") {
     return <div>error</div>;
   }
+
+
+
+  return (
+    <div className="flex flex-col md:flex-row p-5 bg-white gap-10 ">
+      <div className="flex flex-1 gap-2 flex-col ">
+        <div className="">
+          {/* <BannerCard {...data} /> */}
+        </div>
+
+        {/* <div className="">
+          <SummaryCard {...data} />
+        </div> */}
+
+        {/* <div className="border rounded border-black">
+        </div> */}
+      </div>
+
+      <div className="flex  flex-1 gap-1 flex-col ">
+        <div className="">{/* RECENT FOLLOWES WAS HERE */}
+        {/* <RecentFollowers user_id={user_id} limit={3}/> */}
+        
+        </div>
+        <div className="">
+          {/* <AdditionalInfoCard {...data} /> */}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 
   // const followersData = {
@@ -108,30 +135,3 @@ export default function Profile() {
   //     },
   //   ]
   // }
-
-  return (
-    <div className="flex flex-col md:flex-row p-5 bg-white gap-10 ">
-      <div className="flex flex-1 gap-3 flex-col ">
-        <div className=" ">
-          <BannerCard {...data} />
-        </div>
-
-        <div className="">
-          <SummaryCard {...data} />
-        </div>
-
-        <div className="border rounded border-black">Recent Hashtags</div>
-      </div>
-
-      <div className="flex  flex-1 gap-3 flex-col ">
-        <div className="">{/* RECENT FOLLOWES WAS HERE */}
-        <RecentFollowers data={followersData?.results} limit={3}/>
-        
-        </div>
-        <div className="">
-          <AdditionalInfoCard {...data} />
-        </div>
-      </div>
-    </div>
-  );
-}

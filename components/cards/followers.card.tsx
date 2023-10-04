@@ -1,10 +1,5 @@
-
-import React from 'react';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar";
+import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
@@ -15,6 +10,8 @@ import {
 
 import { GoVerified } from "react-icons/go";
 import { BsPeople } from "react-icons/bs";
+import { useQuery } from "@tanstack/react-query";
+import { getUsersFollowers } from "@/lib/followers";
 
 export interface FollowerData {
   creation_date: string;
@@ -39,10 +36,20 @@ export interface RecentFollowersProps {
   limit: number;
 }
 
-function RecentFollowers({ data, limit }: RecentFollowersProps) {
+function RecentFollowers({
+  user_id,
+  limit,
+}: {
+  user_id: number;
+  limit: number;
+}) {
+  // const username = useAppSelector((state) => state.username.username);
 
-
-
+  const { data, status } = useQuery({
+    queryKey: ["followers", user_id],
+    queryFn: async () =>
+      await getUsersFollowers({ user_id: user_id, limit: 1 }),
+  });
 
   return (
     <Card>
@@ -53,24 +60,44 @@ function RecentFollowers({ data, limit }: RecentFollowersProps) {
       <CardContent className="grid gap-6">
         {Array.isArray(data) ? (
           data.slice(0, limit).map((item, index) => (
-            <div key={index} className="flex items-center justify-between space-x-4">
+            <div
+              key={index}
+              className="flex items-center justify-between space-x-4"
+            >
               <div className="flex items-center space-x-4">
-                <Avatar className='border'>
-                  {item.profile_pic_url !== "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" && item.profile_pic_url !== (null) ? (
+                <Avatar className="border">
+                  {item.profile_pic_url !==
+                    "https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png" &&
+                  item.profile_pic_url !== null ? (
                     <AvatarImage src={item.profile_pic_url} />
                   ) : (
                     <AvatarFallback>
-                      {item.name.split(" ").map((word) => word.charAt(0)).join("")}
+                      {item.name
+                        .split(" ")
+                        .map((word:string) => word.charAt(0))
+                        .join("")}
                     </AvatarFallback>
                   )}
                 </Avatar>
                 <div>
-                  <p className="text-md font-medium leading-none flex gap-2 items-center">{item.name} {item.is_verified && <span className="text-blue-500"><GoVerified size={15} /></span>}</p>
-                  <p className="text-sm text-muted-foreground w-64 truncate">{item.description}</p>
+                  <p className="text-md font-medium leading-none flex gap-2 items-center">
+                    {item.name}{" "}
+                    {item.is_verified && (
+                      <span className="text-blue-500">
+                        <GoVerified size={15} />
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-sm text-muted-foreground w-64 truncate">
+                    {item.description}
+                  </p>
                 </div>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground flex items-center gap-4">{item.follower_count.toLocaleString()}<BsPeople size={20} /> </p>
+                <p className="text-sm text-muted-foreground flex items-center gap-4">
+                  {item.follower_count.toLocaleString()}
+                  <BsPeople size={20} />{" "}
+                </p>
               </div>
             </div>
           ))
