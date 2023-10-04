@@ -16,7 +16,7 @@ export default function BannerCard({
   const isVerified = follower_count !== undefined && follower_count >= 500000;
 
   return (
-    <Card className="w-full max-w-2xl mx-auto bg-white rounded-none dark">
+    <Card className="w-full max-w-2xl mx-auto bg-white rounded-none">
       {/* Cover Photo */}
       <div
         className="bg-cover bg-center h-48 md:h-64 rounded-none"

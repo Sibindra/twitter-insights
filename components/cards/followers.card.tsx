@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -10,8 +11,6 @@ import {
 
 import { GoVerified } from "react-icons/go";
 import { BsPeople } from "react-icons/bs";
-import { useQuery } from "@tanstack/react-query";
-import { getUsersFollowers } from "@/lib/followers";
 
 export interface FollowerData {
   creation_date: string;
@@ -36,20 +35,7 @@ export interface RecentFollowersProps {
   limit: number;
 }
 
-function RecentFollowers({
-  user_id,
-  limit,
-}: {
-  user_id: number;
-  limit: number;
-}) {
-  // const username = useAppSelector((state) => state.username.username);
-
-  const { data, status } = useQuery({
-    queryKey: ["followers", user_id],
-    queryFn: async () =>
-      await getUsersFollowers({ user_id: user_id, limit: 1 }),
-  });
+function RecentFollowers({ data , limit }: RecentFollowersProps) {
 
   return (
     <Card>
@@ -74,7 +60,7 @@ function RecentFollowers({
                     <AvatarFallback>
                       {item.name
                         .split(" ")
-                        .map((word:string) => word.charAt(0))
+                        .map((word: string) => word.charAt(0))
                         .join("")}
                     </AvatarFallback>
                   )}
