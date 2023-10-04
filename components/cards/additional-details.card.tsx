@@ -1,14 +1,20 @@
 // Additional information part in profile section
 "use client";
 import { UserDataProps } from "@/lib/user-details";
-import { BsFillCalendarDateFill, BsFillPeopleFill, BsFillPersonFill, BsHeartFill } from "react-icons/bs";
+import {
+  BsFillCalendarDateFill,
+  BsFillPeopleFill,
+  BsFillPersonFill,
+  BsHeartFill,
+} from "react-icons/bs";
 import { FaRetweet, FaRobot } from "react-icons/fa";
 import { GiTimeBomb } from "react-icons/gi";
-import {RiUserSharedFill, RiVerifiedBadgeFill} from "react-icons/ri"
-import {MdPrivacyTip} from "react-icons/md"
+import { RiUserSharedFill, RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdPrivacyTip } from "react-icons/md";
 import { BiSolidUser } from "react-icons/bi";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 
-export default function BannerCard({
+export default function AdditionalInfoCard({
   follower_count,
   following_count,
   number_of_tweets,
@@ -20,131 +26,154 @@ export default function BannerCard({
   is_private,
   is_verified,
 }: UserDataProps) {
+  const iconSize = 20;
+
   return (
-    <div className="flex flex-col  bg-slate-50 rounded">
-      <h1 className="text-lg font-bold p-3 ">Additional Details</h1>
+    <Card>
+      <CardHeader>
+        <CardTitle>Additional Details</CardTitle>
+        <CardDescription>additional details about the user</CardDescription>
+      </CardHeader>
 
       {/* followers count */}
       {follower_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <BsFillPeopleFill size={20} className=" text-gray-500"/>
-          <div >
-          <p className="text-slate-500">Followers</p>
-          <p className="text-xl font-medium">{follower_count}</p>
+        <CardContent className="flex gap-4 items-center">
+          <BsFillPeopleFill size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">Followers</p>
+            <p className="text-md font-medium">
+              {follower_count.toLocaleString()}
+            </p>
           </div>
-        
-        </div>
+        </CardContent>
       )}
 
       {/* following count */}
       {following_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <RiUserSharedFill size={20} className=" text-gray-500"/> 
-          <div >
-          <p className="text-slate-500">Following</p>
-          <p className="text-xl font-medium">{following_count}</p>
+        <CardContent className="flex  gap-4 items-center">
+          <RiUserSharedFill size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">Following</p>
+            <p className="text-md font-medium">
+              {following_count.toLocaleString()}
+            </p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* number of tweets */}
       {number_of_tweets !== undefined && (
-        
-        <div className="flex p-3 gap-4 items-center">
-          <FaRetweet size={20} className=" text-gray-500"/>
-         <div>
-         <p className="text-slate-500">Tweets</p>
-          <p className="text-xl font-medium">{number_of_tweets}</p>
-         </div>
-        </div>
+        <CardContent className="flex gap-4 items-center">
+          <FaRetweet size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">Tweets</p>
+            <p className="text-md font-medium">{number_of_tweets}</p>
+          </div>
+        </CardContent>
       )}
 
       {/* favourites count */}
       {favourites_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <BsHeartFill size={20} className=" text-gray-500"/>
+        <CardContent className="flex  gap-4 items-center">
+          <BsHeartFill size={iconSize} className=" text-gray-600" />
           <div>
-          <p className="text-slate-500">Favourites</p>
-          <p className="text-xl font-medium">{favourites_count}</p>
+            <p className="text-slate-500">Favourites</p>
+            <p className="text-md font-medium">
+              {favourites_count.toLocaleString()}
+            </p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* User ID */}
       {user_id !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <BiSolidUser size={20} className=" text-gray-500"/>
-         <div>
-         <p className="text-slate-500">User ID</p>
-          <p className="text-xl font-medium">{user_id}</p>
-         </div>
-        </div>
+        <CardContent className="flex gap-4 items-center">
+          <BiSolidUser size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">User ID</p>
+            <p className="text-md font-medium">{user_id}</p>
+          </div>
+        </CardContent>
       )}
 
       {/* Creation date */}
       {creation_date !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <BsFillCalendarDateFill size={20} className=" text-gray-500"/>
+        <CardContent className="flex gap-4 items-center">
+          <BsFillCalendarDateFill size={iconSize} className="text-gray-600" />
           <div>
-          <p className="text-slate-500">Joined Date</p>
-          <p className="text-xl font-medium">{creation_date}</p>
+            <p className="text-slate-500">Joined Date</p>
+            <p className="text-md font-medium">
+              {(() => {
+                const dateObj = new Date(creation_date);
+                const year = dateObj.getFullYear();
+                const month = dateObj.getMonth() + 1; // Months are 0-based, so add 1
+                const day = dateObj.getDate();
+
+                // Format the date as desired (e.g., "YYYY-MM-DD")
+                const formattedDate = `${year}-${month
+                  .toString()
+                  .padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+
+                return formattedDate;
+              })()}
+            </p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Time stamp */}
       {timestamp !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <GiTimeBomb size={20} className=" text-gray-500"/>
+        <CardContent className="flex gap-4 items-center">
+          <GiTimeBomb size={iconSize} className=" text-gray-600" />
           <div>
-          <p className="text-slate-500">Time Stamp</p>
-          <p className="text-xl font-medium">{timestamp}</p>
+            <p className="text-slate-500">Time Stamp</p>
+            <p className="text-md font-medium">{timestamp}</p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Account privacy */}
       {is_private !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <MdPrivacyTip size={20} className=" text-gray-500"/>
+        <CardContent className="flex gap-4 items-center">
+          <MdPrivacyTip size={iconSize} className=" text-gray-600" />
           <div>
-          <p className="text-slate-500">Account Privacy</p>
-          <p className="text-xl font-medium">
-            {is_private === true ? <span>Private</span> : <span>Public</span>}
-          </p>
+            <p className="text-slate-500">Account Privacy</p>
+            <p className="text-md font-medium">
+              {is_private === true ? <span>Private</span> : <span>Public</span>}
+            </p>
           </div>
-        </div>
+        </CardContent>
       )}
 
       {/* Account verification */}
       {follower_count !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <RiVerifiedBadgeFill size={20} className=" text-gray-500"/>
-         <div>
-         <p className="text-slate-500">Account Verification</p>
-          <p className="text-xl font-medium">
-            {follower_count >= 500000 ? (
-              <span> Verified</span>
-            ) : (
-              <span>Not Verified</span>
-            )}
-          </p>
-         </div>
-        </div>
+        <CardContent className="flex gap-4 items-center">
+          <RiVerifiedBadgeFill size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">Account Verification</p>
+            <p className="text-md font-medium">
+              {follower_count >= 500000 ? (
+                <span> Verified</span>
+              ) : (
+                <span>Not Verified</span>
+              )}
+            </p>
+          </div>
+        </CardContent>
       )}
 
       {/* NFT avatar */}
       {has_nft_avatar !== undefined && (
-        <div className="flex p-3 gap-4 items-center">
-          <FaRobot size={20} className=" text-gray-500"/>
-         <div>
-         <p className="text-slate-500">NFT Avatar</p>
-          <p className="text-xl font-medium">
-            {has_nft_avatar === true ? <span>Yes</span> : <span>No</span>}
-          </p>
-         </div>
-        </div>
+        <CardContent className="flex gap-4 items-center">
+          <FaRobot size={iconSize} className=" text-gray-600" />
+          <div>
+            <p className="text-slate-500">NFT Avatar</p>
+            <p className="text-md font-medium">
+              {has_nft_avatar === true ? <span>Yes</span> : <span>No</span>}
+            </p>
+          </div>
+        </CardContent>
       )}
-    </div>
+    </Card>
   );
 }

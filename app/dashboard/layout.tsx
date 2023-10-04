@@ -13,12 +13,12 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="flex flex-row h-screen bg-slate-100">
-      <div className="lg:w-1/6 w-auto bg-slate-50 border-black lg:border">
+      <div className="lg:w-1/6 w-auto bg-slate-50 lg:border">
         <Sidebar />
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 md:relative bg-secondary border-2  ml-auto overflow-auto">
+      <div className="flex-1 md:relative bg-secondary ml-auto overflow-auto">
         {children}
       </div>
     </div>
