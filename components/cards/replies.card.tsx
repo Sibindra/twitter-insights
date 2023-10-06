@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
-import SentimentAnalysisCard from "./sentiment.card";
+import SentimentAnalysisCard from "./sentiment.graphcard";
 
 export default function RepliesCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);

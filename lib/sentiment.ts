@@ -28,22 +28,8 @@ async function query(data: any): Promise<HuggingFaceApiResponse[]> {
   }
 }
 
+
 export async function getSentiment(input: string[]): Promise<[string, number]> {
-  // try {
-  //   const responses = await Promise.all(
-  //     input.map((text) => query({ inputs: text }))
-  //   );
-  //   const mergedResults = responses.map((response) => response[0]).flat();
-
-  //   const maxResult = mergedResults.reduce((max, current) =>
-  //     current.score > max.score ? current : max
-  //   );
-
-  //   return [maxResult.label, maxResult.score];
-  // } catch (error) {
-  //   console.error("Error:", error);
-  //   throw error;
-  // }
 
   const response = await fetch(
     "https://api-inference.huggingface.co/models/dpkrm/NepaliSentimentAnalysis",
@@ -58,3 +44,5 @@ export async function getSentiment(input: string[]): Promise<[string, number]> {
   const result = await response.json();
   return result;
 }
+
+
