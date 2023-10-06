@@ -1,6 +1,7 @@
 "use client";
 
 import LikeRetweetPieChart from "@/components/cards/graph/likes.retweets.piechart";
+import SentimentAnalysisCard from "@/components/cards/sentiment.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
 import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
@@ -43,6 +44,7 @@ export default function Dashboard() {
   // }
 
   return <>
-  <LikeRetweetPieChart username={username} reply={false} limit={1}/>
+  {/* <LikeRetweetPieChart username={username} reply={false} limit={1}/> */}
+  <SentimentAnalysisCard input={['Hello']}/>
   </>;
 }
