@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { GraphCardProps } from "@/components/graph/fav-line.graph";
+import { GraphCardProps } from "./tweet-area.graph";
 
 export default function TweetLineGraphCard({
   size,

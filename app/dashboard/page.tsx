@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { MainNav } from "@/components/dashboard-components/main-nav";
 import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
@@ -20,7 +19,7 @@ import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
 import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import FavCountBarGraph from "@/components/graph/fav-bar.graph";
-import FavCountAreaGraph from "@/components/graph/fav-area.graph";
+import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 
 export default function DashboardPage() {
   const username = useAppSelector((state) => state.username.username);
@@ -33,17 +32,21 @@ export default function DashboardPage() {
     staleTime: Infinity,
   });
 
-  console.log("data = ", userData);
 
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 10000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       return await getTweets({ username: username, limit: 1, reply: true });
     },
 
     staleTime: Infinity,
   });
+
+
+  // @ts-ignore
+  const sentimentInput = tweetData?.results.map((result: any) => result.text) || [];
+
 
   if (userStatus === "loading") {
     return <div>loading...</div>;
@@ -57,7 +60,6 @@ export default function DashboardPage() {
     <div className="hidden flex-col md:flex">
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          {/* <TeamSwitcher /> */}
           <MainNav className="mx-6" />
           <div className="ml-auto flex items-center space-x-4">
             <UserNav img_url={userData.profile_pic_url} />
@@ -68,7 +70,6 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
           <div className="flex items-center space-x-2">
-            {/* <CalendarDateRangePicker /> */}
             <Button>Download</Button>
           </div>
         </div>
@@ -162,7 +163,7 @@ export default function DashboardPage() {
             </CardHeader>
 
             <CardContent className="pl-2">
-              <TweetAreaGraphCard size={400} data={tweetData} />
+              <TweetAreaGraphCard size={500}  data={tweetData}/>
             </CardContent>
           </Card>
 
@@ -175,21 +176,22 @@ export default function DashboardPage() {
             </CardHeader>
 
             <CardContent className="pl-2">
-              {/* <TweetLineGraphCard size={400} data={tweetData} /> */}
-              {/* <SentimentAnalysisGraph size={400} data={['hello' , 'world']} /> */}
+              <SentimentAreaGraph input={sentimentInput} size={500}/>
             </CardContent>
           </Card>
 
           <Card className="col-span-7">
             <CardHeader>
-              <CardTitle>Favriotes Score</CardTitle>
+              <CardTitle>Favriorates Score</CardTitle>
               <CardDescription className="text-center lg:text-left">
                 users recent favriotes
               </CardDescription>
             </CardHeader>
 
             <CardContent className="pl-2">
-              <FavCountAreaGraph size={500} data={tweetData} />
+              {/* <FavCountAreaGraph size={500} data={tweetData} /> */}
+              {/* @ts-ignore */}
+              <FavCountBarGraph size={400} data={tweetData}/>
             </CardContent>
           </Card>
 
@@ -206,6 +208,9 @@ export default function DashboardPage() {
               {<TrendingHashtagCard woeid={1} />}
             </CardContent>
           </Card>
+
+
+        
         </div>
       </div>
     </div>

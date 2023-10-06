@@ -1,13 +1,25 @@
 "use client";
-import { Card } from "@/components/ui/card";
-import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
-import { useEffect, useState } from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { GraphCardProps } from "./fav-line.graph";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
+export interface GraphCardProps {
+  size: number;
+  className?: string;
+  data: any;
+}
 
-export default function TweetAreaGraphCard({size , className, data }: GraphCardProps) {
-
+export default function TweetAreaGraphCard({
+  size,
+  className,
+  data,
+}: GraphCardProps) {
   const results = data?.results || [];
 
   const graph_data = results.map((result: any) => ({
@@ -27,7 +39,6 @@ export default function TweetAreaGraphCard({size , className, data }: GraphCardP
     return date.toLocaleDateString("en-US", options);
   }
 
-
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const tweetData = payload[0].payload; // Use the data from payload
@@ -39,12 +50,12 @@ export default function TweetAreaGraphCard({size , className, data }: GraphCardP
         );
       }
     }
-  
+
     return null;
   };
-  
+
   return (
-      <ResponsiveContainer width="100%" height={size} className={className}>
+    <ResponsiveContainer width="100%" height={size} className={className}>
       <AreaChart
         data={graph_data}
         margin={{
@@ -57,22 +68,21 @@ export default function TweetAreaGraphCard({size , className, data }: GraphCardP
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
-        <Tooltip content={<CustomTooltip/>}/>
-        
-        
+        <Tooltip content={<CustomTooltip />} />
+
         <Area
-        type="monotone"
-        dataKey="retweetCount"
-        stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
+          type="monotone"
+          dataKey="retweetCount"
+          stackId="1"
+          stroke="#82ca9d"
+          fill="#82ca9d"
         />
         <Area
-        type="monotone"
-        dataKey="reply_count"
-        stackId="1"
-        stroke="#ffc658"
-        fill="#ffc658"
+          type="monotone"
+          dataKey="reply_count"
+          stackId="1"
+          stroke="#ffc658"
+          fill="#ffc658"
         />
         <Area
           type="monotone"
@@ -81,10 +91,7 @@ export default function TweetAreaGraphCard({size , className, data }: GraphCardP
           stroke="#8884d8"
           fill="#8884d8"
         />
-        
-        
       </AreaChart>
-      </ResponsiveContainer>
-
+    </ResponsiveContainer>
   );
 }

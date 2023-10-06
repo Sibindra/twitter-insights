@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -32,12 +32,9 @@ const profileFormSchema = z.object({
     })
     .email(),
   message: z.string().max(160).min(4),
-  
 });
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
-
-
 
 export function ExperienceForm() {
   const form = useForm<ProfileFormValues>({
@@ -45,10 +42,30 @@ export function ExperienceForm() {
     mode: "onChange",
   });
 
+  const sendData = async (data: ProfileFormValues) => {
+    try {
+      const res = await fetch("api/contact", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          data,
+        }),
+      });
+
+      if (res.ok) {
+        console.log("Email:", data.email);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  };
 
   function onSubmit(data: ProfileFormValues) {
-    console.log(data)
+    console.log(data);
 
+    sendData(data);
   }
 
   return (
@@ -82,7 +99,7 @@ export function ExperienceForm() {
                 <Input placeholder="your email" {...field} />
               </FormControl>
               <FormDescription>
-                please enter your email address {" "}
+                please enter your email address{" "}
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -105,7 +122,7 @@ export function ExperienceForm() {
             </FormItem>
           )}
         />
-       
+
         <Button
           type="submit"
           className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#FC7272] hover:text-white text-black border-black rounded-none "

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   BarChart,
   Bar,
@@ -8,14 +9,37 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-import { GraphCardProps } from "./fav-line.graph";
+} from 'recharts';
+
+// Define your custom shape function
+const getPath = (x: number, y: number, width: number, height: number) => {
+  return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
+    ${x + width / 2}, ${y}
+    C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
+    Z`;
+};
+
+// Define your custom bar component
+const TriangleBar = (props: any) => {
+  const { fill, x, y, width, height } = props;
+
+  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+};
+
+interface FavCountBarGraphProps {
+  size: number;
+  data: any[]; // Your data structure, replace 'any' with the actual data type
+  className?: string;
+}
 
 export default function FavCountBarGraph({
   size,
   data,
   className,
-}: GraphCardProps) {
+}: FavCountBarGraphProps) {
+
+
+  // @ts-ignore
   const results = data?.results || [];
 
   console.log("results = ", results);
@@ -34,6 +58,21 @@ export default function FavCountBarGraph({
     };
     return date.toLocaleDateString("en-US", options);
   }
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      const FavData = payload[0].payload; 
+      if (FavData) {
+        return (
+          <div className="custom-tooltip border bg-white p-1">
+            <p>{FavData.text}</p>
+          </div>
+        );
+      }
+    }
+  
+    return null;
+  };
 
   return (
     <ResponsiveContainer width="100%" height={size} className={className}>
@@ -59,18 +98,24 @@ export default function FavCountBarGraph({
           fontSize={14}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `${value}`}
+          tickFormatter={(value: number) => `${value}`}
         />
         <Legend />
-        <Tooltip />
+        <Tooltip  content={<CustomTooltip/>}/>
 
+        {/* Use your custom TriangleBar component here for the custom shape */}
         <Bar
           dataKey="favorite_count"
           fill="#ffc658"
-          radius={[6, 6, 0, 0]}
+          shape={<TriangleBar />}
           barSize={25}
         />
-        <Bar dataKey="text" fill="#CEC7C8" radius={[6, 6, 0, 0]} barSize={25} />
+        <Bar
+          dataKey="text"
+          fill="#CEC7C8"
+          shape={<TriangleBar />}
+          barSize={25}
+        />
       </BarChart>
     </ResponsiveContainer>
   );

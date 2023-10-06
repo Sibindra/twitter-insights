@@ -5,10 +5,12 @@ import mongoose from "mongoose";
 
 export async function POST(req) {
   const { email } = await req.json();
+  const {data} = await req.json();
 
   try {
     await connectDB();
     await Contacts.create({ email });
+    await Contacts.create({ data });
 
     return NextResponse.json({
       msg: ["Subscribed Sucessfully."],
