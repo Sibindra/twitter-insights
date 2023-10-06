@@ -9,7 +9,6 @@ import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
@@ -52,15 +51,10 @@ export default function Profile() {
 
   const sentimentInput = filteredResultTweets.map((tweet) => tweet.text);
 
-
   console.log("input = ", sentimentInput);
 
   if (userStatus === "loading") {
-    return <div>
-      
-      <Skeleton className="w-[100px] h-[20px] rounded-full" />
-
-    </div>;
+    return <div>loading...</div>;
   }
 
   if (userStatus === "error") {
@@ -68,47 +62,45 @@ export default function Profile() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row p-5 bg-secondary gap-3 ">
-      {/* left container */}
-      <div className="flex flex-1 gap-3 flex-col ">
-        {/* BANNER */}
-        <BannerCard {...userData} />
+    <main className="p-5 bg-secondary">
+      <div className="md:flex md:flex-row md:space-x-3">
+        {/* Left container */}
+        <section className="flex-1 flex flex-col gap-2">
+          {/* BANNER */}
+          <BannerCard {...userData} />
 
-        {/* TWEETS */}
-        <div className="flex flex-col p-5 gap-2 border bg-white ">
-          <h3 className=" text-lg font-bold">Most Recent Tweets</h3>
+          {/* TWEETS */}
+          <div className="p-5 border bg-white rounded-md flex flex-col gap-3">
+            <h3 className="text-lg font-bold">Most Recent Tweets</h3>
 
-          {/* TODO: 3 for test need to map tweets data here  */}
+            {filteredResultTweets.map((tweet, key) => (
+              <TweetCard
+                key={key}
+                name={tweet.user.name}
+                username={tweet.user.username}
+                tweetText={tweet.text}
+                comments={tweet.reply_count}
+                retweets={tweet.retweet_count}
+                likes={tweet.favorite_count}
+                date={tweet.creation_date}
+                userImg={tweet.user.profile_pic_url}
+                usermedia={tweet.media_url}
+                source={tweet.source}
+                sentimentInput={sentimentInput}
+              />
+            ))}
+          </div>
+        </section>
 
-          {/* map it here */}
+        {/* Right container */}
+        <aside className="flex-1 flex flex-col gap-2">
+          {/* RECENT FOLLOWERS */}
+          <RecentFollowers data={followerData?.results} limit={5} />
 
-          {filteredResultTweets.map((tweet, key) => (
-            <TweetCard
-              key={key}
-              name={tweet.user.name}
-              username={tweet.user.username}
-              tweetText={tweet.text}
-              comments={tweet.reply_count}
-              retweets={tweet.retweet_count}
-              likes={tweet.favorite_count}
-              date={tweet.creation_date}
-              userImg={tweet.user.profile_pic_url}
-              usermedia={tweet.media_url}
-              source={tweet.source}
-              sentimentInput={sentimentInput}
-            />
-          ))}
-        </div>
+          {/* ADDITIONAL CARDS */}
+          <AdditionalInfoCard {...userData} />
+        </aside>
       </div>
-
-      {/* right container */}
-      <div className="flex  flex-1 gap-3 flex-col ">
-        {/* RECENT FOLLOWERS */}
-        <RecentFollowers data={followerData?.results} limit={5} />
-
-        {/* ADDITIONAL CARDS */}
-        <AdditionalInfoCard {...userData} />
-      </div>
-    </div>
+    </main>
   );
 }

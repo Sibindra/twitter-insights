@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
-import  { TweetPromiseProps } from "@/lib/tweets";
+import  { TweetPromiseProps, TweetProps } from "@/lib/tweets";
+import { UserDataProps } from "@/lib/user-details";
 import {
   CartesianGrid,
   Legend,
@@ -13,17 +14,16 @@ import {
 
 
 export interface GraphCardProps {
-  width: number ;
-  height: number ;
-  data: TweetPromiseProps;
+  size: number
+  data: any;
   className?: string;
 }
 
-export default function FavCountGraph({ width, height, data,className  }: GraphCardProps) {
+export default function FavCountGraph({ size, data,className  }: GraphCardProps) {
  
   const results = data?.results || [];
 
-  const graph_data = results.map((result) => ({
+  const graph_data = results.map((result:any) => ({
     name: result.creation_date,
     text: result.text,
     favorite_count: result.favorite_count,
@@ -32,7 +32,7 @@ export default function FavCountGraph({ width, height, data,className  }: GraphC
 
   return (
     <Card>
-      <ResponsiveContainer width={width} height={height} className={className}>
+      <ResponsiveContainer width={'100%'} height={size} className={className}>
         <LineChart
           data={graph_data}
           className="bg-sky-100"

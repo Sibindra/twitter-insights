@@ -38,7 +38,7 @@ export default function BannerCard({
 
       {/* User Info */}
       <div className="p-3 mt-4 md:mt-8">
-        <h1 className="text-3xl font-semibold flex items-center justify-start gap-2 text-primary">
+        <h1 className="text-3xl font-semibold flex items-center justify-start gap-2 ">
           {profile_pic_url && (
             <Image
               src={profile_pic_url}

@@ -48,6 +48,7 @@ export function ExperienceForm() {
 
   function onSubmit(data: ProfileFormValues) {
     console.log(data)
+
   }
 
   return (

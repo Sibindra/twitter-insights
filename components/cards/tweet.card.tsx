@@ -18,7 +18,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 
 interface TweetCardProps {
-  key:number
+  key: number;
   name: string;
   username: string;
   userImg: string;
@@ -27,7 +27,7 @@ interface TweetCardProps {
   retweets: number;
   likes: number;
   date: string;
-  usermedia?: string;
+  usermedia?: string | null;
   source?: string;
   sentimentInput: string[];
 }
@@ -53,49 +53,48 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
   if (status === "loading") {
     return (
-      
-        <Skeleton className="bg-white border  rounded-sm p-1 shadow-sm">
-          <div className="flex border-b flex-row pb-2 items-center justify-between">
-            <div className="flex items-center">
-              <Skeleton className="w-12 h-12 rounded-full mr-3" />
-              <div>
-                <Skeleton className="w-[100px] h-[20px] mb-[4px] rounded-full" />
-                <Skeleton className="w-[150px] h-[14px] rounded-full" />
-              </div>
-            </div>
-
-            {/* Right div */}
-            <div className="text-gray-400 text-sm flex gap-2 items-center">
-              <Skeleton className="w-[80px] h-[14px] rounded-full" />
+      <Skeleton className="bg-white border  rounded-sm p-1 shadow-sm">
+        <div className="flex border-b flex-row pb-2 items-center justify-between">
+          <div className="flex items-center">
+            <Skeleton className="w-12 h-12 rounded-full mr-3" />
+            <div>
+              <Skeleton className="w-[100px] h-[20px] mb-[4px] rounded-full" />
+              <Skeleton className="w-[150px] h-[14px] rounded-full" />
             </div>
           </div>
 
-          <div className="mt-4 flex flex-col gap-3">
-            <Skeleton className="w-full h-[20px]" />
-            <Skeleton className="w-full h-[100px]" />
+          {/* Right div */}
+          <div className="text-gray-400 text-sm flex gap-2 items-center">
+            <Skeleton className="w-[80px] h-[14px] rounded-full" />
           </div>
+        </div>
 
-          <div className="flex justify-between mt-3">
-            <div className="flex space-x-1 items-center">
-              <Skeleton className="w-[20px] h-[14px] rounded-full" />
-            </div>
-            <div className="flex space-x-1 items-center">
-              <Skeleton className="w-[20px] h-[14px] rounded-full" />
-            </div>
-            <div className="flex space-x-1 items-center">
-              <Skeleton className="w-[20px] h-[14px] rounded-full" />
-            </div>
+        <div className="mt-4 flex flex-col gap-3">
+          <Skeleton className="w-full h-[20px]" />
+          <Skeleton className="w-full h-[100px]" />
+        </div>
+
+        <div className="flex justify-between mt-3">
+          <div className="flex space-x-1 items-center">
+            <Skeleton className="w-[20px] h-[14px] rounded-full" />
           </div>
-
-          <div className="flex items-center justify-between text-sm text-gray-500">
-            <Badge variant={"outline"}>
-              <Skeleton className="w-[150px] h-[20px]" />
-            </Badge>
-
-            <Skeleton className="w-[250px] h-[20px]" />
-            <Skeleton className="w-[100px] h-[14px] rounded-full" />
+          <div className="flex space-x-1 items-center">
+            <Skeleton className="w-[20px] h-[14px] rounded-full" />
           </div>
-        </Skeleton>
+          <div className="flex space-x-1 items-center">
+            <Skeleton className="w-[20px] h-[14px] rounded-full" />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between text-sm text-gray-500">
+          <Badge variant={"outline"}>
+            <Skeleton className="w-[150px] h-[20px]" />
+          </Badge>
+
+          <Skeleton className="w-[250px] h-[20px]" />
+          <Skeleton className="w-[100px] h-[14px] rounded-full" />
+        </div>
+      </Skeleton>
     );
   }
 
@@ -108,11 +107,10 @@ const TweetCard: React.FC<TweetCardProps> = ({
   type result = {
     label: string;
     score: number;
-  }
+  };
 
   // @ts-ignore
   const sentimentResult = data[key]?.[0].label;
-  
 
   return (
     <Card className="bg-white border  rounded-sm p-1 ">
@@ -158,15 +156,30 @@ const TweetCard: React.FC<TweetCardProps> = ({
       <CardFooter className="flex justify-between mt-3">
         <div className="flex space-x-1 items-center">
           <FaComment size={15} className="text-gray-600" />
-          <span className="text-gray-500 text-sm">{comments.toLocaleString()}</span>
+
+          {comments && (
+            <span className="text-gray-500 text-sm">
+              {comments.toLocaleString()}
+            </span>
+          )}
         </div>
         <div className="flex space-x-1 items-center">
           <FaRetweet className="text-gray-600" />
-          <span className="text-gray-500 text-sm">{retweets.toLocaleString()}</span>
+
+          {retweets && (
+            <span className="text-gray-500 text-sm">
+              {retweets.toLocaleString()}
+            </span>
+          )}
         </div>
         <div className="flex space-x-1 items-center ">
           <FaHeart className="text-gray-600" />
-          <span className="text-gray-500 text-sm">{likes.toLocaleString()}</span>
+
+          {likes && (
+            <span className="text-gray-500 text-sm">
+              {likes.toLocaleString()}
+            </span>
+          )}
         </div>
       </CardFooter>
 
@@ -193,7 +206,9 @@ const TweetCard: React.FC<TweetCardProps> = ({
             </HoverCardContent>
           </HoverCard>
 
-          <Badge variant={'secondary'} className="hidden md:flex">{source}</Badge>
+          <Badge variant={"secondary"} className="hidden md:flex">
+            {source}
+          </Badge>
         </CardFooter>
       )}
     </Card>

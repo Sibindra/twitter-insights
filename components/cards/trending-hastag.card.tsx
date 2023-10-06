@@ -1,42 +1,42 @@
-'use client';
+"use client";
 
-import { TrendingHashtagProps, getTrendingHashtags } from "@/lib/trending-hashtag";
-import { useEffect, useState } from "react";
+import React from "react";
+import {
+  TrendingHashtagProps,
+  getTrendingHashtags,
+} from "@/lib/trending-hashtag";
+import { useQuery } from "@tanstack/react-query";
+import { Badge } from "../ui/badge";
 
 export default function TrendingHashtagCard({ woeid }: TrendingHashtagProps) {
-  const [trendinghashtagData, setTrendingHashtagData] = useState<Array<any> | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getTrendingHashtags({ woeid });
-        setTrendingHashtagData(data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchData();
-  }, [woeid]);
-
-  console.log(trendinghashtagData);
 
 
+  const { data: hashtagData, status: hashtagStatus } = useQuery({
+    queryKey: ["trending-hashtag", 1],
+    queryFn: async () => {
+      // No need to use await here
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      return getTrendingHashtags({ woeid: woeid });
+    },
+    staleTime: Infinity,
+  });
 
-  if (trendinghashtagData === null) {
-    return <p>Loading...</p>;
-  }
+  console.log(hashtagData);
 
-  // Extract trends from trendinghashtagData
-  const trends = trendinghashtagData[0]?.trends || [];
-  const hashtagName = trends[0]?.name || null;
-  const hashtagCount = trends[0]?.tweet_volume || null;
 
   return (
-    <div>
-      Name: {hashtagName}
-      <br />
-      Count: {hashtagCount}
-    </div>
+    <main className="flex flex-wrap gap-4 items-center justify-center">
+      {hashtagData && hashtagData.map((hashtag: any) => {
+        return hashtag.trends.map((trend: any) => {
+          return (
+            <div key={trend.name}>
+              <Badge variant={"outline"}>
+                <a href={trend.url}>{trend.name}</a>
+              </Badge>
+            </div>
+          );
+        });
+      })}
+    </main>
   );
 }

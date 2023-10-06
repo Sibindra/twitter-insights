@@ -1,22 +1,32 @@
-
-
 import { getSentiment } from "@/lib/sentiment";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  CartesianGrid,
+  Cell,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { GraphCardProps } from "./fav-line.graph";
 
 interface SentimentAnalysisCardProps {
   input: string[];
 }
 
-export default function SentimentAnalysisCard({
-  input,
-}: SentimentAnalysisCardProps) {
+export default function SentimentAnalysisGraph({
+  data,
+  size,
+  className,
+}: GraphCardProps) {
 
 
-  const { data, status } = useQuery({
-    queryKey: ["sentiment", input],
-    queryFn: async () => await getSentiment(input),
+  const { data:sentimentResult, status } = useQuery({
+    queryKey: ["sentiment", data],
+    queryFn: async () => await getSentiment(data),
   });
 
   if (status === "loading") {
@@ -27,30 +37,8 @@ export default function SentimentAnalysisCard({
     return <p>error</p>;
   }
 
-  type graphData = { label: string; score: number };
-
-
-  const dData = data.map((subArray) => {
-    if (!Array.isArray(subArray)) {
-      return {}; 
-    }
-  
-    const maxObject = subArray.reduce((max, obj) => {
-      if (obj.score > max.score) {
-        return obj;
-      }
-      return max;
-    }, { score: -1, label: '' });
-  
-    return { label: maxObject.label, score: maxObject.score.toFixed(4) };
-  });
-
-  
-  console.log('ddata = ',dData)
-
-
-  const result = Array.isArray(data)
-    ? data.map((subArray) => {
+  const result = Array.isArray(sentimentResult)
+    ? data.map((subArray:any) => {
         let maxScore = -1;
         let maxScoreLabel = "";
 
@@ -67,10 +55,11 @@ export default function SentimentAnalysisCard({
       })
     : [];
 
+  console.log("data  = ", data);
+  console.log("result = ", result);
+  console.log('response = ', sentimentResult)
 
-    // 0 1 2 
-
-  const sentimentData = result.map((obj) => {
+  const sentimentData = result.map((obj:any) => {
     if (obj.label === "LABEL_0") {
       obj.label = "Negative";
     } else if (obj.label === "LABEL_1") {
@@ -79,17 +68,14 @@ export default function SentimentAnalysisCard({
       obj.label = "Neutral";
     }
 
-    
-
     return obj;
   });
 
-  console.log('sentiment = ', sentimentData)
-
+  console.log("sentiment data  =", sentimentData);
 
   return (
     <div>
-      <ResponsiveContainer width={800} height={400}>
+      <ResponsiveContainer width="100%" height={size} className={className}>
         <LineChart
           width={500}
           height={300}
@@ -106,11 +92,15 @@ export default function SentimentAnalysisCard({
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line
+            type="monotone"
+            dataKey="score"
+            stroke="#8884d8"
+            activeDot={{ r: 8 }}
+          />
           <Line type="monotone" dataKey="label" stroke="#000000" />
         </LineChart>
       </ResponsiveContainer>
     </div>
   );
 }
-
