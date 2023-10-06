@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import Toast from "./toast";
+import Toast from "./landing-toast";
 
 export default function Contact() {
   const [email, setEmail] = useState("");

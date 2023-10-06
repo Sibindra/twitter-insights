@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { FaHeart, FaRetweet, FaComment } from "react-icons/fa";
 import {
   Card,
@@ -14,10 +13,12 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "../ui/hover-card";
-import { Skeleton } from "../ui/skeleton";
+} from "@/components/ui/hover-card";
+import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
 interface TweetCardProps {
+  key:number
   name: string;
   username: string;
   userImg: string;
@@ -29,10 +30,10 @@ interface TweetCardProps {
   usermedia?: string;
   source?: string;
   sentimentInput: string[];
-  index: number;
 }
 
 const TweetCard: React.FC<TweetCardProps> = ({
+  key,
   name,
   username,
   userImg,
@@ -44,7 +45,6 @@ const TweetCard: React.FC<TweetCardProps> = ({
   usermedia,
   source,
   sentimentInput,
-  index,
 }) => {
   const { data, status } = useQuery({
     queryKey: ["sentiment", sentimentInput],
@@ -54,7 +54,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
   if (status === "loading") {
     return (
       
-        <Skeleton className="bg-white border border-gray-300 rounded-sm p-1 shadow-sm">
+        <Skeleton className="bg-white border  rounded-sm p-1 shadow-sm">
           <div className="flex border-b flex-row pb-2 items-center justify-between">
             <div className="flex items-center">
               <Skeleton className="w-12 h-12 rounded-full mr-3" />
@@ -105,19 +105,28 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
   console.log(data);
 
+  type result = {
+    label: string;
+    score: number;
+  }
+
   // @ts-ignore
-  const sentimentResult = data[index]?.[0]?.label;
+  const sentimentResult = data[key]?.[0].label;
+  
 
   return (
-    <Card className="bg-white border border-gray-300 rounded-sm p-1 shadow-sm">
+    <Card className="bg-white border  rounded-sm p-1 ">
       <CardHeader className="flex border-b flex-row pb-2 items-center justify-between">
         {/* left div */}
         <div className="flex items-center">
-          <img
+          <Image
             src={userImg}
             alt={`${username}'s profile`}
-            className="w-12 h-12 rounded-full mr-3"
+            className="rounded-full mr-3"
+            width={30}
+            height={30}
           />
+
           <div>
             <p className="font-bold">{name}</p>
             <p className="font-medium text-sm text-gray-500">@{username}</p>
@@ -125,7 +134,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
         </div>
 
         {/* right div */}
-        <div className="text-gray-400 text-sm flex gap-2 items-center">
+        <div className="text-gray-400 text-sm hidden md:flex gap-2 items-center">
           <AiTwotoneCalendar />
           {new Date(date).toDateString()}
         </div>
@@ -136,9 +145,10 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
         {usermedia && (
           <div className="w-full h-64">
-            <img
+            <Image
               src={userImg}
               alt={`${username}'s profile`}
+              fill={true}
               className="w-full h-full rounded-sm"
             />
           </div>
@@ -147,16 +157,16 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
       <CardFooter className="flex justify-between mt-3">
         <div className="flex space-x-1 items-center">
-          <FaComment className="text-gray-600" />
-          <span className="text-gray-500">{comments}</span>
+          <FaComment size={15} className="text-gray-600" />
+          <span className="text-gray-500 text-sm">{comments.toLocaleString()}</span>
         </div>
         <div className="flex space-x-1 items-center">
           <FaRetweet className="text-gray-600" />
-          <span className="text-gray-500">{retweets}</span>
+          <span className="text-gray-500 text-sm">{retweets.toLocaleString()}</span>
         </div>
-        <div className="flex space-x-1 items-center">
+        <div className="flex space-x-1 items-center ">
           <FaHeart className="text-gray-600" />
-          <span className="text-gray-500">{likes}</span>
+          <span className="text-gray-500 text-sm">{likes.toLocaleString()}</span>
         </div>
       </CardFooter>
 
@@ -183,7 +193,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
             </HoverCardContent>
           </HoverCard>
 
-          <span>{source}</span>
+          <Badge variant={'secondary'} className="hidden md:flex">{source}</Badge>
         </CardFooter>
       )}
     </Card>

@@ -1,4 +1,4 @@
-import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi"; // Import the close icon BiX
+import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi"; 
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -81,14 +81,14 @@ export default function Sidebar() {
 
               <li>
                 <Link
-                  href="/dashboard/settings"
+                  href="/dashboard/form"
                   className="flex items-center p-2 rounded-none-lg hover:border-black hover:border"
                   onClick={closeSidebar}
 
                 >
                   <BiCog className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
                   <span className="flex-1 ml-3 whitespace-nowrap">
-                    Settings
+                    User Experience
                   </span>
                 </Link>
               </li>

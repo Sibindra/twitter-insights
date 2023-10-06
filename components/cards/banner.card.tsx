@@ -2,6 +2,7 @@ import { UserDataProps } from "@/lib/user-details";
 import { FaMapMarkerAlt, FaLink, FaCheckCircle } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export default function BannerCard({
   profile_banner_url,
@@ -38,11 +39,16 @@ export default function BannerCard({
       {/* User Info */}
       <div className="p-3 mt-4 md:mt-8">
         <h1 className="text-3xl font-semibold flex items-center justify-start gap-2 text-primary">
-        <img
-          src={profile_pic_url}
-          alt="Profile"
-          className=" w-15 h-15  border  rounded-full"
-        />
+          {profile_pic_url && (
+            <Image
+              src={profile_pic_url}
+              alt="Profile"
+              className=" border  rounded-full"
+              width={40}
+              height={40}
+            />
+          )}
+
           {name}
           {isVerified && (
             <span className="text-blue-500 ml-1">
@@ -51,7 +57,7 @@ export default function BannerCard({
           )}
         </h1>
         <p className="text-gray-600 text-base mt-4">
-          <Badge variant={'secondary'} className="">
+          <Badge variant={"secondary"} className="">
             @{username}
           </Badge>
         </p>

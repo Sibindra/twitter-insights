@@ -82,9 +82,9 @@ export default function Profile() {
 
           {/* map it here */}
 
-          {filteredResultTweets.map((tweet, index) => (
+          {filteredResultTweets.map((tweet, key) => (
             <TweetCard
-              index={index}
+              key={key}
               name={tweet.user.name}
               username={tweet.user.username}
               tweetText={tweet.text}
