@@ -13,8 +13,6 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Input } from "./input";
 import { Button } from "./button";
-import { useQuery } from "@tanstack/react-query";
-import { getUserDetails } from "@/lib/user-details";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
