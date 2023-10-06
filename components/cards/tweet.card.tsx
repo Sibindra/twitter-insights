@@ -15,6 +15,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "../ui/hover-card";
+import { Skeleton } from "../ui/skeleton";
 
 interface TweetCardProps {
   name: string;
@@ -51,7 +52,51 @@ const TweetCard: React.FC<TweetCardProps> = ({
   });
 
   if (status === "loading") {
-    return <p>loading ....</p>;
+    return (
+      
+        <Skeleton className="bg-white border border-gray-300 rounded-sm p-1 shadow-sm">
+          <div className="flex border-b flex-row pb-2 items-center justify-between">
+            <div className="flex items-center">
+              <Skeleton className="w-12 h-12 rounded-full mr-3" />
+              <div>
+                <Skeleton className="w-[100px] h-[20px] mb-[4px] rounded-full" />
+                <Skeleton className="w-[150px] h-[14px] rounded-full" />
+              </div>
+            </div>
+
+            {/* Right div */}
+            <div className="text-gray-400 text-sm flex gap-2 items-center">
+              <Skeleton className="w-[80px] h-[14px] rounded-full" />
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-col gap-3">
+            <Skeleton className="w-full h-[20px]" />
+            <Skeleton className="w-full h-[100px]" />
+          </div>
+
+          <div className="flex justify-between mt-3">
+            <div className="flex space-x-1 items-center">
+              <Skeleton className="w-[20px] h-[14px] rounded-full" />
+            </div>
+            <div className="flex space-x-1 items-center">
+              <Skeleton className="w-[20px] h-[14px] rounded-full" />
+            </div>
+            <div className="flex space-x-1 items-center">
+              <Skeleton className="w-[20px] h-[14px] rounded-full" />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between text-sm text-gray-500">
+            <Badge variant={"outline"}>
+              <Skeleton className="w-[150px] h-[20px]" />
+            </Badge>
+
+            <Skeleton className="w-[250px] h-[20px]" />
+            <Skeleton className="w-[100px] h-[14px] rounded-full" />
+          </div>
+        </Skeleton>
+    );
   }
 
   if (status === "error") {
@@ -129,13 +174,12 @@ const TweetCard: React.FC<TweetCardProps> = ({
             </HoverCardTrigger>
 
             <HoverCardContent>
-              Our Model Analyzes this tweet to be 
-
+              Our Model Analyzes this tweet to be
               {sentimentResult === "LABEL_1"
-                  ? " Happy and Positive Sentiment Tweet"
-                  : sentimentResult === "LABEL_0"
-                  ? " Sad Sentiment Tweet"
-                  : " Neutral Sentiment Tweet"}
+                ? " Happy and Positive Sentiment Tweet"
+                : sentimentResult === "LABEL_0"
+                ? " Sad Sentiment Tweet"
+                : " Neutral Sentiment Tweet"}
             </HoverCardContent>
           </HoverCard>
 

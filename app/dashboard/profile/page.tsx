@@ -9,6 +9,7 @@ import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
@@ -55,7 +56,11 @@ export default function Profile() {
   console.log("input = ", sentimentInput);
 
   if (userStatus === "loading") {
-    return <div>loading... followers...</div>;
+    return <div>
+      
+      <Skeleton className="w-[100px] h-[20px] rounded-full" />
+
+    </div>;
   }
 
   if (userStatus === "error") {

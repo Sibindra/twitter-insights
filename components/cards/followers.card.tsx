@@ -11,6 +11,7 @@ import {
 
 import { GoVerified } from "react-icons/go";
 import { BsPeople } from "react-icons/bs";
+import { Skeleton } from "../ui/skeleton";
 
 export interface FollowerData {
   creation_date: string;
@@ -87,7 +88,42 @@ function RecentFollowers({ data, limit }: RecentFollowersProps) {
             </div>
           ))
         ) : (
-          <p>Loading ....</p>
+          <Skeleton className="w-[100%] p-4 bg-white space-y-4">
+            <div className="flex items-center justify-between space-x-4">
+              <Skeleton className="w-[40px] h-[40px] rounded-full" />
+
+              <div>
+                <Skeleton className="w-[100px] h-[20px] mb-[8px] rounded-full" />
+
+                <Skeleton className="w-[200px] h-[16px] rounded-full" />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {Array.from({ length: limit }).map((_, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between space-x-4"
+                >
+                  {/* Skeleton for the avatar */}
+                  <Skeleton className="w-[40px] h-[40px] rounded-full" />
+
+                  <div>
+                    {/* Skeleton for the name */}
+                    <Skeleton className="w-[100px] h-[16px] mb-[4px] rounded-full" />
+
+                    {/* Skeleton for the description */}
+                    <Skeleton className="w-[200px] h-[12px] rounded-full" />
+                  </div>
+
+                  <div>
+                    {/* Skeleton for the follower count */}
+                    <Skeleton className="w-[60px] h-[20px] rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Skeleton>
         )}
       </CardContent>
     </Card>
