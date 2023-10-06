@@ -64,7 +64,7 @@ export default function Profile() {
   }
 
   if (userStatus === "error") {
-    return <div>error... Retrying....</div>;
+    return <div>error... </div>;
   }
 
   return (

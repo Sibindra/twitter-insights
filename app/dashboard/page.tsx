@@ -1,8 +1,5 @@
 "use client";
 
-import LikeRetweetPieChart from "@/components/cards/graph/likes.retweets.piechart";
-import TweetAreaGraphCard from "@/components/cards/graph/tweet.areagraph.card";
-import SentimentAnalysisCard from "@/components/cards/sentiment.card";
 import getTweets from "@/lib/tweets";
 import { useAppSelector } from "@/store/store";
 import { useQuery } from "@tanstack/react-query";

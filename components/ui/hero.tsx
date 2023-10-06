@@ -13,11 +13,14 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Input } from "./input";
 import { Button } from "./button";
+import { useQuery } from "@tanstack/react-query";
+import { getUserDetails } from "@/lib/user-details";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [usernameValidity, setUsernameValidity] = useState<boolean>(true);
+  const [usernameValidity, setUsernameValidity] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const router = useRouter();
 
@@ -28,23 +31,21 @@ export const Hero = () => {
   }, []);
 
   const handleSearch = () => {
-    const trimmedUsername = username.trim();
-  
-    // twitter username regex
-    const usernamePattern = /^[a-zA-Z][a-zA-Z0-9_\-]{0,14}$/;
-  
-    if (trimmedUsername === "" || !usernamePattern.test(trimmedUsername)) {
-      setUsernameValidity(false);
-      console.log("Invalid username");
-    } else {
+    var validate = require("twitter-validate").validate;
+
+    console.log(username);
+    console.log(validate('@'+username));
+
+    if (validate('@' + username)){
       setUsernameValidity(true);
-      console.log("Valid username");
-      
-      dispatch(setStoreUsername(trimmedUsername));
+      setMessage("");
+      dispatch(setStoreUsername(username));
       router.push("/dashboard");
+    } else{
+      setUsernameValidity(false);
+      setMessage("Please enter a valid username!");
     }
   };
-  
 
   return (
     <div id="hero">
@@ -132,7 +133,7 @@ export const Hero = () => {
 
                   {/* SEND BUTTON HERE  */}
                   <Button
-                  // COLOR HERE
+                    // COLOR HERE
                     className=" rounded-none mx-2 bg-white  hover:bg-[#FC7272] hover:text-white border-black border text-black"
                     onClick={handleSearch}
                   >
@@ -147,7 +148,7 @@ export const Hero = () => {
               </div>
             </div>
             {!usernameValidity && (
-              <p className=" text-sm text-red-500">Invalid Username Format ! </p>
+              <p className=" text-sm text-red-500">{message} </p>
             )}
           </div>
         </div>
