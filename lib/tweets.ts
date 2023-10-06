@@ -3,7 +3,7 @@ export interface TweetProps {
   username: string;
   reply: boolean;
   limit: number;
-  data?: TweetPromiseProps | { error: string }; 
+  data?: TweetPromiseProps['results'] | { error: string }; 
 }
 
 // promised output 

@@ -44,8 +44,8 @@ export default function DashboardPage() {
   });
 
 
-  // @ts-ignore
-  const sentimentInput = tweetData?.results.map((result: any) => result.text) || [];
+  const sentimentInput = (tweetData as { results?: any[] })?.results?.map((result: any) => result.text) || [];
+
 
 
   if (userStatus === "loading") {
@@ -131,7 +131,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Retweets</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                {userData.name}'s retweets performance over a recent time frame
+                 retweets performance over a recent time frame
               </CardDescription>
             </CardHeader>
 
@@ -144,7 +144,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Tweet Performance </CardTitle>
               <CardDescription className="text-center lg:text-left">
-                {userData.name}'s retweets performance over a recent time frame
+                 retweets performance over a recent time frame
                 in a bar graph
               </CardDescription>
             </CardHeader>
@@ -158,7 +158,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Tweet Performance </CardTitle>
               <CardDescription className="text-center lg:text-left">
-                {userData.name}'s retweets i.e. Social Reach over a recent time
+                retweets i.e. Social Reach over a recent time
               </CardDescription>
             </CardHeader>
 
@@ -171,7 +171,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Sentiment</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                {userData.name}'s Recent Sentiment from most recent tweets
+                 Recent Sentiment from most recent tweets
               </CardDescription>
             </CardHeader>
 

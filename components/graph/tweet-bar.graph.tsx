@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { GraphCardProps } from "./fav-line.graph";
+import { GraphCardProps } from "./tweet-area.graph";
 
 export default function TweetBarGraphCard({
   size,
