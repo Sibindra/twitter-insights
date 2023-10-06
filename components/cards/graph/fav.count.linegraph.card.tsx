@@ -13,8 +13,8 @@ import {
 
 
 export interface GraphCardProps {
-  width: number | string;
-  height: number | string;
+  width: number ;
+  height: number ;
   data: TweetPromiseProps;
   className?: string;
 }

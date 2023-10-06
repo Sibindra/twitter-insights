@@ -1,67 +1,71 @@
 "use client";
 import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { UserDataProps, UserPromiseProps, getUserDetails } from "@/lib/user-details";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { PieChart, Pie } from "recharts";
 
 export default function LikeRetweetPieChart({ username, reply, limit }: TweetProps) {
-  const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
+  // const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const {data , status} = useQuery<UserDataProps>({
-    queryKey: ["user-details", username],
-    queryFn: () => getUserDetails({username}),
+  const { data: tweetData, status: tweetStatus } = useQuery({
+    queryKey: ["tweets", username],
+    queryFn: async () => {
+      // await new Promise((resolve) => setTimeout(resolve, 10000));
+      return await getTweets({ username: username, limit: 1, reply: false });
+    },
   });
 
-  if (status === "loading") {
+
+  if (tweetStatus === "loading") {
     return <div>loading...</div>;
   }
 
 
-  if (status === "error") {
+  if (tweetStatus=== "error") {
     return <div>error</div>;
   }
 
-  console.log(data)
 
 
-  const results = tweetData?.results || [];
-  const views=results[0]?.views || null;
-  const retweetCount=results[0]?.retweet_count || null;
-  const favorite_count=results[0]?.favorite_count || null;
+  console.log('results = ' , tweetData)
+
+  const resultTweets = (tweetData as TweetPromiseProps)?.results || [];
+
+  const data = resultTweets.map((result) => ({
+    name: result.creation_date,
+    views: result.views,
+    retweetCount: result.retweet_count,
+  }));
 
 
-  // console.log(results);
+  console.log('data = ',data)
 
-  // const data = results.map((result) => ({
+  // const data1 = results.map((result) => ({
   //   name: result.creation_date,
   //   views: result.views,
-  //   retweetCount: result.retweet_count,
+  //   favorite_count: result.favorite_count,
+
   // }));
 
-//   const data1 = results.map((result) => ({
-//     name: result.creation_date,
-//     views: result.views,
-//     favorite_count: result.favorite_count,
+// const data01 =[
+//     {Name:"liked",value:data.},
+//     {Name:"not liked",value:(views-favorite_count)}
+// ];
 
-//   }));
+// const data02 =[
+//     {Name:"retweeted",value:retweetCount},
+//     {Name:"not retweeted",value:(views-retweetCount)}
+// ];
 
-const data01 =[
-    {Name:"liked",value:favorite_count},
-    {Name:"not liked",value:(views-favorite_count)}
-];
 
-const data02 =[
-    {Name:"retweeted",value:retweetCount},
-    {Name:"not retweeted",value:(views-retweetCount)}
-];
-console.log(data01);
+// console.log(data01);
   
  
   return (
     <div className="border-black border m-4  p-20">
-    <PieChart width={400} height={400}>
+    {/* <PieChart width={400} height={400}>
       <Pie
         data={data01}
         dataKey="value"
@@ -80,7 +84,7 @@ console.log(data01);
         fill="#82ca9d"
         label
       />
-    </PieChart>
+    </PieChart> */}
  
     </div>
   );

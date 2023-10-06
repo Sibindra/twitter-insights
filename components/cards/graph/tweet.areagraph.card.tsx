@@ -5,41 +5,13 @@ import { useEffect, useState } from "react";
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { GraphCardProps } from "./fav.count.linegraph.card";
+import { useAppSelector } from "@/store/store";
+import { useQuery } from "@tanstack/react-query";
 
 
 export default function TweetAreaGraphCard({ width, height, data,className}: GraphCardProps) {
-  // const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
-  // const [error, setError] = useState<string | null>(null);
-
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await getTweets({ username, reply, limit });
-  //       setTweetData(data);
-  //       setError(null);
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //       setError(
-  //         "An error occurred while fetching data. Please try again later."
-  //       );
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [username, reply, limit]);
-
-  // if (error) {
-  //   return <p>Error: {error}</p>;
-  // }
-
-  // if (!tweetData) {
-  //   return <p>Loading...</p>;
-  // }
 
   const results = data?.results || [];
-
-  // console.log(results);
 
   const graph_data = results.map((result) => ({
     name: result.creation_date,
@@ -50,10 +22,10 @@ export default function TweetAreaGraphCard({ width, height, data,className}: Gra
   
   console.log(data);
   return (
-    <Card className="border-black border m-4  p-20">
+    <Card className={className}>
       <AreaChart
-        width={800}
-        height={500}
+        width={width}
+        height={height}
         data={graph_data}
         margin={{
           top: 5,
