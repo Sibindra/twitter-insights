@@ -4,14 +4,42 @@ import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
 import { useEffect, useState } from "react";
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { GraphCardProps } from "./fav.count.linegraph.card";
-import { useAppSelector } from "@/store/store";
-import { useQuery } from "@tanstack/react-query";
+// import { GraphCardProps } from "./fav.count.linegraph.card";
 
 
-export default function TweetAreaGraphCard({ width, height, data,className}: GraphCardProps) {
+export default function TweetAreaGraphCard({ username, reply, limit}: TweetProps) {
+  const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const results = data?.results || [];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getTweets({ username, reply, limit });
+        setTweetData(data);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError(
+          "An error occurred while fetching data. Please try again later."
+        );
+      }
+    };
+
+    fetchData();
+  }, [username, reply, limit]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  if (!tweetData) {
+    return <p>Loading...</p>;
+  }
+
+  const results = tweetData?.results || [];
+
+  console.log(results);
 
   const graph_data = results.map((result) => ({
     name: result.creation_date,
@@ -20,7 +48,7 @@ export default function TweetAreaGraphCard({ width, height, data,className}: Gra
     reply_count:result.reply_count,
   }));
   
-  console.log(data);
+  // console.log(data);
   return (
     <Card className={className}>
       <AreaChart

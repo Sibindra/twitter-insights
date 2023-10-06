@@ -28,7 +28,9 @@ interface HuggingFaceApiResponse {
 //   }
 // }
 
+
 export async function getSentiment(input: string[]): Promise<[string, number]> {
+
   const response = await fetch(
     "https://api-inference.huggingface.co/models/dpkrm/NepaliSentimentAnalysis",
     {
@@ -42,3 +44,5 @@ export async function getSentiment(input: string[]): Promise<[string, number]> {
   const result = await response.json();
   return result;
 }
+
+
