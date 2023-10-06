@@ -18,23 +18,31 @@ export default function BannerCard({
   return (
     <Card className="w-full max-w-2xl mx-auto rounded-sm p-2 shadow-sm ">
       {/* Cover Photo */}
-      <div
-        className="bg-cover bg-center h-48 md:h-64 rounded-none"
-        style={{ backgroundImage: `url(${profile_banner_url})` }}
-      ></div>
+
+      {profile_banner_url ? (
+        <div
+          className="bg-cover bg-center h-48 md:h-64 rounded-none"
+          style={{ backgroundImage: `url(${profile_banner_url})` }}
+        />
+      ) : (
+        <div className="bg-cover bg-center h-48 md:h-64 rounded-none border flex items-center justify-center">
+          <Badge variant={"destructive"}>No Banner Img </Badge>
+        </div>
+      )}
 
       {/* Profile Picture */}
-      <div className="relative -mt-20 md:-mt-32 mx-4 md:mx-0">
-        <img
-          src={profile_pic_url}
-          alt="Profile"
-          className="w-24 h-24 md:w-32 md:h-32 border-4 border-blue-400 rounded-full"
-        />
-      </div>
+      {/* <div className="relative -mt-20 md:-mt-32 mx-4 md:mx-0">
+        
+      </div> */}
 
       {/* User Info */}
       <div className="p-3 mt-4 md:mt-8">
         <h1 className="text-3xl font-semibold flex items-center justify-start gap-2 text-primary">
+        <img
+          src={profile_pic_url}
+          alt="Profile"
+          className=" w-15 h-15  border  rounded-full"
+        />
           {name}
           {isVerified && (
             <span className="text-blue-500 ml-1">
@@ -43,7 +51,7 @@ export default function BannerCard({
           )}
         </h1>
         <p className="text-gray-600 text-base mt-4">
-          <Badge variant={"secondary"} className=" rounded-sm p-1">
+          <Badge variant={'secondary'} className="">
             @{username}
           </Badge>
         </p>

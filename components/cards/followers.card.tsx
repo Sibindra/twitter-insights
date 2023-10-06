@@ -35,7 +35,7 @@ export interface RecentFollowersProps {
   limit: number;
 }
 
-function RecentFollowers({ data , limit }: RecentFollowersProps) {
+function RecentFollowers({ data, limit }: RecentFollowersProps) {
   return (
     <Card>
       <CardHeader>
@@ -73,15 +73,15 @@ function RecentFollowers({ data , limit }: RecentFollowersProps) {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-muted-foreground w-64 truncate">
+                  <p className="text-sm text-muted-foreground  lg:w-64 md:truncate whitespace-normal">
                     {item.description}
                   </p>
                 </div>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground flex items-center gap-4">
+                <p className="hidden md:flex text-sm text-muted-foreground items-center gap-4">
                   {item.follower_count.toLocaleString()}
-                  <BsPeople size={20} />{" "}
+                  <BsPeople size={20} />
                 </p>
               </div>
             </div>

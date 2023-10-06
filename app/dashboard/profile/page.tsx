@@ -9,38 +9,50 @@ import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
-import { useState } from "react";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
 
+  // user details
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails({ username }),
+    // FIX THIS
+    staleTime: Infinity,
   });
 
   const user_id = userData?.user_id as number;
 
+  // followers details
   const { data: followerData, status: followerStatus } = useQuery({
     queryKey: ["followers", user_id],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 5000));
       return await getUsersFollowers({ user_id: user_id, limit: 1 });
     },
+
     staleTime: Infinity,
   });
 
+  // tweets details
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 10000));
       return await getTweets({ username: username, limit: 3, reply: true });
     },
+
+    staleTime: Infinity,
   });
 
   const resultTweets = (tweetData as TweetPromiseProps)?.results || [];
+  // filerting limit
+  const filteredResultTweets = resultTweets.slice(0, 3);
 
-  console.log("tweet result = ", resultTweets);
+  const sentimentInput = filteredResultTweets.map((tweet) => tweet.text);
+
+
+  console.log("input = ", sentimentInput);
 
   if (userStatus === "loading") {
     return <div>loading... followers...</div>;
@@ -65,8 +77,9 @@ export default function Profile() {
 
           {/* map it here */}
 
-          {resultTweets.map((tweet) => (
+          {filteredResultTweets.map((tweet, index) => (
             <TweetCard
+              index={index}
               name={tweet.user.name}
               username={tweet.user.username}
               tweetText={tweet.text}
@@ -74,23 +87,12 @@ export default function Profile() {
               retweets={tweet.retweet_count}
               likes={tweet.favorite_count}
               date={tweet.creation_date}
-              userImg={tweet.user.profile_pic_url
-              }
+              userImg={tweet.user.profile_pic_url}
               usermedia={tweet.media_url}
+              source={tweet.source}
+              sentimentInput={sentimentInput}
             />
           ))}
-          {/* <TweetCard
-            name={"Elon Musk"}
-            username={"elonmusk"}
-            date="27 Jan 2020 5.07am EST"
-            userImg={
-              "https://images.unsplash.com/photo-1682686580036-b5e25932ce9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3175&q=80"
-            }
-            tweetText={"this is a test tweet text 😱"}
-            comments={10}
-            retweets={50}
-            likes={500}
-          /> */}
         </div>
       </div>
 

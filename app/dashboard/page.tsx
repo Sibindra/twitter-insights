@@ -11,8 +11,6 @@ export default function Dashboard() {
   // controllers
   const username = useAppSelector((state) => state.username.username);
 
-
-
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
     queryFn: async () => {
@@ -21,18 +19,18 @@ export default function Dashboard() {
     },
   });
 
-
-
-  return <>
-
-  {/* {
+  return (
+    <>
+      {/* {
     tweetData &&
 
     <TweetAreaGraphCard width={600} height={500} data={tweetData} className={'border m-5'}/>
 
   } */}
 
-
-  <LikeRetweetPieChart username={username} reply={false} limit={1}/>
-  </>;
+      {/* <SentimentAnalysisCard
+        input={["text ", "ma bhat jhanna", "तिमि नराम्रो हो"]}
+      /> */}
+    </>
+  );
 }

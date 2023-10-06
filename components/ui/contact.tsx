@@ -98,7 +98,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <button
-                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-primary hover:text-black text-black border-black rounded-none"
+                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#FC7272] hover:text-white text-black border-black rounded-none ml-2"
                     disabled={isSubmitting}
                   >
                     <span>Subscribe</span>
