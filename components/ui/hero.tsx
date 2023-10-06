@@ -132,7 +132,8 @@ export const Hero = () => {
 
                   {/* SEND BUTTON HERE  */}
                   <Button
-                    className=" rounded-none mx-2 bg-white hover:bg-primary border-black border text-black"
+                  // COLOR HERE
+                    className=" rounded-none mx-2 bg-white hover:bg-[#....] border-black border text-black"
                     onClick={handleSearch}
                   >
                     <Link href="#">
