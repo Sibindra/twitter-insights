@@ -88,7 +88,7 @@ export default function Sidebar() {
                 >
                   <BiCog className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
                   <span className="flex-1 ml-3 whitespace-nowrap">
-                    User Experience
+                    Prefrences
                   </span>
                 </Link>
               </li>
