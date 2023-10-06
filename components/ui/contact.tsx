@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import Toast from "./landing-toast";
+import Toast from "@/components/ui/landing-toast";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -98,7 +98,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <button
-                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#FC7272] hover:text-white text-black border-black rounded-none ml-2"
+                    className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#FC7272] hover:text-white text-black border-black rounded-none md:ml-2"
                     disabled={isSubmitting}
                   >
                     <span>Subscribe</span>

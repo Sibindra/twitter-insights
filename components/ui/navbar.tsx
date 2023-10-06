@@ -82,7 +82,7 @@ export default function Navbar() {
                     duration={500}
                     className="text-black transition cursor-pointer"
                   >
-                    contact us
+                    Newsletter
                   </Link>
                 </li>
               </ul>
