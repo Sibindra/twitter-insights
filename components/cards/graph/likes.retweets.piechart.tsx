@@ -9,33 +9,6 @@ export default function LikeRetweetPieChart({ username, reply, limit }: TweetPro
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await getTweets({ username, reply, limit });
-  //       setTweetData(data);
-  //       setError(null);
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //       setError(
-  //         "An error occurred while fetching data. Please try again later."
-  //       );
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [username, reply, limit]);
-  // console.log("a",tweetData)
-
-  // if (error) {
-  //   return <p>Error: {error}</p>;
-  // }
-
-  // if (!tweetData) {
-  //   return <p>Loading...</p>;
-  // }
-
   const {data , status} = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: () => getUserDetails({username}),

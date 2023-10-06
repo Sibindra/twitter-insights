@@ -1,7 +1,5 @@
 "use client";
 import { Card } from "@/components/ui/card";
-import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/tweets";
-import { useEffect, useState } from "react";
 import {
   CartesianGrid,
   Legend,

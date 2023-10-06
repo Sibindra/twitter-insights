@@ -8,6 +8,8 @@ import BannerCard from "@/components/cards/banner.card";
 import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
+import getTweets, { TweetPromiseProps } from "@/lib/tweets";
+import { useState } from "react";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
@@ -22,11 +24,23 @@ export default function Profile() {
   const { data: followerData, status: followerStatus } = useQuery({
     queryKey: ["followers", user_id],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 5000)); // delay for 5 seconds
+      await new Promise((resolve) => setTimeout(resolve, 5000));
       return await getUsersFollowers({ user_id: user_id, limit: 1 });
     },
     staleTime: Infinity,
   });
+
+  const { data: tweetData, status: tweetStatus } = useQuery({
+    queryKey: ["tweets", username],
+    queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 10000));
+      return await getTweets({ username: username, limit: 3, reply: true });
+    },
+  });
+
+  const resultTweets = (tweetData as TweetPromiseProps)?.results || [];
+
+  console.log("tweet result = ", resultTweets);
 
   if (userStatus === "loading") {
     return <div>loading... followers...</div>;
@@ -45,19 +59,39 @@ export default function Profile() {
 
         {/* TWEETS */}
         <div className="flex flex-col p-5 gap-2 border bg-white ">
+          <h3 className=" text-lg font-bold">Most Recent Tweets</h3>
 
-         
-         <h3 className=" text-lg font-bold">
-          Most Recent Tweets 
+          {/* TODO: 3 for test need to map tweets data here  */}
 
-         </h3>
+          {/* map it here */}
 
-         {/* TODO: 3 for test need to map tweets data here  */}
-        <TweetCard name={'Elon Musk'} username={"elonmusk"} date="27 Jan 2020 5.07am EST" userImg={"https://images.unsplash.com/photo-1682686580036-b5e25932ce9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3175&q=80"} tweetText={"this is a test tweet text 😱"} comments={10} retweets={50} likes={500} />
-        <TweetCard name={'Elon Musk'} username={"elonmusk"} date="27 Jan 2020 5.07am EST" userImg={"https://images.unsplash.com/photo-1682686580036-b5e25932ce9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3175&q=80"} tweetText={"this is a test tweet text 😱"} comments={10} retweets={50} likes={500} />
-        <TweetCard name={'Elon Musk'} username={"elonmusk"} date="27 Jan 2020 5.07am EST" userImg={"https://images.unsplash.com/photo-1682686580036-b5e25932ce9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3175&q=80"} tweetText={"this is a test tweet text 😱"} comments={10} retweets={50} likes={500} />
+          {resultTweets.map((tweet) => (
+            <TweetCard
+              name={tweet.user.name}
+              username={tweet.user.username}
+              tweetText={tweet.text}
+              comments={tweet.reply_count}
+              retweets={tweet.retweet_count}
+              likes={tweet.favorite_count}
+              date={tweet.creation_date}
+              userImg={tweet.user.profile_pic_url
+              }
+              usermedia={tweet.media_url}
+            />
+          ))}
+          {/* <TweetCard
+            name={"Elon Musk"}
+            username={"elonmusk"}
+            date="27 Jan 2020 5.07am EST"
+            userImg={
+              "https://images.unsplash.com/photo-1682686580036-b5e25932ce9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3175&q=80"
+            }
+            tweetText={"this is a test tweet text 😱"}
+            comments={10}
+            retweets={50}
+            likes={500}
+          /> */}
         </div>
-
       </div>
 
       {/* right container */}

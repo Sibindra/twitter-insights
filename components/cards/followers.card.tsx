@@ -36,7 +36,6 @@ export interface RecentFollowersProps {
 }
 
 function RecentFollowers({ data , limit }: RecentFollowersProps) {
-
   return (
     <Card>
       <CardHeader>
