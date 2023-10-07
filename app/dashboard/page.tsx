@@ -20,8 +20,21 @@ import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
 import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
+import LoadingPage from "@/components/loading-page";
+import ErrorPage from "@/components/error.page";
+import { useRef } from "react";
+import ReactToPrint from "react-to-print";
 
 export default function DashboardPage() {
+  const componentRef: any = useRef();
+
+  // function onDownload(){
+
+  //   const dashboard = document.getElementById("page");
+  //   // console.log("download");
+  //   window.print();
+  // }
+
   const username = useAppSelector((state) => state.username.username);
 
   // user details
@@ -31,7 +44,6 @@ export default function DashboardPage() {
     // FIX THIS
     staleTime: Infinity,
   });
-
 
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
@@ -43,26 +55,34 @@ export default function DashboardPage() {
     staleTime: Infinity,
   });
 
-
-  const sentimentInput = (tweetData as { results?: any[] })?.results?.map((result: any) => result.text) || [];
-
-
+  const sentimentInput =
+    (tweetData as { results?: any[] })?.results?.map(
+      (result: any) => result.text
+    ) || [];
 
   if (userStatus === "loading") {
-    return <div>loading...</div>;
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
   }
 
   if (userStatus === "error") {
-    return <div>error... </div>;
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    );
   }
 
   return (
-    <div className="hidden flex-col md:flex">
+    <div className="hidden flex-col md:flex" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <MainNav className="mx-6" />
           <div className="ml-auto flex items-center space-x-4">
-            <UserNav img_url={userData.profile_pic_url} Name={userData.name}/>
+            <UserNav img_url={userData.profile_pic_url} Name={userData.name} />
           </div>
         </div>
       </div>
@@ -70,7 +90,10 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
           <div className="flex items-center space-x-2">
-            <Button>Download</Button>
+            <ReactToPrint
+              trigger={() => <Button>Download</Button>}
+              content={() => componentRef.current}
+            />
           </div>
         </div>
 
@@ -131,7 +154,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Retweets</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                 retweets performance over a recent time frame
+                retweets performance over a recent time frame
               </CardDescription>
             </CardHeader>
 
@@ -144,8 +167,7 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Tweet Performance </CardTitle>
               <CardDescription className="text-center lg:text-left">
-                 retweets performance over a recent time frame
-                in a bar graph
+                retweets performance over a recent time frame in a bar graph
               </CardDescription>
             </CardHeader>
 
@@ -163,7 +185,7 @@ export default function DashboardPage() {
             </CardHeader>
 
             <CardContent className="pl-2">
-              <TweetAreaGraphCard size={500}  data={tweetData}/>
+              <TweetAreaGraphCard size={500} data={tweetData} />
             </CardContent>
           </Card>
 
@@ -171,12 +193,12 @@ export default function DashboardPage() {
             <CardHeader>
               <CardTitle>Sentiment</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                 Recent Sentiment from most recent tweets
+                Recent Sentiment from most recent tweets
               </CardDescription>
             </CardHeader>
 
             <CardContent className="pl-2">
-              <SentimentAreaGraph input={sentimentInput} size={500}/>
+              <SentimentAreaGraph input={sentimentInput} size={500} />
             </CardContent>
           </Card>
 
@@ -191,7 +213,7 @@ export default function DashboardPage() {
             <CardContent className="pl-2">
               {/* <FavCountAreaGraph size={500} data={tweetData} /> */}
               {/* @ts-ignore */}
-              <FavCountBarGraph size={400} data={tweetData}/>
+              <FavCountBarGraph size={400} data={tweetData} />
             </CardContent>
           </Card>
 
@@ -208,9 +230,6 @@ export default function DashboardPage() {
               {<TrendingHashtagCard woeid={1} />}
             </CardContent>
           </Card>
-
-
-        
         </div>
       </div>
     </div>

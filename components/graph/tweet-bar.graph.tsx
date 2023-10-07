@@ -52,7 +52,7 @@ export default function TweetBarGraphCard({
   };
 
   return (
-    <ResponsiveContainer width="100%" height={size}>
+    <ResponsiveContainer width="100%" height={size} className={className}>
     <BarChart
       data={graph_data}
       margin={{ top: 20, right: 30, left: 20, bottom: 20 }}

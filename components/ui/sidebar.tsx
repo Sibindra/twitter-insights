@@ -1,4 +1,4 @@
-import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi"; 
+import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -8,6 +8,7 @@ export default function Sidebar() {
 
   const checkScreen = () => {
     window.innerWidth < 640 ? setSidebarOpen(false) : setSidebarOpen(true);
+    console.log("toggled");
   };
 
   const toggleSidebar = () => {
@@ -21,7 +22,9 @@ export default function Sidebar() {
   }, []);
 
   const closeSidebar = () => {
-    window.innerWidth < 640 ? setSidebarOpen(false): (null)
+    if (window.innerWidth < 640) {
+      setSidebarOpen(false);
+    }
   };
 
   return (
@@ -51,7 +54,7 @@ export default function Sidebar() {
       {sidebarOpen && (
         <aside
           id="default-sidebar"
-          className="h-screen w-screen transform transition-transform duration-300 ease-in-out border-r"
+          className="h-screen  lg:w-screen transform transition-transform duration-300 ease-in-out border-r"
           aria-label="Sidebar"
         >
           <div className="h-full px-3 py-4 overflow-y-auto bg-gray-5 lg:w-1/6">
@@ -72,7 +75,6 @@ export default function Sidebar() {
                   href="/dashboard/profile"
                   className="flex items-center p-2 rounded-none-lg hover:border-black hover:border"
                   onClick={closeSidebar}
-
                 >
                   <BiUser className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
                   <span className="flex-1 ml-3 whitespace-nowrap">Profile</span>
@@ -84,7 +86,6 @@ export default function Sidebar() {
                   href="/dashboard/form"
                   className="flex items-center p-2 rounded-none-lg hover:border-black hover:border"
                   onClick={closeSidebar}
-
                 >
                   <BiCog className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
                   <span className="flex-1 ml-3 whitespace-nowrap">

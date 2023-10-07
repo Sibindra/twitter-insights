@@ -9,6 +9,8 @@ import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
+import ErrorPage from "@/components/error.page";
+import LoadingPage from "@/components/loading-page";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);
@@ -17,8 +19,6 @@ export default function Profile() {
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails({ username }),
-    // FIX THIS
-    staleTime: Infinity,
   });
 
   const user_id = userData?.user_id as number;
@@ -42,7 +42,6 @@ export default function Profile() {
       return await getTweets({ username: username, limit: 3, reply: true });
     },
 
-    staleTime: Infinity,
   });
 
   const resultTweets = (tweetData as TweetPromiseProps)?.results || [];
@@ -54,11 +53,17 @@ export default function Profile() {
   console.log("input = ", sentimentInput);
 
   if (userStatus === "loading") {
-    return <div>loading...</div>;
+    return <div>
+      
+      <LoadingPage/>
+    </div>;
   }
 
   if (userStatus === "error") {
-    return <div>error... </div>;
+    return <div>
+
+      <ErrorPage/>
+    </div>;
   }
 
   return (

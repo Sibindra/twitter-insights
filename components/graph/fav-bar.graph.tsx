@@ -42,7 +42,6 @@ export default function FavCountBarGraph({
   // @ts-ignore
   const results = data?.results || [];
 
-  console.log("results = ", results);
 
   const Favdata = results.map((result: any) => ({
     name: formatDate(result.creation_date),
@@ -103,7 +102,6 @@ export default function FavCountBarGraph({
         <Legend />
         <Tooltip  content={<CustomTooltip/>}/>
 
-        {/* Use your custom TriangleBar component here for the custom shape */}
         <Bar
           dataKey="favorite_count"
           fill="#ffc658"
