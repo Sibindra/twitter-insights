@@ -77,7 +77,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="hidden flex-col md:flex" ref={componentRef}>
+    <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
           <MainNav className="mx-6" />
