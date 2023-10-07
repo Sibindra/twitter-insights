@@ -59,7 +59,7 @@ export default function Profile() {
     </div>;
   }
 
-  if (userStatus === "error") {
+  if (userStatus === "error" || !userData) {
     return <div>
 
       <ErrorPage/>

@@ -1,8 +1,8 @@
+'use client'
 import { UserDataProps } from "@/lib/user-details";
 import { FaMapMarkerAlt, FaLink, FaCheckCircle } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 
 export default function BannerCard({
   profile_banner_url,
@@ -31,24 +31,17 @@ export default function BannerCard({
         </div>
       )}
 
-      {/* Profile Picture */}
-      {/* <div className="relative -mt-20 md:-mt-32 mx-4 md:mx-0">
-        
-      </div> */}
-
       {/* User Info */}
-      <div className="p-3 mt-4 md:mt-8">
-        <h1 className="text-3xl font-semibold flex items-center justify-start gap-2 ">
-          {profile_pic_url && (
-            <Image
-              src={profile_pic_url}
-              alt="Profile"
-              className=" border  rounded-full"
-              width={40}
-              height={40}
-            />
-          )}
+      <div className="p-3 mt-4 md:mt-8 ">
+        {profile_pic_url && (
+        //    <Avatar>
 
+        //    <AvatarImage src={profile_pic_url} className="w-10 h-10 object-cover rounded-full"/>
+        //  </Avatar>
+
+        <img src={profile_pic_url} alt="not found" className=" w-10 h-10 rounded-full" />
+        )}
+        <h1 className="text-3xl font-semibold flex items-center justify-start gap-2">
           {name}
           {isVerified && (
             <span className="text-blue-500 ml-1">
@@ -56,6 +49,7 @@ export default function BannerCard({
             </span>
           )}
         </h1>
+
         <p className="text-gray-600 text-base mt-4">
           <Badge variant={"secondary"} className="">
             @{username}

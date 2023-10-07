@@ -42,7 +42,6 @@ const TweetCard: React.FC<TweetCardProps> = ({
   retweets,
   likes,
   date,
-  usermedia,
   source,
   sentimentInput,
 }) => {
@@ -140,17 +139,6 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
       <CardContent className=" mt-4 flex flex-col gap-3">
         <p className=" text-lg">{tweetText}</p>
-
-        {usermedia && (
-          <div className="w-full h-64">
-            <Image
-              src={userImg}
-              alt={`${username}'s profile`}
-              fill={true}
-              className="w-full h-full rounded-sm"
-            />
-          </div>
-        )}
       </CardContent>
 
       <CardFooter className="flex justify-between mt-3">

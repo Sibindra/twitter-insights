@@ -6,7 +6,7 @@ export default function ErrorPage() {
   return (
     <main className="flex w-full h-screen border items-center justify-center flex-col gap-5">
       <h1 className=" text-2xl font-bold">
-        SORRY SOMETHING WENT WRONG REFRESH
+        SORRY SOMETHING WENT WRONG 404 ERROR
       </h1>
 
       <p
@@ -16,7 +16,7 @@ export default function ErrorPage() {
         Go back
       </p>
 
-      <div className=" w-64 h-64">
+      <div className=" w-64 h-64 flex justify-center items-center">
         <Comment
           visible={true}
           height="80"

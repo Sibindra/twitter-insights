@@ -125,7 +125,7 @@ export function ExperienceForm() {
 
         <Button
           type="submit"
-          className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#FC7272] hover:text-white text-black border-black rounded-none "
+          className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#9a97ecf2] hover:text-white text-black border-black rounded-none "
         >
           Submit{" "}
         </Button>

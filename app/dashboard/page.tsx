@@ -91,7 +91,7 @@ export default function DashboardPage() {
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
           <div className="flex items-center space-x-2">
             <ReactToPrint
-              trigger={() => <Button>Download</Button>}
+              trigger={() => <Button className=" bg-[#8784D8] hover:bg-[#9a97ecf2]">Download</Button>}
               content={() => componentRef.current}
             />
           </div>
