@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -10,8 +10,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
+import LoadingPage from '../loading-page';
 
-// Define your custom shape function
 const getPath = (x: number, y: number, width: number, height: number) => {
   return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
     ${x + width / 2}, ${y}
@@ -19,7 +19,6 @@ const getPath = (x: number, y: number, width: number, height: number) => {
     Z`;
 };
 
-// Define your custom bar component
 const TriangleBar = (props: any) => {
   const { fill, x, y, width, height } = props;
 
@@ -28,7 +27,7 @@ const TriangleBar = (props: any) => {
 
 interface FavCountBarGraphProps {
   size: number;
-  data: any[]; // Your data structure, replace 'any' with the actual data type
+  data: any[]; 
   className?: string;
 }
 
@@ -37,6 +36,9 @@ export default function FavCountBarGraph({
   data,
   className,
 }: FavCountBarGraphProps) {
+
+ 
+
 
 
   // @ts-ignore
@@ -100,8 +102,8 @@ export default function FavCountBarGraph({
           tickFormatter={(value: number) => `${value}`}
         />
         <Legend />
-        <Tooltip  content={<CustomTooltip/>}/>
-
+        <Tooltip content={<CustomTooltip />} />
+  
         <Bar
           dataKey="favorite_count"
           fill="#ffc658"
@@ -117,4 +119,5 @@ export default function FavCountBarGraph({
       </BarChart>
     </ResponsiveContainer>
   );
+  
 }

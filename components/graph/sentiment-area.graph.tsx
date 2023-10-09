@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { Dna } from "react-loader-spinner";
 import GraphLoader from "../graph-loader";
 
 // Custom Tooltip Component
@@ -40,6 +39,9 @@ export default function SentimentAreaGraph({
   size: number;
   className?: string;
 }) {
+
+
+  
   const { data, status } = useQuery({
     queryKey: ["sentiment", input],
 

@@ -22,18 +22,22 @@ import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 import LoadingPage from "@/components/loading-page";
 import ErrorPage from "@/components/error.page";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 
 export default function DashboardPage() {
+
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 7000); 
+  }, []);
+
+  
   const componentRef: any = useRef();
-
-  // function onDownload(){
-
-  //   const dashboard = document.getElementById("page");
-  //   // console.log("download");
-  //   window.print();
-  // }
 
   const username = useAppSelector((state) => state.username.username);
 
@@ -63,7 +67,7 @@ export default function DashboardPage() {
   if (userStatus === "loading") {
     return (
       <div>
-        <LoadingPage />
+        
       </div>
     );
   }
@@ -76,7 +80,9 @@ export default function DashboardPage() {
     );
   }
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
