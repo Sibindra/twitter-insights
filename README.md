@@ -35,4 +35,4 @@ The backend model uses the following model: [hugging-face](https://huggingface.c
 
 ## Documentation
 
-Official Documentation for I-NEPAL can be found [here](https://github.com/Aananda-git/Documentation-of-Insights-Nepal).
+Official Documentation and Reprt for I-NEPAL can be found [here](https://github.com/Aananda-git/Documentation-of-Insights-Nepal).
