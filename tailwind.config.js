@@ -16,6 +16,10 @@ module.exports = {
       },
     },
     extend: {
+
+      backgroundImage: {
+        'hero-pattern' : "url('/public/images/bg-pattern.svg')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -23,7 +27,7 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#BBA8FF",
+          DEFAULT: "#CBFF35",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
