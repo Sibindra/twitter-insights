@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import LoadingPage from '../loading-page';
+import LoadingPage from '../message-pages/loading-page';
 
 const getPath = (x: number, y: number, width: number, height: number) => {
   return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}

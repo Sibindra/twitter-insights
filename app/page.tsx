@@ -1,14 +1,15 @@
 "use client";
 
-import Container from "@/components/container";
+import Features from "@/components/features";
 import Home from "@/components/home";
 
-const frequestUsernames = ["@elonmusk", "@iamsrk", "@brb1914", "@imVkohli"];
+const frequestUsernames = ["@elonmusk", "@iamsrk", "@brb1914", "@imVkohli" , "@ESPNFC"];
 
 export default function Main() {
   return (
-    <Container>
+    <main>
       <Home frequestUsernames={frequestUsernames} />
-    </Container>
+      <Features/>
+    </main>
   );
 }

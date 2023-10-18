@@ -20,8 +20,8 @@ import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
 import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
-import LoadingPage from "@/components/loading-page";
-import ErrorPage from "@/components/error.page";
+import LoadingPage from "@/components/message-pages/loading-page";
+import ErrorPage from "@/components/message-pages/error.page";
 import { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 

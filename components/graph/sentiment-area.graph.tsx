@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import GraphLoader from "../graph-loader";
+import GraphLoader from "../loaders/graph-loader";
 
 // Custom Tooltip Component
 interface CustomTooltipProps {

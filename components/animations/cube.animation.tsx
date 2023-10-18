@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import cubeAnimationData from "@/public/assets/animations/animation_lntsqz0k.json";
+import {default as cubeAnimationData} from "@/public/assets/animations/animation_lntsqz0k.json";
 
 export type animationProps = {
     className?: string;

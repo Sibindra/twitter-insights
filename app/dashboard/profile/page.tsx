@@ -9,8 +9,8 @@ import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/tweets";
-import ErrorPage from "@/components/error.page";
-import LoadingPage from "@/components/loading-page";
+import ErrorPage from "@/components/message-pages/error.page";
+import LoadingPage from "@/components/message-pages/loading-page";
 
 export default function Profile() {
   const username = useAppSelector((state) => state.username.username);

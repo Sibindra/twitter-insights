@@ -1,8 +1,9 @@
 import { BsFillArrowDownSquareFill } from "react-icons/bs";
-import ModeToggle from "./toggle-theme";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import ModeToggle from "@/components/toggle-theme";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Container from "./container";
 
 export default function Home({
   frequestUsernames,
@@ -10,10 +11,12 @@ export default function Home({
   frequestUsernames: string[];
 }) {
   return (
-    <main className="relative bg-[#F7F7F7] dark:bg-[#121212]">
-      <div className="absolute top-5 left-10">
+    <Container className=" ">
+      <nav className="flex justify-between items-center">
         <ModeToggle />
-      </div>
+
+        <div className="hover:underline cursor-pointer">About</div>
+      </nav>
 
       <section className=" h-screen flex items-center justify-center">
         <div className="w-full flex items-center justify-center flex-col gap-10">
@@ -48,11 +51,6 @@ export default function Home({
           </div>
         </div>
       </section>
-
-      {/* down arrow  */}
-      <div className="absolute bottom-5 right-10 flex flex-col justify-center items-center gap-3 ">
-        <BsFillArrowDownSquareFill size={30} className="cursor-pointer " />
-      </div>
-    </main>
+    </Container>
   );
 }
