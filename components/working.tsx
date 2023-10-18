@@ -21,8 +21,8 @@ export default function Working() {
           <QuestionsAnimation className=" w-80 h-80" />
         </div>
 
-        <div className="flex-1 flex">
-          <Accordion type="single" collapsible className="w-full h-full">
+        <div className="flex-1 flex items-center">
+          <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger>What is Insights ?</AccordionTrigger>
               <AccordionContent defaultChecked>....</AccordionContent>
