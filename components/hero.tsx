@@ -11,8 +11,8 @@ import { setStoreUsername } from "@/store/features/username-slice";
 import { AppDispatch } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { Input } from "./input";
-import { Button } from "./button";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 export const Hero = () => {
   const [username, setUsername] = useState<string>("");

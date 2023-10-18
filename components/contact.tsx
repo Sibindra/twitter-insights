@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import Toast from "@/components/ui/landing-toast";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -119,9 +118,9 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      {showToast && (
+      {/* {showToast && (
         <Toast message={toastMessage} isError={isErrorToast} close={closeToast} />
-      )}
+      )} */}
     </div>
   );
 }
