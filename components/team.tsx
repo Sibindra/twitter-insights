@@ -2,6 +2,7 @@ import socialMediaLinks from "@/lib/social-media-links";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import Container from "@/components/container";
 
 export interface TeamsData {
   img: string;
@@ -13,11 +14,9 @@ export interface TeamsData {
   linkden: string;
 }
 
-
-
 function TeamSection(props: TeamsData) {
   return (
-    <div className="items-center border-2 border-black rounded-none shadow sm:flex">
+    <div className="items-center border rounded-none shadow sm:flex">
       <div className="flex-1 w-full sm:w-48 h-48">
         <div className="relative w-full h-full">
           <Image
@@ -30,15 +29,15 @@ function TeamSection(props: TeamsData) {
         </div>
       </div>
       <div className="flex-1 p-5">
-        <h3 className="text-xl font-bold tracking-tight text-gray-900">
+        <h3 className="text-xl font-bold tracking-tight ">
           {props.name}
         </h3>
-        <p className="mt-3 mb-4 text-lg text-gray-500">{props.comment}</p>
+        <p className="mt-3 mb-4 text-lg ">{props.comment}</p>
         <ul className="flex space-x-4 sm:mt-0">
           <li>
             <Link
               href={props.facebook}
-              className="text-gray-500 hover:text-gray-900"
+              className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-200"
               target="_blank"
             >
               <FaFacebook className="w-5 h-5" />
@@ -47,7 +46,7 @@ function TeamSection(props: TeamsData) {
           <li>
             <Link
               href={props.github}
-              className="text-gray-500 hover:text-gray-900"
+              className="text-stone-500 hover:text-gray-900 dark:hover:text-stone-200"
               target="_blank"
             >
               <FaGithub className="w-5 h-5" />
@@ -56,7 +55,7 @@ function TeamSection(props: TeamsData) {
           <li>
             <Link
               href={props.linkden}
-              className="text-gray-500 hover:text-gray-900"
+              className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-200 "
               target="_blank"
             >
               <FaLinkedin className="w-5 h-5" />
@@ -65,7 +64,7 @@ function TeamSection(props: TeamsData) {
           <li>
             <Link
               href={`mailto:${props.mail}`}
-              className="text-gray-500 hover:text-gray-900"
+              className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-200"
               target="_blank"
             >
               <FaEnvelope className="w-5 h-5" />
@@ -79,14 +78,13 @@ function TeamSection(props: TeamsData) {
 
 export default function Team() {
   return (
-    <div id="team">
-      <section className="bg-white border-2">
+      <Container className="">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold ">
               Our Team
             </h2>
-            <p className="font-light text-gray-500 lg:mb-16 sm:text-xl">
+            <p className="font-light  lg:mb-16 sm:text-xl">
               Meet our passionate team behind this app
             </p>
           </div>
@@ -105,7 +103,6 @@ export default function Team() {
             ))}
           </div>
         </div>
-      </section>
-    </div>
+    </Container>
   );
 }

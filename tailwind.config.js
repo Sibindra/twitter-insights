@@ -7,6 +7,7 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
+  
   theme: {
     container: {
       center: true,
@@ -16,10 +17,6 @@ module.exports = {
       },
     },
     extend: {
-
-      backgroundImage: {
-        'hero-pattern' : "url('/public/images/bg-pattern.svg')",
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

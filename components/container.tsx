@@ -3,9 +3,10 @@ interface ContainerProps {
   className?: string;
 }
 
+
 export default function Container({ children, className }: ContainerProps) {
   return (
-    <div className={`bg-[#F7F7F7] dark:bg-[#121212] p-4 ${className}`}>
+    <div className={`p-4 bg-background bg-cover bg-center ${className}`}>
       {children}
     </div>
   );

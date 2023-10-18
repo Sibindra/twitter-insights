@@ -3,7 +3,6 @@ import { GrTechnology } from "react-icons/gr";
 import { GiClockwork, GiCrossMark, GiUpgrade } from "react-icons/gi";
 
 import Container from "@/components/container";
-import CubeAnimation from "./animations/cube.animation";
 
 const features = [
   {
