@@ -1,4 +1,4 @@
-import ModeToggle from "@/components/toggle-theme";
+import ModeToggle from "@/components/ui/toggle-theme";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,25 +6,40 @@ import Container from "./container";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { Link } from "react-scroll";
+
 export default function Home({
   frequestUsernames,
 }: {
   frequestUsernames: string[];
 }) {
   const router = useRouter();
-  const [username , setUsername] = useState<string>("");  
+  const [username, setUsername] = useState<string>("");
 
   const handleSearch = () => {
-    router.push(`/dashboard?username=${username}`)
+    router.push(`/dashboard?username=${username}`);
   };
 
-  
+  const handleLinksSeaches = (username: string) => {
+    router.push(`/dashboard?username=${username}`);
+  };
+
   return (
     <Container className="">
       <nav className="flex justify-between items-center">
         <ModeToggle />
 
-        <div className="hover:underline cursor-pointer">About</div>
+        <Link
+          activeClass="active"
+          to="features"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+          className="hover:underline cursor-pointer"
+        >
+          About
+        </Link>
       </nav>
 
       <section className=" h-screen flex items-center justify-center">
@@ -43,7 +58,9 @@ export default function Home({
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <Button className=" border border-black" onClick={handleSearch}>Search</Button>
+            <Button className=" border border-black" onClick={handleSearch}>
+              Search
+            </Button>
           </div>
 
           <div className="frequents flex flex-col items-center justify-center gap-5">
@@ -54,8 +71,9 @@ export default function Home({
                   key={index}
                   variant={"outline"}
                   className=" rounded-sm cursor-pointer hover:bg-secondary hover:text-secondary-foreground "
+                  onClick={() => handleLinksSeaches(username)}
                 >
-                  {username}{" "}
+                  @{username}{" "}
                 </Badge>
               ))}
             </div>

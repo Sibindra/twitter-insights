@@ -41,7 +41,7 @@ const features = [
 export default function Features() {
   return (
     <Container className="flex flex-wrap">
-      <div className="left w-full lg:flex-1 sm:flex sm:flex-col justify-center items-center  p-4 text-center flex-wrap">
+      <div id="features" className="left w-full lg:flex-1 sm:flex sm:flex-col justify-center items-center  p-4 text-center flex-wrap">
         <h2 className="text-3xl font-bold sm:text-4xl">
           Powerful Features for Enhanced Data Visualization
         </h2>
