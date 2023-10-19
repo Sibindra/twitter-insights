@@ -39,7 +39,7 @@ export default function Working() {
                 Where do you get twitter Data from ?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It's animated by default, but you can disable it if you
+                Yes. It is animated by default, but you can disable it if you
                 prefer.
               </AccordionContent>
             </AccordionItem>
@@ -49,7 +49,7 @@ export default function Working() {
                 Where do you get twitter Data from ?
               </AccordionTrigger>
               <AccordionContent>
-                Yes. It's animated by default, but you can disable it if you
+                Yes. It is animated by default, but you can disable it if you
                 prefer.
               </AccordionContent>
             </AccordionItem>
