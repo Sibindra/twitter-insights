@@ -24,8 +24,11 @@ import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
 import { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
+import { useSearchParams } from "next/navigation";
 
 export default function DashboardPage() {
+
+  const username = useSearchParams().get("username") || "";
 
 
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +42,6 @@ export default function DashboardPage() {
   
   const componentRef: any = useRef();
 
-  const username = useAppSelector((state) => state.username.username);
 
   // user details
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({

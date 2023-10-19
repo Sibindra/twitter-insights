@@ -1,17 +1,26 @@
-import { BsFillArrowDownSquareFill } from "react-icons/bs";
 import ModeToggle from "@/components/toggle-theme";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Container from "./container";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home({
   frequestUsernames,
 }: {
   frequestUsernames: string[];
 }) {
+  const router = useRouter();
+  const [username , setUsername] = useState<string>("");  
+
+  const handleSearch = () => {
+    router.push(`/dashboard?username=${username}`)
+  };
+
+  
   return (
-    <Container className=" ">
+    <Container className="">
       <nav className="flex justify-between items-center">
         <ModeToggle />
 
@@ -31,8 +40,10 @@ export default function Home({
               type="text "
               placeholder="enter username without @"
               className=" w-5/6 p-4"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <Button className=" border border-black">Search</Button>
+            <Button className=" border border-black" onClick={handleSearch}>Search</Button>
           </div>
 
           <div className="frequents flex flex-col items-center justify-center gap-5">

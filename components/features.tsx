@@ -51,9 +51,6 @@ export default function Features() {
           Feature Set, Empowering You to Visualize and Analyze Data Like Never
           Before.
         </p>
-
-
-        {/* <CubeAnimation className=" w-80 h-80"/> */}
       </div>
 
       <div className="right text-center w-full lg:flex-1 grid grid-cols-2 sm:grid-cols-2 gap-4 ">
@@ -73,7 +70,7 @@ type featuresType = {
 
 function Feature({ Icon, title, description }: featuresType) {
   return (
-    <span className="block rounded-none border  p-4 shadow-sm ">
+    <span className="block rounded-none border  p-4 shadow-sm">
       <span className="inline-block rounded-none border  p-3 bg-white">
         <Icon className="w-5 h-5 dark:text-black" />
       </span>
