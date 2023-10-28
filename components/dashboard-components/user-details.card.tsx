@@ -1,4 +1,4 @@
-import { UserDataProps } from "@/lib/user-details";
+import { UserDataProps } from "@/lib/api-calls/user-details";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 import {

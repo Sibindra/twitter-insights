@@ -1,4 +1,4 @@
-import socialMediaLinks from "@/lib/social-media-links";
+import socialMediaLinks from "@/lib/api-calls/social-media-links";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
