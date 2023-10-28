@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import { useQuery } from "@tanstack/react-query";
-import { getSentiment } from "@/lib/sentiment";
+import { getSentiment } from "@/lib/fetches/sentiment";
 import { Badge } from "@/components/ui/badge";
 import {
   HoverCard,

@@ -10,10 +10,10 @@ import {
 import { MainNav } from "@/components/dashboard-components/main-nav";
 import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
-import { UserDataProps, getUserDetails } from "@/lib/user-details";
+import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
 import { useQuery } from "@tanstack/react-query";
 import { useAppSelector } from "@/store/store";
-import getTweets from "@/lib/tweets";
+import getTweets from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
@@ -27,21 +27,17 @@ import ReactToPrint from "react-to-print";
 import { useSearchParams } from "next/navigation";
 
 export default function DashboardPage() {
-
   const username = useSearchParams().get("username") || "";
-
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 7000); 
+    }, 7000);
   }, []);
 
-  
   const componentRef: any = useRef();
-
 
   // user details
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
@@ -67,11 +63,7 @@ export default function DashboardPage() {
     ) || [];
 
   if (userStatus === "loading") {
-    return (
-      <div>
-        
-      </div>
-    );
+    return <div></div>;
   }
 
   if (userStatus === "error") {
@@ -99,7 +91,11 @@ export default function DashboardPage() {
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
           <div className="flex items-center space-x-2">
             <ReactToPrint
-              trigger={() => <Button className=" bg-[#8784D8] hover:bg-[#9a97ecf2]">Download</Button>}
+              trigger={() => (
+                <Button className=" bg-[#8784D8] hover:bg-[#9a97ecf2]">
+                  Download
+                </Button>
+              )}
               content={() => componentRef.current}
             />
           </div>
@@ -234,9 +230,10 @@ export default function DashboardPage() {
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="pl-2">
+            {/* TODO:replce with other */}
+            {/* <CardContent className="pl-2">
               {<TrendingHashtagCard woeid={1} />}
-            </CardContent>
+            </CardContent> */}
           </Card>
         </div>
       </div>
