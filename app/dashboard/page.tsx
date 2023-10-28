@@ -10,10 +10,10 @@ import {
 import { MainNav } from "@/components/dashboard-components/main-nav";
 import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
-import { UserDataProps, getUserDetails } from "@/lib/fetchs/user-details";
+import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
 import { useQuery } from "@tanstack/react-query";
 import { useAppSelector } from "@/store/store";
-import getTweets from "@/lib/fetchs/tweets";
+import getTweets from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";

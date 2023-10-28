@@ -1,6 +1,6 @@
 // Additional information part in profile section
 "use client";
-import { UserDataProps } from "@/lib/fetchs/user-details";
+import { UserDataProps } from "@/lib/fetches/user-details";
 import {
   BsFillCalendarDateFill,
   BsFillPeopleFill,

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/fetchs/tweets";
+import getTweets, { TweetPromiseProps, TweetProps } from "@/lib/fetches/tweets";
 
 export default function RepliesCard({ username, reply, limit }: TweetProps) {
   const [tweetData, setTweetData] = useState<TweetPromiseProps | null>(null);

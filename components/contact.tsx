@@ -10,7 +10,7 @@ import subscribeFormSchema from "@/lib/schemas/subscribe.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { supabase } from "@/lib/utils/supabase";
+import { supabase } from "@/lib/database/supabase";
 import { useToast } from "@/components/ui/use-toast";
 
 export default function Contact() {
@@ -25,8 +25,6 @@ export default function Contact() {
 
   // form submit handler
   async function onSubmit(values: z.infer<typeof subscribeFormSchema>) {
-    console.log(values);
-
     try {
       const { error, status } = await supabase
         .from("subscribers")

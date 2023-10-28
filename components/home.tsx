@@ -5,8 +5,8 @@ import { Input } from "@/components/ui/input";
 import Container from "./container";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import { Link } from "react-scroll";
+import { supabase } from "@/lib/database/supabase";
 
 export default function Home({
   frequestUsernames,
@@ -16,12 +16,52 @@ export default function Home({
   const router = useRouter();
   const [username, setUsername] = useState<string>("");
 
-  const handleSearch = () => {
+  // router loading state
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleSearch = async () => {
+    setIsLoading(true);
     router.push(`/dashboard?username=${username}`);
+
+    const {
+      data: existingUser,
+      status,
+      error,
+    } = await supabase.from("searches ").select("*").eq("username", username);
+
+    if (existingUser?.length === 0) {
+      const { data: newUser, error } = await supabase
+        .from("searches")
+        .insert([{ username }]);
+    } else {
+      const { error: updateError } = await supabase
+        .from("searches")
+        .update({ count: (existingUser as any)[0].count + 1 })
+        .eq("username", username);
+    }
+
+    setIsLoading(false);
   };
 
-  const handleLinksSeaches = (username: string) => {
+  const handleLinksSeaches = async (username: string) => {
+    setIsLoading(true);
+
+    const {
+      data: existingUser,
+      status,
+      error,
+    } = await supabase.from("searches").select("*").eq("username", username);
+
+    if ((existingUser as any)?.length > 0) {
+      const { error: updateError } = await supabase
+        .from("searches")
+        .update({ count: (existingUser as any)[0].count + 1 })
+        .eq("username", username);
+    }
+
+    // naviagte to dashboard
     router.push(`/dashboard?username=${username}`);
+    setIsLoading(false);
   };
 
   return (
@@ -58,7 +98,11 @@ export default function Home({
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <Button className=" border border-black" onClick={handleSearch}>
+            <Button
+              className=" border border-black"
+              onClick={handleSearch}
+              disabled={isLoading}
+            >
               Search
             </Button>
           </div>
