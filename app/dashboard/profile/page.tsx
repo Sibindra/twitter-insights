@@ -1,14 +1,14 @@
 "use client";
 
-import { UserDataProps, getUserDetails } from "@/lib/api-calls/user-details";
+import { UserDataProps, getUserDetails } from "@/lib/fetchs/user-details";
 import { useAppSelector } from "@/store/store";
-import { getUsersFollowers } from "@/lib/api-calls/followers";
+import { getUsersFollowers } from "@/lib/fetchs/followers";
 import { useQuery } from "@tanstack/react-query";
 import BannerCard from "@/components/cards/banner.card";
 import RecentFollowers from "@/components/cards/followers.card";
 import AdditionalInfoCard from "@/components/cards/additional-details.card";
 import TweetCard from "@/components/cards/tweet.card";
-import getTweets, { TweetPromiseProps } from "@/lib/api-calls/tweets";
+import getTweets, { TweetPromiseProps } from "@/lib/fetchs/tweets";
 import ErrorPage from "@/components/message-pages/error.page";
 import LoadingPage from "@/components/message-pages/loading-page";
 

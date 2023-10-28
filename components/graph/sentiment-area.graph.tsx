@@ -1,5 +1,5 @@
 import React from "react";
-import { getSentiment } from "@/lib/api-calls/sentiment";
+import { getSentiment } from "@/lib/fetchs/sentiment";
 import { useQuery } from "@tanstack/react-query";
 import {
   CartesianGrid,

@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/navbar.jsx", "app/api/userDetails.js", "lib/api-calls/user-details.ts", "components/sentiment.jsx", "components/cards/sentiment.card.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/ui/navbar.jsx", "app/api/userDetails.js", "lib/fetchs/user-details.ts", "components/sentiment.jsx", "components/cards/sentiment.card.jsx"],
   "exclude": ["node_modules"]
 }

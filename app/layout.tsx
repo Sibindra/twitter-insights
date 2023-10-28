@@ -3,11 +3,13 @@ import { Space_Grotesk } from "next/font/google";
 import QueryProvider from "@/components/providers/query.provider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import '@/app/globals.css'
+import "@/app/globals.css";
+
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Space_Grotesk({
   subsets: ["latin"],
-  weight: [ "300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -33,6 +35,7 @@ export default function RootLayout({
           >
             <ReduxProvider>{children}</ReduxProvider>
           </ThemeProvider>
+          <Toaster />
         </body>
         <ReactQueryDevtools initialIsOpen={false} />
       </html>

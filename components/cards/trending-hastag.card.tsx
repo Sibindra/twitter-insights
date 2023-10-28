@@ -4,7 +4,7 @@ import React from "react";
 import {
   TrendingHashtagProps,
   getTrendingHashtags,
-} from "@/lib/api-calls/trending-hashtag";
+} from "@/lib/fetchs/trending-hashtag";
 import { useQuery } from "@tanstack/react-query";
 import { Badge } from "../ui/badge";
 
