@@ -1,17 +1,18 @@
 import { ReduxProvider } from "@/store/provider";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import QueryProvider from "./query.provider";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { Space_Grotesk } from "next/font/google";
+import QueryProvider from "@/components/providers/query.provider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import '@/app/globals.css'
 
-const inter = Inter({
+const font = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  weight: [ "300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
   title: "Insights Nepal",
-  description: "Twitter Data Visualization App",
+  description: "Twitter Data Analysis Visualization App",
 };
 
 export default function RootLayout({
@@ -23,8 +24,15 @@ export default function RootLayout({
     <QueryProvider>
       <html lang="en">
         <link rel="icon" href="logo.svg" sizes="any" />
-        <body className={inter.className}>
-          <ReduxProvider>{children}</ReduxProvider>
+        <body className={font.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <ReduxProvider>{children}</ReduxProvider>
+          </ThemeProvider>
         </body>
         <ReactQueryDevtools initialIsOpen={false} />
       </html>

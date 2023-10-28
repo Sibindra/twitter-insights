@@ -3,6 +3,7 @@ import { UserDataProps } from "@/lib/user-details";
 import { FaMapMarkerAlt, FaLink, FaCheckCircle } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export default function BannerCard({
   profile_banner_url,
@@ -39,7 +40,7 @@ export default function BannerCard({
         //    <AvatarImage src={profile_pic_url} className="w-10 h-10 object-cover rounded-full"/>
         //  </Avatar>
 
-        <img src={profile_pic_url} alt="not found" className=" w-10 h-10 rounded-full" />
+        <Image src={profile_pic_url} alt="not found" className=" w-10 h-10 rounded-full" />
         )}
         <h1 className="text-3xl font-semibold flex items-center justify-start gap-2">
           {name}

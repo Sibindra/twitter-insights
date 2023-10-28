@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import GraphLoader from "./graph-loader";
+import GraphLoader from "../loaders/graph-loader";
 
 export default function LoadingPage() {
   const router = useRouter();

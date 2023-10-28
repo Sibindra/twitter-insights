@@ -1,7 +1,6 @@
 "use client";
 
-import Sidebar from "@/components/ui/sidebar";
-import QueryProvider from "../query.provider";
+import Sidebar from "@/components/sidebar";
 
 export default function DashboardLayout({
   children,

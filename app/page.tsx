@@ -1,19 +1,23 @@
-import Contact from "@/components/ui/contact";
-import Features from "@/components/ui/features";
-import Footer from "@/components/ui/footer";
-import { Hero } from "@/components/ui/hero";
-import Navbar from "@/components/ui/navbar";
-import Team from "@/components/ui/team";
+"use client";
 
-export default function Home() {
+import Contact from "@/components/contact";
+import Features from "@/components/features";
+import Home from "@/components/home";
+import Team from "@/components/team";
+import Footer from "@/components/footer";
+import Working from "@/components/working";
+
+const frequestUsernames = ["elonmusk", "iamsrk", "brb1914", "imVkohli" , "ESPNFC"];
+
+export default function Main() {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <Features />
-      <Team />
-      <Contact />
-      <Footer />
-    </div>
+    <main>
+      <Home frequestUsernames={frequestUsernames} />
+      <Features/>
+      <Team/>
+      <Working/>
+      <Contact/>
+      <Footer/>
+    </main>
   );
 }
