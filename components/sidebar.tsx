@@ -8,7 +8,7 @@ export default function Sidebar() {
 
   const checkScreen = () => {
     window.innerWidth < 640 ? setSidebarOpen(false) : setSidebarOpen(true);
-    console.log("toggled");
+    // console.log("toggled");
   };
 
   const toggleSidebar = () => {
@@ -89,7 +89,7 @@ export default function Sidebar() {
                 >
                   <BiCog className="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:" />
                   <span className="flex-1 ml-3 whitespace-nowrap">
-                    Prefrences
+                    Contact Us
                   </span>
                 </Link>
               </li>

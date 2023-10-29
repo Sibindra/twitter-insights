@@ -16,56 +16,68 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-const profileFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, {
-      message: "Username must be at least 2 characters.",
-    })
-    .max(30, {
-      message: "Username must not be longer than 30 characters.",
-    }),
-  email: z
-    .string({
-      required_error: "Please select an email to display.",
-    })
-    .email(),
-  message: z.string().max(160).min(4),
-});
+import profileFormSchema from "@/lib/schemas/feedback.schema";
+import { supabase } from "@/lib/database/supabase";
+import { useEffect, useState } from "react";
+import { useToast } from "../ui/use-toast";
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-export function ExperienceForm() {
+export function FeedbackForm() {
+  const [sendSucess, setSendSucess] = useState(false);
+
+  const { toast } = useToast();
+
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
   });
 
+  // send data into supabase server database
   const sendData = async (data: ProfileFormValues) => {
     try {
-      const res = await fetch("api/contact", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          data,
-        }),
-      });
+      const { status, error } = await supabase
+        .from("feedbacks")
+        .insert([{ ...data }]);
 
-      if (res.ok) {
-        console.log("Email:", data.email);
+      if (status === 201) {
+        setSendSucess(true);
+      } else {
+        setSendSucess(false);
       }
+
+      if (error) {
+        throw error;
+      }
+
+      toggleToast("");
     } catch (error) {
-      console.error("Fetch error:", error);
+      toggleToast((error as any).message);
     }
   };
 
-  function onSubmit(data: ProfileFormValues) {
-    console.log(data);
+  const toggleToast = (error: string) => {
+    sendSucess
+      ? toast({
+          variant: "default",
+          title: "Great",
+          description: "Your feedback has been sent successfully",
+        })
+      : toast({
+          variant: "destructive",
+          title: "Error",
+          description: `Something went wrong : ${error}`,
+        });
+  };
 
+  function onSubmit(data: ProfileFormValues) {
     sendData(data);
+
+    form.reset({
+      name: "",
+      email: "",
+      message: "",
+    });
   }
 
   return (
@@ -125,7 +137,7 @@ export function ExperienceForm() {
 
         <Button
           type="submit"
-          className="py-3 px-5 w-full text-sm font-medium border cursor-pointer hover:bg-[#9a97ecf2] hover:text-white text-black border-black rounded-none "
+          className="py-3 px-5 w-full text-sm font-medium border cursor-pointer  border-black rounded-none "
         >
           Submit{" "}
         </Button>
