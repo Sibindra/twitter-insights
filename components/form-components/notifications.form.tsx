@@ -14,8 +14,7 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
 
-const notificationsFormSchema = z.object({
-  
+const notificationsFormSchema = z.object({ 
   communication_emails: z.boolean().default(false).optional(),
   marketing_emails: z.boolean().default(false).optional(),
 })
