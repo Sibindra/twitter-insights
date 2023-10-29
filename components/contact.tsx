@@ -53,6 +53,10 @@ export default function Contact() {
       variant: emailSentStatus ? "default" : "destructive",
       description: displayMessage,
     });
+
+    form.reset({
+      email: "",
+    });
   }
 
   const onClickHandleError = () => {

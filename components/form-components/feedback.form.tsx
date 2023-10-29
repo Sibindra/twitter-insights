@@ -18,13 +18,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import profileFormSchema from "@/lib/schemas/feedback.schema";
 import { supabase } from "@/lib/database/supabase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
-import { PostgrestError } from "@supabase/supabase-js";
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
-export function ExperienceForm() {
+export function FeedbackForm() {
   const [sendSucess, setSendSucess] = useState(false);
 
   const { toast } = useToast();
@@ -50,6 +49,8 @@ export function ExperienceForm() {
       if (error) {
         throw error;
       }
+
+      toggleToast("");
     } catch (error) {
       toggleToast((error as any).message);
     }
@@ -71,6 +72,12 @@ export function ExperienceForm() {
 
   function onSubmit(data: ProfileFormValues) {
     sendData(data);
+
+    form.reset({
+      name: "",
+      email: "",
+      message: "",
+    });
   }
 
   return (
