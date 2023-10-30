@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import "@/app/globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
+import NextTopLoader from 'nextjs-toploader';
 
 const font = Space_Grotesk({
   subsets: ["latin"],
@@ -13,7 +14,7 @@ const font = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Insights Nepal",
+  title: "Insights",
   description: "Twitter Data Analysis Visualization App",
 };
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <html lang="en">
         <link rel="icon" href="logo.svg" sizes="any" />
         <body className={font.className}>
+          <NextTopLoader/>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

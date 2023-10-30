@@ -5,8 +5,8 @@ import { Input } from "@/components/ui/input";
 import Container from "./container";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Link } from "react-scroll";
 import { supabase } from "@/lib/database/supabase";
+
 
 export default function Home({
   frequestUsernames,
@@ -66,10 +66,10 @@ export default function Home({
 
   return (
     <Container className="">
-      <nav className="flex justify-between items-center">
+      <nav className="flex justify-end items-center">
         <ModeToggle />
 
-        <Link
+        {/* <Link
           activeClass="active"
           to="features"
           spy={true}
@@ -79,7 +79,7 @@ export default function Home({
           className="hover:underline cursor-pointer"
         >
           About
-        </Link>
+        </Link> */}
       </nav>
 
       <section className=" h-screen flex items-center justify-center">

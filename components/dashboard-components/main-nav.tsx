@@ -19,7 +19,7 @@ export function MainNav({
           alt="not found"
           className="rounded-none"
         />
-        <p className="text-lg px-2 font-semibold">INSIGHTS NEPAL</p>
+        <p className="text-lg px-2 font-semibold">Insights</p>
       </div>
     </nav>
   );
