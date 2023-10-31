@@ -19,12 +19,7 @@ export interface UserDataProps {
   favourites_count?: number;
 }
 
-
-export interface UserPromiseProps {
-  results: UserDataProps[];
-}
-
-export const getUserDetails = async ({ username }: UserDataProps) => {
+export const getUserDetails = async (username:string) => {
   const axios = require("axios");
 
   const options = {

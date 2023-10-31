@@ -1,4 +1,4 @@
-import { ReduxProvider } from "@/store/provider";
+import { ReduxProvider } from "@/components/providers/redux.provider";
 import { Space_Grotesk } from "next/font/google";
 import QueryProvider from "@/components/providers/query.provider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import "@/app/globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import NextTopLoader from 'nextjs-toploader';
+import NextTopLoader from "nextjs-toploader";
 
 const font = Space_Grotesk({
   subsets: ["latin"],
@@ -28,7 +28,7 @@ export default function RootLayout({
       <html lang="en">
         <link rel="icon" href="logo.svg" sizes="any" />
         <body className={font.className}>
-          <NextTopLoader/>
+          <NextTopLoader />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
