@@ -12,7 +12,6 @@ import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
 import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
 import { useQuery } from "@tanstack/react-query";
-import { useAppSelector } from "@/store/store";
 import getTweets from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
@@ -25,9 +24,13 @@ import ErrorPage from "@/components/message-pages/error.page";
 import { useEffect, useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { useSearchParams } from "next/navigation";
+import { useAppSelector } from "@/store/hooks";
 
 export default function DashboardPage() {
-  const username = useSearchParams().get("username") || "";
+  // const username = useSearchParams().get("username") || "";
+  const username = useAppSelector((state) => state.username);
+
+  console.log(username);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,7 +45,7 @@ export default function DashboardPage() {
   // user details
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
-    queryFn: async () => await getUserDetails({ username }),
+    queryFn: async () => await getUserDetails(username),
     // FIX THIS
     staleTime: Infinity,
   });

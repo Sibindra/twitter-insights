@@ -35,12 +35,8 @@ export default function BannerCard({
       {/* User Info */}
       <div className="p-3 mt-4 md:mt-8 ">
         {profile_pic_url && (
-        //    <Avatar>
 
-        //    <AvatarImage src={profile_pic_url} className="w-10 h-10 object-cover rounded-full"/>
-        //  </Avatar>
-
-        <Image src={profile_pic_url} alt="not found" className=" w-10 h-10 rounded-full" />
+        <Image src={profile_pic_url} alt="not found" width={100} height={100} className=" w-10 h-10 rounded-full" />
         )}
         <h1 className="text-3xl font-semibold flex items-center justify-start gap-2">
           {name}

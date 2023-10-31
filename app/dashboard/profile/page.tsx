@@ -1,7 +1,6 @@
 "use client";
 
 import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
-import { useAppSelector } from "@/store/store";
 import { getUsersFollowers } from "@/lib/fetches/followers";
 import { useQuery } from "@tanstack/react-query";
 import BannerCard from "@/components/cards/banner.card";
@@ -11,14 +10,17 @@ import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/fetches/tweets";
 import ErrorPage from "@/components/message-pages/error.page";
 import LoadingPage from "@/components/message-pages/loading-page";
+import { useAppSelector } from "@/store/hooks";
 
 export default function Profile() {
-  const username = useAppSelector((state) => state.username.username);
+  const username = useAppSelector((state) => state.username);
+
+  console.log('username = ',username)
 
   // user details
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
-    queryFn: async () => await getUserDetails({ username }),
+    queryFn: async () => await getUserDetails(username),
   });
 
   const user_id = userData?.user_id as number;
@@ -27,7 +29,7 @@ export default function Profile() {
   const { data: followerData, status: followerStatus } = useQuery({
     queryKey: ["followers", user_id],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 5000));
+      // await new Promise((resolve) => setTimeout(resolve, 5000));
       return await getUsersFollowers({ user_id: user_id, limit: 1 });
     },
 
