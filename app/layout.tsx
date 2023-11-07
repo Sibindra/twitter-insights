@@ -7,6 +7,8 @@ import "@/app/globals.css";
 
 import { Toaster } from "@/components/ui/toaster";
 import NextTopLoader from "nextjs-toploader";
+import Banner from "@/components/banner";
+import banner_text from "@/lib/banner-text";
 
 const font = Space_Grotesk({
   subsets: ["latin"],
@@ -28,7 +30,7 @@ export default function RootLayout({
       <html lang="en">
         <link rel="icon" href="logo.svg" sizes="any" />
         <body className={font.className}>
-          <NextTopLoader color="#F2CB81"/>
+          <NextTopLoader color="#F2CB81" />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -38,6 +40,7 @@ export default function RootLayout({
             <ReduxProvider>{children}</ReduxProvider>
           </ThemeProvider>
           <Toaster />
+          <Banner text={banner_text} />
         </body>
         <ReactQueryDevtools initialIsOpen={false} />
       </html>
