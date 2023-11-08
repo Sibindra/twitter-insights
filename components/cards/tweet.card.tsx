@@ -112,7 +112,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
   const sentimentResult = data[key]?.[0].label;
 
   return (
-    <Card className="bg-white border  rounded-sm p-1 ">
+    <Card className=" border  rounded-sm p-1 ">
       <CardHeader className="flex border-b flex-row pb-2 items-center justify-between">
         {/* left div */}
         <div className="flex items-center">

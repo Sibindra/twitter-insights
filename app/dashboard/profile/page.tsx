@@ -77,7 +77,7 @@ export default function Profile() {
           <BannerCard {...userData} />
 
           {/* TWEETS */}
-          <div className="p-5 border bg-white rounded-md flex flex-col gap-3">
+          <div className="p-5 border rounded-md flex flex-col gap-3">
             <h3 className="text-lg font-bold">Most Recent Tweets</h3>
 
             {filteredResultTweets.map((tweet, key) => (
@@ -100,7 +100,7 @@ export default function Profile() {
         </section>
 
         {/* Right container */}
-        <aside className="flex-1 flex flex-col gap-2">
+        <aside className="flex-2 flex flex-col gap-2">
           {/* RECENT FOLLOWERS */}
           <RecentFollowers data={followerData?.results} limit={5} />
 

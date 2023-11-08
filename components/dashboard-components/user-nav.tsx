@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
 
 export function UserNav({
   img_url,
@@ -9,14 +10,8 @@ export function UserNav({
   Name?: string;
 }) {
   return (
-    <div className=" flex gap-2 items-center underline">
-      {Name}
-      <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
-        <Avatar className="h-8 w-8 border">
-          {img_url && <AvatarImage src={img_url} alt="not found" />}
-          <AvatarFallback>IN</AvatarFallback>
-        </Avatar>
-      </Button>
+    <div className=" flex gap-2 items-center ">
+      <Input type="text" placeholder="search here"/>
     </div>
   );
 }
