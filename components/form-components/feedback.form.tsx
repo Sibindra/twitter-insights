@@ -84,7 +84,7 @@ export function FeedbackForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 bg-white m-3 p-5"
+        className="space-y-8  m-3 p-5"
       >
         <h3 className="mb-4 text-lg font-medium">Contact Us</h3>
         <FormField

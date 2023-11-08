@@ -10,7 +10,7 @@ export default function DashboardLayout({
   return (
       <div className="flex flex-row h-screen bg-slate-100">
 
-        <div className="lg:w-1/6 w-auto bg-slate-50 lg:border">
+        <div className="lg:w-1/6 w-auto bg-slate-50 lg:border-r">
           <Sidebar />
         </div>
 

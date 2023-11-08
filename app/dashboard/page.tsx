@@ -32,13 +32,13 @@ export default function DashboardPage() {
 
   console.log(username);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 7000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 7000);
+  // }, []);
 
   const componentRef: any = useRef();
 
@@ -47,7 +47,7 @@ export default function DashboardPage() {
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails(username),
     // FIX THIS
-    staleTime: Infinity,
+    // staleTime: Infinity,
   });
 
   const { data: tweetData, status: tweetStatus } = useQuery({
@@ -57,7 +57,7 @@ export default function DashboardPage() {
       return await getTweets({ username: username, limit: 1, reply: true });
     },
 
-    staleTime: Infinity,
+    // staleTime: Infinity,
   });
 
   const sentimentInput =
