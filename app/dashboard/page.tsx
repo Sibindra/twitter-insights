@@ -16,14 +16,12 @@ import getTweets from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
-import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
-import { useSearchParams } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 
 export default function DashboardPage() {
@@ -83,9 +81,9 @@ export default function DashboardPage() {
     <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          <MainNav className="mx-6" />
+          <MainNav className="mx-6" username={userData.username} avatar_url={userData.profile_pic_url as string} />
           <div className="ml-auto flex items-center space-x-4">
-            <UserNav img_url={userData.profile_pic_url} Name={userData.name} />
+            <UserNav/>
           </div>
         </div>
       </div>

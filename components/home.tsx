@@ -17,7 +17,7 @@ import { useDispatch } from "react-redux";
 import { setUsernameSlice } from "@/store/slices/username";
 import { useRouter } from "next/navigation";
 
-const sendSearchToSupabase = async (username: string) => {
+export const sendSearchToSupabase = async (username: string) => {
   const { data: existingUser } = await supabase
     .from("searches ")
     .select("*")
@@ -64,8 +64,8 @@ export default function Home({
     },
   });
 
-  const handleSearch = async () => {
-    const username = form.getValues("username");
+  const handleSearch = async (values: z.infer<typeof usernameFormSchema>) => {
+    const username = values.username;
 
     // send value to redux store
     dispatch(setUsernameSlice(username));
@@ -91,8 +91,7 @@ export default function Home({
       });
     } else {
       // VALID CASE
-      handleSearch();
-      console.log(values);
+      handleSearch(values);
     }
 
     setIsLoading(false);
