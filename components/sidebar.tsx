@@ -3,7 +3,6 @@ import { HiMenuAlt2 } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-
 const sidebarElements = [
   {
     name: "Dashboard",
@@ -20,7 +19,7 @@ const sidebarElements = [
     icon: <BiCog className="w-6 h-6" />,
     link: "/dashboard/form",
   },
-]
+];
 
 export default function Sidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -47,7 +46,7 @@ export default function Sidebar() {
 
   return (
     <aside>
-      <div className="flex flex-col justify-between h-screen bg-primary dark:bg-stone-900">
+      <div className="flex flex-col justify-between h-screen dark:bg-stone-900">
         <div className="flex flex-col">
           <div className="flex justify-between items-center p-4">
             <div className="md:hidden">
@@ -71,9 +70,13 @@ export default function Sidebar() {
                   key={index}
                   className="flex items-center py-2 px-7 w-full dark:hover:bg-stone-800 hover:bg-gray-100 cursor-pointer"
                 >
-                  <Link href={item.link} onClick={closeSidebar} className="flex items-center ">
-                      {item.icon}
-                      <span className="mx-4">{item.name}</span>
+                  <Link
+                    href={item.link}
+                    onClick={closeSidebar}
+                    className="flex items-center "
+                  >
+                    {item.icon}
+                    <span className="mx-4">{item.name}</span>
                   </Link>
                 </li>
               ))}

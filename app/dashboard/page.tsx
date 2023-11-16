@@ -16,29 +16,20 @@ import getTweets from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
-import TrendingHashtagCard from "@/components/cards/trending-hastag.card";
 import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
-import { useEffect, useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
-import { useSearchParams } from "next/navigation";
 import { useAppSelector } from "@/store/hooks";
 
 export default function DashboardPage() {
-  // const username = useSearchParams().get("username") || "";
   const username = useAppSelector((state) => state.username);
 
   console.log(username);
 
   const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 7000);
-  // }, []);
 
   const componentRef: any = useRef();
 
@@ -46,18 +37,16 @@ export default function DashboardPage() {
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails(username),
-    // FIX THIS
-    // staleTime: Infinity,
+    
   });
 
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 3000));
-      return await getTweets({ username: username, limit: 1, reply: true });
+      return await getTweets({ username: username, limit: 5, reply: true });
     },
 
-    // staleTime: Infinity,
   });
 
   const sentimentInput =
@@ -83,9 +72,9 @@ export default function DashboardPage() {
     <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          <MainNav className="mx-6" />
+          <MainNav className="mx-6" username={userData.username} avatar_url={userData.profile_pic_url as string} />
           <div className="ml-auto flex items-center space-x-4">
-            <UserNav img_url={userData.profile_pic_url} Name={userData.name} />
+            <UserNav/>
           </div>
         </div>
       </div>
@@ -156,6 +145,9 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
         </div>
+
+          {/* graphs from here */}
+
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
           <Card className="col-span-7">
             <CardHeader>
@@ -169,6 +161,7 @@ export default function DashboardPage() {
               <TweetLineGraphCard size={400} data={tweetData} />
             </CardContent>
           </Card>
+
 
           <Card className="col-span-7">
             <CardHeader>

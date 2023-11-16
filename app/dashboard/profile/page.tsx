@@ -30,7 +30,7 @@ export default function Profile() {
     queryKey: ["followers", user_id],
     queryFn: async () => {
       // await new Promise((resolve) => setTimeout(resolve, 5000));
-      return await getUsersFollowers({ user_id: user_id, limit: 1 });
+      return await getUsersFollowers({ user_id: user_id, limit: 30 });
     },
 
     staleTime: Infinity,
@@ -41,7 +41,7 @@ export default function Profile() {
     queryKey: ["tweets", username],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 10000));
-      return await getTweets({ username: username, limit: 3, reply: true });
+      return await getTweets({ username: username, limit: 30, reply: true });
     },
 
   });
