@@ -204,9 +204,9 @@ export default function DashboardPage() {
 
           <Card className="col-span-7">
             <CardHeader>
-              <CardTitle>Favriorates Score</CardTitle>
+              <CardTitle>Favorites Score</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                users recent favriotes
+                users recent favorites
               </CardDescription>
             </CardHeader>
 

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export async function getUsersFollowers({
   user_id,
   limit,
@@ -12,19 +14,10 @@ export async function getUsersFollowers({
     "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPIDAPI_HOST,
   };
 
-  const options = {
-    method: "GET",
-    headers: headers as HeadersInit,
-  };
-
   try {
-    const response = await fetch(url, options);
+    const response = await axios.get(url, { headers });
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data. Status: ${response.status}`);
-    }
-
-    return response.json();
+    return response.data;
   } catch (error: unknown) {
     console.error(error);
     return { error: (error as Error).message } as { error: string };
