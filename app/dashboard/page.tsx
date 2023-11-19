@@ -12,7 +12,7 @@ import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
 import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
 import { useQuery } from "@tanstack/react-query";
-import getTweets from "@/lib/fetches/tweets";
+import getTweets, { TweetPromiseProps } from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
@@ -20,9 +20,19 @@ import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { useAppSelector } from "@/store/hooks";
+import { cn } from "@/lib/utils";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { addDays, format } from "date-fns";
+import { DateRange } from "react-day-picker";
 
 export default function DashboardPage() {
   const username = useAppSelector((state) => state.username);
@@ -37,16 +47,14 @@ export default function DashboardPage() {
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails(username),
-    
   });
 
-  const { data: tweetData, status: tweetStatus } = useQuery({
+  const { data: tweetData, status: tweetStatus } = useQuery<TweetPromiseProps>({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      return await getTweets({ username: username, limit: 5, reply: true });
+      // await new Promise((resolve) => setTimeout(resolve, 3000));
+      return await getTweets({ username: username, limit: 15, reply: true });
     },
-
   });
 
   const sentimentInput =
@@ -66,15 +74,31 @@ export default function DashboardPage() {
     );
   }
 
+  // content for retweet card
+  const retweetSum = tweetData?.results?.reduce(
+    (a, b) => a + b.retweet_count,
+    0
+  );
+
+  // date picker state
+  const [date, setDate] = useState<DateRange | undefined>({
+    from: new Date(2022, 0, 20),
+    to: addDays(new Date(2022, 0, 20), 20),
+  });
+
   return isLoading ? (
     <LoadingPage />
   ) : (
     <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          <MainNav className="mx-6" username={userData.username} avatar_url={userData.profile_pic_url as string} />
+          <MainNav
+            className="mx-6"
+            username={userData.username}
+            avatar_url={userData.profile_pic_url as string}
+          />
           <div className="ml-auto flex items-center space-x-4">
-            <UserNav/>
+            <UserNav />
           </div>
         </div>
       </div>
@@ -146,22 +170,65 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-          {/* graphs from here */}
+        {/* graphs from here */}
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-          <Card className="col-span-7">
-            <CardHeader>
+        {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7"> */}
+        <div className=" flex flex-col gap-3">
+          <Card className="col-span-3">
+            <CardHeader className="border-b">
               <CardTitle>Retweets</CardTitle>
               <CardDescription className="text-center lg:text-left">
                 retweets performance over a recent time frame
               </CardDescription>
+
+              <div className={cn("grid gap-2")}>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      id="date"
+                      variant={"outline"}
+                      className={cn(
+                        "w-[300px] justify-start text-left font-normal",
+                        !date && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {date?.from ? (
+                        date.to ? (
+                          <>
+                            {format(date.from, "LLL dd, y")} -{" "}
+                            {format(date.to, "LLL dd, y")}
+                          </>
+                        ) : (
+                          format(date.from, "LLL dd, y")
+                        )
+                      ) : (
+                        <span>Pick a date</span>
+                      )}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      initialFocus
+                      mode="range"
+                      defaultMonth={date?.from}
+                      selected={date}
+                      onSelect={setDate}
+                      numberOfMonths={2}
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
             </CardHeader>
 
-            <CardContent className="pl-2">
-              <TweetLineGraphCard size={400} data={tweetData} />
+            <CardContent className="flex p-2">
+              <div className=" border flex-1">Total Retweets: {retweetSum}</div>
+
+              <div className=" border flex-1">
+                <TweetLineGraphCard size={400} data={tweetData} />
+              </div>
             </CardContent>
           </Card>
-
 
           <Card className="col-span-7">
             <CardHeader>
