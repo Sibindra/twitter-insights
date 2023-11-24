@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,7 +13,7 @@ import { UserNav } from "@/components/dashboard-components/user-nav";
 import { BsActivity, BsFillHeartFill, BsPeopleFill } from "react-icons/bs";
 import { UserDataProps, getUserDetails } from "@/lib/fetches/user-details";
 import { useQuery } from "@tanstack/react-query";
-import getTweets from "@/lib/fetches/tweets";
+import getTweets, { TweetPromiseProps } from "@/lib/fetches/tweets";
 import TweetLineGraphCard from "@/components/graph/tweet-line.graph";
 import TweetBarGraphCard from "@/components/graph/tweet-bar.graph";
 import TweetAreaGraphCard from "@/components/graph/tweet-area.graph";
@@ -20,12 +21,15 @@ import FavCountBarGraph from "@/components/graph/fav-bar.graph";
 import SentimentAreaGraph from "@/components/graph/sentiment-area.graph";
 import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
-import { useAppSelector } from "@/store/hooks";
+import { LocalStore } from "@/store/local-store";
 
 export default function DashboardPage() {
-  const username = useAppSelector((state) => state.username);
+
+  // const username = useAppSelector((state) => state.username);
+  const username = LocalStore.getUsername() as string;
+  
 
   console.log(username);
 
@@ -37,16 +41,13 @@ export default function DashboardPage() {
   const { data: userData, status: userStatus } = useQuery<UserDataProps>({
     queryKey: ["user-details", username],
     queryFn: async () => await getUserDetails(username),
-    
   });
 
-  const { data: tweetData, status: tweetStatus } = useQuery({
+  const { data: tweetData, status: tweetStatus } = useQuery<TweetPromiseProps>({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      return await getTweets({ username: username, limit: 5, reply: true });
-    },
-
+      return await getTweets({ username: username, limit: 20, reply: true });
+    }
   });
 
   const sentimentInput =
@@ -66,22 +67,32 @@ export default function DashboardPage() {
     );
   }
 
+  // content for retweet card
+  const retweetSum = tweetData?.results?.reduce(
+    (a, b) => a + b.retweet_count,
+    0
+  );
+
   return isLoading ? (
     <LoadingPage />
   ) : (
     <div className=" flex-col flex flex-wrap" ref={componentRef}>
       <div className="border-b">
         <div className="flex h-16 items-center px-4">
-          <MainNav className="mx-6" username={userData.username} avatar_url={userData.profile_pic_url as string} />
+          <MainNav
+            className="mx-6"
+            username={userData.username}
+            avatar_url={userData.profile_pic_url as string}
+          />
           <div className="ml-auto flex items-center space-x-4">
-            <UserNav/>
+            <UserNav />
           </div>
         </div>
       </div>
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <div className="flex items-center space-x-2">
+          <div className="md:flex items-center space-x-2 hidden ">
             <ReactToPrint
               trigger={() => (
                 <Button className=" bg-[#8784D8] hover:bg-[#9a97ecf2]">
@@ -146,22 +157,26 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-          {/* graphs from here */}
+        {/* graphs from here */}
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-          <Card className="col-span-7">
-            <CardHeader>
+        {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7"> */}
+        <div className=" flex flex-col gap-3">
+          <Card className="col-span-3">
+            <CardHeader className="border-b">
               <CardTitle>Retweets</CardTitle>
               <CardDescription className="text-center lg:text-left">
                 retweets performance over a recent time frame
               </CardDescription>
             </CardHeader>
 
-            <CardContent className="pl-2">
-              <TweetLineGraphCard size={400} data={tweetData} />
+            <CardContent className="flex p-2">
+              <div className=" border flex-1">Total Retweets: {retweetSum}</div>
+
+              <div className=" border flex-1">
+                <TweetLineGraphCard size={400} data={tweetData} />
+              </div>
             </CardContent>
           </Card>
-
 
           <Card className="col-span-7">
             <CardHeader>
@@ -204,9 +219,9 @@ export default function DashboardPage() {
 
           <Card className="col-span-7">
             <CardHeader>
-              <CardTitle>Favriorates Score</CardTitle>
+              <CardTitle>Favorites Score</CardTitle>
               <CardDescription className="text-center lg:text-left">
-                users recent favriotes
+                users recent favorites
               </CardDescription>
             </CardHeader>
 

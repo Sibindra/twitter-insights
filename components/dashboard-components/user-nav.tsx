@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { setUsernameSlice } from "@/store/slices/username";
 import { useMutation } from "@tanstack/react-query";
 import { getUserDetails } from "@/lib/fetches/user-details";
 import usernameFormSchema from "@/lib/schemas/home.schema";
@@ -19,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { sendSearchToSupabase } from "@/components/home";
+import { LocalStore } from "@/store/local-store";
 
 export function UserNav() {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,8 +37,7 @@ export function UserNav() {
   ) => {
     const username = values.username;
 
-    // send value to redux store
-    dispatch(setUsernameSlice(username));
+    LocalStore.setUsername(username);
     setIsLoading(true);
 
     router.push("/dashboard");
@@ -70,8 +69,7 @@ export function UserNav() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className=" flex gap-2 items-center w-96">
-
+        <div className="md:flex gap-2 items-center w-96 hidden">
           <FormField
             control={form.control}
             name="username"
@@ -85,7 +83,7 @@ export function UserNav() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className=" absolute"/>
+                <FormMessage className=" absolute" />
               </FormItem>
             )}
           />

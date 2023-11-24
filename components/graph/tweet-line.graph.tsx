@@ -10,11 +10,10 @@ import {
 } from "recharts";
 import { GraphCardProps } from "./tweet-area.graph";
 
-export default function TweetLineGraphCard({
-  size,
-  data,
-  className,
-}: GraphCardProps) {
+export default function TweetLineGraphCard(
+  { size, data, className }: GraphCardProps,
+  { from, to }: any
+) {
   const results = data?.results || [];
   console.log(data);
 
@@ -27,6 +26,7 @@ export default function TweetLineGraphCard({
 
   function formatDate(dateString: string) {
     const date = new Date(dateString);
+    
     const options: Intl.DateTimeFormatOptions = {
       month: "short",
       day: "numeric",
@@ -46,35 +46,33 @@ export default function TweetLineGraphCard({
         );
       }
     }
-  
+
     return null;
   };
-  
 
   return (
     <ResponsiveContainer width="100%" height={size} className={className}>
-    <LineChart
-      data={graph_data}
-      margin={{
-        top: 20, 
-        right: 30,
-        left: 20,
-        bottom: 20, 
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip content={<CustomTooltip />} />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="retweetCount"
-        stroke="#8884d8"
-        strokeWidth={3} // Adjust the line width
-      />
-    </LineChart>
-  </ResponsiveContainer>
-  
+      <LineChart
+        data={graph_data}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 20,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip content={<CustomTooltip />} />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="retweetCount"
+          stroke="#8884d8"
+          strokeWidth={3} // Adjust the line width
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }

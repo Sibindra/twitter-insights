@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import questions from "@/lib/fetches/questions";
+import questions from "@/lib/questions";
 
 export default function Working() {
   return (
