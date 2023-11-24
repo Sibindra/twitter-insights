@@ -14,8 +14,8 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import * as z from "zod";
 import { supabase } from "@/lib/database/supabase";
 import { useDispatch } from "react-redux";
-import { setUsernameSlice } from "@/store/slices/username";
 import { useRouter } from "next/navigation";
+import { LocalStore } from "@/store/local-store";
 
 export const sendSearchToSupabase = async (username: string) => {
   const { data: existingUser } = await supabase
@@ -55,7 +55,7 @@ export default function Home({
   frequestUsernames: string[];
 }) {
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
 
   const form = useForm({
@@ -67,8 +67,8 @@ export default function Home({
   const handleSearch = async (values: z.infer<typeof usernameFormSchema>) => {
     const username = values.username;
 
-    // send value to redux store
-    dispatch(setUsernameSlice(username));
+    
+    LocalStore.setUsername(username);
     setIsLoading(true);
 
     router.push(`/dashboard`);
@@ -150,7 +150,8 @@ export default function Home({
                   variant="outline"
                   onClick={() => {
                     sendLinksToSupabase(username);
-                    dispatch(setUsernameSlice(username));
+                    // dispatch(setUsernameSlice(username));
+                    LocalStore.setUsername(username);
                     router.push(`/dashboard`);
                   }}
                   className="rounded-sm cursor-pointer hover:bg-secondary hover:text-secondary-foreground"
