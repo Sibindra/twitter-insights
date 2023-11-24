@@ -10,10 +10,11 @@ import TweetCard from "@/components/cards/tweet.card";
 import getTweets, { TweetPromiseProps } from "@/lib/fetches/tweets";
 import ErrorPage from "@/components/message-pages/error.page";
 import LoadingPage from "@/components/message-pages/loading-page";
-import { useAppSelector } from "@/store/hooks";
+import { LocalStore } from "@/store/local-store";
 
 export default function Profile() {
-  const username = useAppSelector((state) => state.username);
+  // const username = useAppSelector((state) => state.username)
+  const username = LocalStore.getUsername() as string;
 
   console.log('username = ',username)
 
@@ -29,7 +30,6 @@ export default function Profile() {
   const { data: followerData, status: followerStatus } = useQuery({
     queryKey: ["followers", user_id],
     queryFn: async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
       return await getUsersFollowers({ user_id: user_id, limit: 30 });
     },
 
@@ -40,8 +40,8 @@ export default function Profile() {
   const { data: tweetData, status: tweetStatus } = useQuery({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-      return await getTweets({ username: username, limit: 30, reply: true });
+      await new Promise((resolve) => setTimeout(resolve, 30000));
+      return await getTweets({ username: username, limit: 25, reply: true });
     },
 
   });

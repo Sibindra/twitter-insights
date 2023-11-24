@@ -46,10 +46,9 @@ export default function TweetLineGraphCard({
         );
       }
     }
-  
+
     return null;
   };
-  
 
   return (
     <ResponsiveContainer width="100%" height={size} className={className}>
@@ -71,5 +70,6 @@ export default function TweetLineGraphCard({
     </LineChart>
   </ResponsiveContainer>
   
+
   );
 }
