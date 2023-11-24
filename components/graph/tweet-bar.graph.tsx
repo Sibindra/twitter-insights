@@ -41,7 +41,7 @@ export default function TweetBarGraphCard({
       const tweetData = payload[0].payload;
       if (tweetData) {
         return (
-          <div className="custom-tooltip border bg-white dark:bg-stone-400 p-1">
+          <div className="custom-tooltip border bg-white dark:bg-stone-500 p-1">
             <p>{tweetData.tweetText}</p>
           </div>
         );
