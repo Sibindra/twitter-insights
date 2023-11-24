@@ -25,6 +25,9 @@ export default function TweetBarGraphCard({
     retweetCount: result.retweet_count,
     quote_count: result.quote_count,
     reply_count: result.reply_count, 
+    tweetText: result.text,
+
+    
   }));
 
   function formatDate(dateString: string) {
@@ -41,7 +44,7 @@ export default function TweetBarGraphCard({
       const tweetData = payload[0].payload;
       if (tweetData) {
         return (
-          <div className="custom-tooltip border bg-white p-1">
+          <div className="custom-tooltip border bg-white dark:bg-stone-500 p-1">
             <p>{tweetData.tweetText}</p>
           </div>
         );
@@ -92,6 +95,14 @@ export default function TweetBarGraphCard({
           dataKey="reply_count"
           stroke="#82ca9d"
         />
+
+        <Line
+          yAxisId="right"
+          type="monotone"
+          dataKey="tweetText"
+          stroke="#000000"
+        />
+
       </LineChart>
     </ResponsiveContainer>
   );

@@ -24,12 +24,11 @@ import ErrorPage from "@/components/message-pages/error.page";
 import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { LocalStore } from "@/store/local-store";
+import TweetCard from "@/components/cards/tweet.card";
 
 export default function DashboardPage() {
-
   // const username = useAppSelector((state) => state.username);
   const username = LocalStore.getUsername() as string;
-  
 
   console.log(username);
 
@@ -46,8 +45,8 @@ export default function DashboardPage() {
   const { data: tweetData, status: tweetStatus } = useQuery<TweetPromiseProps>({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      return await getTweets({ username: username, limit: 20, reply: true });
-    }
+      return await getTweets({ username: username, limit: 100, reply: true });
+    },
   });
 
   const sentimentInput =
@@ -161,23 +160,6 @@ export default function DashboardPage() {
 
         {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7"> */}
         <div className=" flex flex-col gap-3">
-          <Card className="col-span-3">
-            <CardHeader className="border-b">
-              <CardTitle>Retweets</CardTitle>
-              <CardDescription className="text-center lg:text-left">
-                retweets performance over a recent time frame
-              </CardDescription>
-            </CardHeader>
-
-            <CardContent className="flex p-2">
-              <div className=" border flex-1">Total Retweets: {retweetSum}</div>
-
-              <div className=" border flex-1">
-                <TweetLineGraphCard size={400} data={tweetData} />
-              </div>
-            </CardContent>
-          </Card>
-
           <Card className="col-span-7">
             <CardHeader>
               <CardTitle>Tweet Performance </CardTitle>
@@ -206,6 +188,34 @@ export default function DashboardPage() {
 
           <Card className="col-span-7">
             <CardHeader>
+              <CardTitle>Popular Tweets </CardTitle>
+              <CardDescription className="text-center lg:text-left">
+                most popular tweets sample based on likes
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className=" p-5 flex flex-col gap-5">
+              {tweetData?.results?.slice(0, 2).map((tweet, index) => (
+                <TweetCard
+                  key={index}
+                  name={tweet.user.name}
+                  username={tweet.user.username}
+                  tweetText={tweet.text}
+                  comments={tweet.reply_count}
+                  retweets={tweet.retweet_count}
+                  likes={tweet.favorite_count}
+                  date={tweet.creation_date}
+                  userImg={tweet.user.profile_pic_url}
+                  usermedia={tweet.media_url}
+                  source={tweet.source}
+                  sentimentInput={sentimentInput}
+                />
+              ))}
+            </CardContent>
+          </Card>
+
+          <Card className="col-span-7">
+            <CardHeader>
               <CardTitle>Sentiment</CardTitle>
               <CardDescription className="text-center lg:text-left">
                 Recent Sentiment from most recent tweets
@@ -227,8 +237,7 @@ export default function DashboardPage() {
 
             <CardContent className="pl-2">
               {/* <FavCountAreaGraph size={500} data={tweetData} /> */}
-              {/* @ts-ignore */}
-              <FavCountBarGraph size={400} data={tweetData} />
+              <FavCountBarGraph size={400} data={tweetData as any} />
             </CardContent>
           </Card>
 

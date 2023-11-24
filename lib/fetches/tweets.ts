@@ -25,7 +25,9 @@ export default async function getTweets({
       headers: {
         'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY as string,
         'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPIDAPI_HOST as string,
-      },
+      },params: {
+        continuation_token: 'HBaAgLDd6p+2yyQAAA==',
+      }
     });
 
     return response.data;
