@@ -37,7 +37,7 @@ export default function TweetLineGraphCard({
 
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
-      const tweetData = payload[0].payload; // Use the data from payload
+      const tweetData = payload[0].payload; 
       if (tweetData) {
         return (
           <div className="custom-tooltip border bg-white p-1">
@@ -67,12 +67,7 @@ export default function TweetLineGraphCard({
       <YAxis />
       <Tooltip content={<CustomTooltip />} />
       <Legend />
-      <Line
-        type="monotone"
-        dataKey="retweetCount"
-        stroke="#8884d8"
-        strokeWidth={3} // Adjust the line width
-      />
+      <Line type="monotone" dataKey="retweetCount" stroke="#8884d8" activeDot={{ r: 8 }} />
     </LineChart>
   </ResponsiveContainer>
   
