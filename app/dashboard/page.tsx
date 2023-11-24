@@ -24,12 +24,11 @@ import ErrorPage from "@/components/message-pages/error.page";
 import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
 import { LocalStore } from "@/store/local-store";
+import TweetCard from "@/components/cards/tweet.card";
 
 export default function DashboardPage() {
-
   // const username = useAppSelector((state) => state.username);
   const username = LocalStore.getUsername() as string;
-  
 
   console.log(username);
 
@@ -46,8 +45,8 @@ export default function DashboardPage() {
   const { data: tweetData, status: tweetStatus } = useQuery<TweetPromiseProps>({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      return await getTweets({ username: username, limit: 20, reply: true });
-    }
+      return await getTweets({ username: username, limit: 100, reply: true });
+    },
   });
 
   const sentimentInput =
@@ -161,7 +160,7 @@ export default function DashboardPage() {
 
         {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7"> */}
         <div className=" flex flex-col gap-3">
-          <Card className="col-span-3">
+          {/* <Card className="col-span-3">
             <CardHeader className="border-b">
               <CardTitle>Retweets</CardTitle>
               <CardDescription className="text-center lg:text-left">
@@ -170,13 +169,35 @@ export default function DashboardPage() {
             </CardHeader>
 
             <CardContent className="flex p-2">
-              <div className=" border flex-1">Total Retweets: {retweetSum}</div>
+              <div className=" border flex-1 p-5 flex flex-col gap-3">
+                Total Retweets : {retweetSum}
+
+
+                {tweetData?.results?.slice(0,2).map((tweet  , index) =>(
+                  <TweetCard
+                  key={index}
+                  name={tweet.user.name}
+                  username={tweet.user.username}
+                  userImg={tweet.user.profile_pic_url}
+                  tweetText={tweet.text}
+                  comments={tweet.reply_count}
+                  retweets={tweet.retweet_count}
+                  likes={tweet.favorite_count}
+                  date={tweet.creation_date}
+                  sentimentInput={sentimentInput}
+                  className=" m-5"
+                />
+
+                ))}
+
+                
+              </div>
 
               <div className=" border flex-1">
-                <TweetLineGraphCard size={400} data={tweetData} />
+                <TweetLineGraphCard size={500} data={tweetData} className=" h-full" />
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
 
           <Card className="col-span-7">
             <CardHeader>

@@ -44,7 +44,7 @@ export default function TweetAreaGraphCard({
       const tweetData = payload[0].payload; // Use the data from payload
       if (tweetData) {
         return (
-          <div className="custom-tooltip border bg-white p-1">
+          <div className="custom-tooltip border bg-white dark:bg-stone-400 p-1">
             <p>{tweetData.tweetText}</p>
           </div>
         );

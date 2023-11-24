@@ -65,7 +65,7 @@ export default function FavCountBarGraph({
       const FavData = payload[0].payload; 
       if (FavData) {
         return (
-          <div className="custom-tooltip border bg-white p-1">
+          <div className="custom-tooltip border bg-white dark:bg-stone-400 p-1">
             <p>{FavData.text}</p>
           </div>
         );

@@ -24,7 +24,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
   inputString,
 }) => {
   return (
-    <div className="custom-tooltip border bg-white p-1">
+    <div className="custom-tooltip border bg-white dark:bg-stone-400 p-1">
       <p className="label">{`${label} : ${inputString}`}</p>
     </div>
   );

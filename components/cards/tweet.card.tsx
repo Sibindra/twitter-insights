@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/hover-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface TweetCardProps {
   key: number;
@@ -30,6 +31,7 @@ interface TweetCardProps {
   usermedia?: string | null;
   source?: string;
   sentimentInput: string[];
+  className?: string;
 }
 
 const TweetCard: React.FC<TweetCardProps> = ({
@@ -44,6 +46,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
   date,
   source,
   sentimentInput,
+  className
 }) => {
   const { data, status } = useQuery({
     queryKey: ["sentiment", sentimentInput],
@@ -52,7 +55,7 @@ const TweetCard: React.FC<TweetCardProps> = ({
 
   if (status === "loading") {
     return (
-      <Skeleton className="bg-white border  rounded-sm p-1 shadow-sm">
+      <Skeleton className={cn("bg-white border  rounded-sm p-1 shadow-sm" , className)}>
         <div className="flex border-b flex-row pb-2 items-center justify-between">
           <div className="flex items-center">
             <Skeleton className="w-12 h-12 rounded-full mr-3" />
