@@ -8,7 +8,6 @@ import "@/app/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import NextTopLoader from "nextjs-toploader";
 import Banner from "@/components/banner";
-import banner_text from "@/lib/banner-text";
 
 const font = Space_Grotesk({
   subsets: ["latin"],
@@ -40,7 +39,7 @@ export default function RootLayout({
             <ReduxProvider>{children}</ReduxProvider>
           </ThemeProvider>
           <Toaster />
-          <Banner text={banner_text} />
+          <Banner />
         </body>
         <ReactQueryDevtools initialIsOpen={false} />
       </html>
