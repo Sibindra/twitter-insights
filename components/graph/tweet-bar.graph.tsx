@@ -1,14 +1,14 @@
 "use client";
+import React from "react";
 import {
-  BarChart,
-  Bar,
-  Cell,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from "recharts";
 import { GraphCardProps } from "./tweet-area.graph";
 
@@ -23,9 +23,9 @@ export default function TweetBarGraphCard({
     name: formatDate(result.creation_date),
     views: result.views,
     retweetCount: result.retweet_count,
-    tweetText: result.text,
+    quote_count: result.quote_count,
+    reply_count: result.reply_count, 
   }));
-
 
   function formatDate(dateString: string) {
     const date = new Date(dateString);
@@ -53,46 +53,46 @@ export default function TweetBarGraphCard({
 
   return (
     <ResponsiveContainer width="100%" height={size} className={className}>
-    <BarChart
-      data={graph_data}
-      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis
-        dataKey="name"
-        stroke="#888888"
-        fontSize={12}
-        tickLine={false}
-        axisLine={false}
-      />
-      <YAxis
-        stroke="#888888"
-        fontSize={12}
-        tickLine={false}
-        axisLine={false}
-        tickFormatter={(value) => `${value}`}
-      />
-      <Tooltip content={<CustomTooltip />} />
-      <Legend />
-  
-      <Bar
-        type="monotone"
-        dataKey="reply_count"
-        stackId="1"
-        fill="#ffc658" 
-        radius={[4, 4, 0, 0]} 
-        barSize={20} 
-      />
-      <Bar
-        type="monotone"
-        dataKey="retweetCount"
-        stackId="1"
-        fill="#8884d8" 
-        radius={[4, 4, 0, 0]} 
-        barSize={20} 
-      />
-    </BarChart>
-  </ResponsiveContainer>
-  
+      <LineChart
+        data={graph_data}
+        margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis
+          dataKey="name"
+          stroke="#888888"
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+        />
+        <YAxis
+          yAxisId="left"
+          stroke="#888888"
+          fontSize={12}
+          tickLine={false}
+          axisLine={false}
+          tickFormatter={(value) => `${value}`}
+        />
+        <YAxis yAxisId="right" orientation="right" />
+
+        <Tooltip content={<CustomTooltip />} />
+        <Legend />
+
+        <Line
+          yAxisId="left"
+          type="monotone"
+          dataKey="quote_count"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
+
+        <Line
+          yAxisId="right"
+          type="monotone"
+          dataKey="reply_count"
+          stroke="#82ca9d"
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }

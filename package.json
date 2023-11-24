@@ -44,7 +44,7 @@
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.279.0",
     "mongoose": "^7.5.2",
-    "next": "^13.5.4",
+    "next": "^14.0.3",
     "next-redux-wrapper": "^8.1.0",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.5.3",

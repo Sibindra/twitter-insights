@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -89,8 +90,6 @@ export default function DashboardPage() {
     (a, b) => a + b.retweet_count,
     0
   );
-
- 
 
   return isLoading ? (
     <LoadingPage />
