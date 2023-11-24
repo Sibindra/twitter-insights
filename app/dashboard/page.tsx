@@ -180,9 +180,9 @@ export default function DashboardPage() {
 
           <Card className="col-span-7">
             <CardHeader>
-              <CardTitle>Tweet Performance </CardTitle>
+              <CardTitle>Reply Count vs. Quote Count </CardTitle>
               <CardDescription className="text-center lg:text-left">
-                retweets performance over a recent time frame in a bar graph
+                reply and quote count over a recent time frame in biaxial graph
               </CardDescription>
             </CardHeader>
 
