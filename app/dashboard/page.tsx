@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -35,6 +36,13 @@ import { addDays, format } from "date-fns";
 import { DateRange } from "react-day-picker";
 
 export default function DashboardPage() {
+
+    // date picker state
+    const [date, setDate] = useState<DateRange | undefined>({
+      from: new Date(2022, 0, 20),
+      to: addDays(new Date(2022, 0, 20), 20),
+    });
+    
   const username = useAppSelector((state) => state.username);
 
   console.log(username);
@@ -80,11 +88,7 @@ export default function DashboardPage() {
     0
   );
 
-  // date picker state
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
-  });
+
 
   return isLoading ? (
     <LoadingPage />
