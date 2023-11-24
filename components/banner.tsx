@@ -33,7 +33,7 @@ export default function Banner() {
           href="https://rapidapi.com/omarmhaimdat/api/twitter154"
           className=" mx-1 hover:underline"
         >
-          @Omar M'Haimdat
+          @Omar M Haimdat
         </a>
         for twitter data api
       </p>
