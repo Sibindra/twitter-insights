@@ -1,54 +1,31 @@
-import React, { useEffect, useState } from 'react';
+
+
+import React from "react";
 import {
-  BarChart,
-  Bar,
-  Cell,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
-import LoadingPage from '../message-pages/loading-page';
+} from "recharts";
+import { GraphCardProps } from "./tweet-area.graph";
 
-const getPath = (x: number, y: number, width: number, height: number) => {
-  return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
-    ${x + width / 2}, ${y}
-    C${x + width / 2},${y + height / 3} ${x + (2 * width) / 3},${y + height} ${x + width}, ${y + height}
-    Z`;
-};
-
-const TriangleBar = (props: any) => {
-  const { fill, x, y, width, height } = props;
-
-  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
-};
-
-interface FavCountBarGraphProps {
-  size: number;
-  data: any[]; 
-  className?: string;
-}
-
-export default function FavCountBarGraph({
+export default function TweetLineGraphCard({
   size,
   data,
   className,
-}: FavCountBarGraphProps) {
-
- 
-
-
-
-  // @ts-ignore
+}: GraphCardProps) {
   const results = data?.results || [];
+  console.log(data);
 
-
-  const Favdata = results.map((result: any) => ({
+  const graph_data = results.map((result: any) => ({
     name: formatDate(result.creation_date),
-    text: result.text,
+    views: result.views,
     favorite_count: result.favorite_count,
+    tweetText: result.text,
   }));
 
   function formatDate(dateString: string) {
@@ -56,68 +33,44 @@ export default function FavCountBarGraph({
     const options: Intl.DateTimeFormatOptions = {
       month: "short",
       day: "numeric",
+      year: "numeric",
     };
     return date.toLocaleDateString("en-US", options);
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
-      const FavData = payload[0].payload; 
-      if (FavData) {
+      const tweetData = payload[0].payload; 
+      if (tweetData) {
         return (
           <div className="custom-tooltip border bg-white p-1">
-            <p>{FavData.text}</p>
+            <p>{tweetData.tweetText}</p>
           </div>
         );
       }
     }
-  
+
     return null;
   };
 
   return (
     <ResponsiveContainer width="100%" height={size} className={className}>
-      <BarChart
-        data={Favdata}
+      <LineChart
+        data={graph_data}
         margin={{
-          top: 20,
+          top: 20, 
           right: 30,
           left: 20,
-          bottom: 20,
+          bottom: 20, 
         }}
       >
-        <CartesianGrid strokeDasharray="1 1" stroke="#ddd" />
-        <XAxis
-          dataKey="name"
-          stroke="#555"
-          fontSize={14}
-          tickLine={false}
-          axisLine={false}
-        />
-        <YAxis
-          stroke="#555"
-          fontSize={14}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={(value: number) => `${value}`}
-        />
-        <Legend />
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
         <Tooltip content={<CustomTooltip />} />
-  
-        <Bar
-          dataKey="favorite_count"
-          fill="#ffc658"
-          shape={<TriangleBar />}
-          barSize={25}
-        />
-        <Bar
-          dataKey="text"
-          fill="#CEC7C8"
-          shape={<TriangleBar />}
-          barSize={25}
-        />
-      </BarChart>
+        <Legend />
+        <Line type="monotone" dataKey="favorite_count" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
     </ResponsiveContainer>
   );
-  
 }
