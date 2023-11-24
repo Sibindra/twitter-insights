@@ -69,7 +69,7 @@ export function UserNav() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className=" flex gap-2 items-center w-96">
+        <div className="md:flex gap-2 items-center w-96 hidden">
           <FormField
             control={form.control}
             name="username"

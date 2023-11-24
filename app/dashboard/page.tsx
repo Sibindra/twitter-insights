@@ -23,26 +23,9 @@ import LoadingPage from "@/components/message-pages/loading-page";
 import ErrorPage from "@/components/message-pages/error.page";
 import { useRef, useState } from "react";
 import ReactToPrint from "react-to-print";
-import { useAppSelector } from "@/store/hooks";
-import { cn } from "@/lib/utils";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { addDays, format } from "date-fns";
-import { DateRange } from "react-day-picker";
 import { LocalStore } from "@/store/local-store";
 
 export default function DashboardPage() {
-
-   // date picker state
-   const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
-  });
 
   // const username = useAppSelector((state) => state.username);
   const username = LocalStore.getUsername() as string;
@@ -63,7 +46,6 @@ export default function DashboardPage() {
   const { data: tweetData, status: tweetStatus } = useQuery<TweetPromiseProps>({
     queryKey: ["tweets", username],
     queryFn: async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 3000));
       return await getTweets({ username: username, limit: 20, reply: true });
     }
   });
@@ -110,7 +92,7 @@ export default function DashboardPage() {
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
           <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-          <div className="flex items-center space-x-2">
+          <div className="md:flex items-center space-x-2 hidden ">
             <ReactToPrint
               trigger={() => (
                 <Button className=" bg-[#8784D8] hover:bg-[#9a97ecf2]">
