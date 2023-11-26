@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import profileFormSchema from "@/lib/schemas/feedback.schema";
-import { supabase } from "@/lib/database/supabase";
+import { supabase } from "@/app/api/[supabase]/supabase";
 import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
 

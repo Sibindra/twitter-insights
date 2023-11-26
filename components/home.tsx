@@ -12,7 +12,7 @@ import Container from "@/components/container";
 import ModeToggle from "@/components/ui/toggle-theme";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import * as z from "zod";
-import { supabase } from "@/lib/database/supabase";
+import { supabase } from "@/app/api/[supabase]/supabase";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { LocalStore } from "@/store/local-store";

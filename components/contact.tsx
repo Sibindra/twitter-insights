@@ -10,8 +10,8 @@ import subscribeFormSchema from "@/lib/schemas/subscribe.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
-import { supabase } from "@/lib/database/supabase";
 import { useToast } from "@/components/ui/use-toast";
+import { supabase } from "@/app/api/[supabase]/supabase";
 
 export default function Contact() {
   const { toast } = useToast();
