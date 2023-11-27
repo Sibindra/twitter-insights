@@ -7,7 +7,7 @@ export async function getSentiment(input: string[]): Promise<[string, number]> {
       input,
       {
         headers: {
-          Authorization: process.env.NEXT_PUBLIC_HUGGINGFACE_KEY as string,
+          Authorization: process.env.HUGGINGFACE_KEY as string,
           'Content-Type': 'application/json',
         },
       }

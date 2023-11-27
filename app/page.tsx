@@ -8,18 +8,12 @@ import { supabase } from "./api/[supabase]/supabase";
 
 export default async function Main() {
 
-  const {data } = await supabase
-    .from("searches")
-    .select("username, count")
-    .order("count", { ascending: false })
-    .limit(5);
-
-  const frequentUsernames = data?.map((user)=>(user.username)) || []
+  
 
 
   return (
     <main>
-      <Home frequestUsernames={frequentUsernames} />
+      <Home />
       <Features />
       <Team />
       <Working />

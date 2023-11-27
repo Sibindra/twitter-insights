@@ -1,5 +1,5 @@
 'use client'
-import { UserDataProps } from "@/lib/fetches/user-details";
+import { UserDataProps } from "@/app/api/user-details";
 import { FaMapMarkerAlt, FaLink, FaCheckCircle } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

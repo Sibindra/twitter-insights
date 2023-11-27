@@ -23,10 +23,10 @@ export default async function getTweets({
   try {
     const response = await axios.get(url, {
       headers: {
-        'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY as string,
-        'X-RapidAPI-Host': process.env.NEXT_PUBLIC_RAPIDAPI_HOST as string,
+        'X-RapidAPI-Key': process.env.RAPIDAPI_KEY as string,
+        'X-RapidAPI-Host': process.env.RAPIDAPI_HOST as string,
       },params: {
-        continuation_token: 'HBaAgLDd6p+2yyQAAA==',
+        // continuation_token: 'HBaAgLDd6p+2yyQAAA==',
       }
     });
 

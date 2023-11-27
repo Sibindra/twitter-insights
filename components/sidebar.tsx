@@ -1,3 +1,5 @@
+'use client'
+
 import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useEffect, useState } from "react";
@@ -7,7 +9,7 @@ const sidebarElements = [
   {
     name: "Dashboard",
     icon: <BiGridAlt className="w-6 h-6" />,
-    link: "/dashboard",
+    link: "/dashboard/",
   },
   {
     name: "Profile",

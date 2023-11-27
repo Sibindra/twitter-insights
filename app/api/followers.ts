@@ -10,8 +10,8 @@ export async function getUsersFollowers({
   const url = `https://twitter154.p.rapidapi.com/user/followers?user_id=${user_id}&limit=${limit}`;
 
   const headers = {
-    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-    "X-RapidAPI-Host": process.env.NEXT_PUBLIC_RAPIDAPI_HOST,
+    "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,
+    "X-RapidAPI-Host": process.env.RAPIDAPI_HOST,
   };
 
   try {
