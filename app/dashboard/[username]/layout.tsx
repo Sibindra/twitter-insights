@@ -1,6 +1,5 @@
 
 import Sidebar from "@/components/sidebar";
-import { getUserDetails } from "../../api/user-details";
 
 export default async function DashboardLayout({
   children,
@@ -10,15 +9,10 @@ export default async function DashboardLayout({
   params: { username: string };
 }) {
 
-  const data = await getUserDetails(username);
-
-
-  console.log('data = ',data)
-  
   return (
     <div className="flex flex-row h-screen bg-slate-100">
       <div className="lg:w-1/6 w-auto bg-slate-50 lg:border-r">
-        <Sidebar />
+        <Sidebar username={username} />
       </div>
 
       {/* Main Content */}

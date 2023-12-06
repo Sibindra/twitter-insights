@@ -2,7 +2,7 @@ import socialMediaLinks from "@/lib/social-media-links";
 import Image from "next/image";
 import Link from "next/link";
 import { FaEnvelope, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 
 export interface TeamsData {
   img: string;

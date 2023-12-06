@@ -1,7 +1,7 @@
 "use client";
 
 import { sendLinksToSupabase } from "@/app/api/[supabase]/supabase";
-import { Badge } from "./ui/badge";
+import { Badge } from "./badge";
 import { LocalStore } from "@/store/local-store";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export const FrequentUserBadges = ({
           onClick={() => {
             sendLinksToSupabase(username);
             LocalStore.setUsername(username);
-            router.push(`/dashboard?username=${username}`);
+            router.push(`/dashboard/${username}`);
           }}
           className="rounded-sm cursor-pointer hover:bg-secondary hover:text-secondary-foreground"
         >

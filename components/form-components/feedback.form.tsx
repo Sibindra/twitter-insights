@@ -24,7 +24,6 @@ import { useToast } from "../ui/use-toast";
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export function FeedbackForm() {
-  const [sendSucess, setSendSucess] = useState(false);
 
   const { toast } = useToast();
 
@@ -34,44 +33,53 @@ export function FeedbackForm() {
   });
 
   // send data into supabase server database
-  const sendData = async (data: ProfileFormValues) => {
-    try {
-      const { status, error } = await supabase
-        .from("feedbacks")
-        .insert([{ ...data }]);
+  // const sendData = async (data: ProfileFormValues) => {
+  //   try {
+  //     const { status, error } = await supabase
+  //       .from("feedbacks")
+  //       .insert([{ ...data }]);
 
-      if (status === 201) {
-        setSendSucess(true);
-      } else {
-        setSendSucess(false);
-      }
+  //     if (status === 201) {
+  //       setSendSucess(true);
+  //     } else {
+  //       setSendSucess(false);
+  //     }
 
-      if (error) {
-        throw error;
-      }
+  //     if (error) {
+  //       throw error;
+  //     }
 
-      toggleToast("");
-    } catch (error) {
-      toggleToast((error as any).message);
-    }
-  };
+  //     toggleToast("");
+  //   } catch (error) {
+  //     toggleToast((error as any).message);
+  //   }
+  // };
 
-  const toggleToast = (error: string) => {
-    sendSucess
-      ? toast({
-          variant: "default",
-          title: "Great",
-          description: "Your feedback has been sent successfully",
-        })
-      : toast({
-          variant: "destructive",
-          title: "Error",
-          description: `Something went wrong : ${error}`,
-        });
-  };
+  // const toggleToast = (error: string) => {
+  //   sendSucess
+  //     ? toast({
+  //         variant: "default",
+  //         title: "Great",
+  //         description: "Your feedback has been sent successfully",
+  //       })
+  //     : toast({
+  //         variant: "destructive",
+  //         title: "Error",
+  //         description: `Something went wrong : ${error}`,
+  //       });
+  // };
 
   function onSubmit(data: ProfileFormValues) {
-    sendData(data);
+
+
+    toast({
+      title: "You submitted the following values:",
+      description: (
+        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        </pre>
+      ),
+    })
 
     form.reset({
       name: "",

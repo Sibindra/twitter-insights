@@ -1,29 +1,33 @@
 'use client'
+// TODO: need to chage with shadcn sidebar 
 
 import { BiGridAlt, BiUser, BiCog, BiX } from "react-icons/bi";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const sidebarElements = [
-  {
-    name: "Dashboard",
-    icon: <BiGridAlt className="w-6 h-6" />,
-    link: "/dashboard/",
-  },
-  {
-    name: "Profile",
-    icon: <BiUser className="w-6 h-6" />,
-    link: "/dashboard/profile",
-  },
-  {
-    name: "Contact Us",
-    icon: <BiCog className="w-6 h-6" />,
-    link: "/dashboard/form",
-  },
-];
 
-export default function Sidebar() {
+
+export default function Sidebar({username}:{username:string}) {
+
+  const sidebarElements = [
+    {
+      name: "Dashboard",
+      icon: <BiGridAlt className="w-6 h-6" />,
+      link: `/dashboard/${username}`,
+    },
+    {
+      name: "Profile",
+      icon: <BiUser className="w-6 h-6" />,
+      link: `/dashboard/${username}/profile`,
+    },
+    {
+      name: "Contact Us",
+      icon: <BiCog className="w-6 h-6" />,
+      link: `/dashboard/${username}/form`,
+    },
+  ];
+
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const checkScreen = () => {
@@ -75,7 +79,7 @@ export default function Sidebar() {
                   <Link
                     href={item.link}
                     onClick={closeSidebar}
-                    className="flex items-center "
+                    className="flex items-center border-red-500 border"
                   >
                     {item.icon}
                     <span className="mx-4">{item.name}</span>

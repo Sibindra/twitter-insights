@@ -6,7 +6,7 @@ import usernameFormSchema from "@/lib/schemas/home.schema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 import ModeToggle from "@/components/ui/toggle-theme";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import * as z from "zod";
@@ -14,7 +14,7 @@ import { supabase } from "@/app/api/[supabase]/supabase";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { LocalStore } from "@/store/local-store";
-import { FrequentUserBadges } from "./user-badges";
+import { FrequentUserBadges } from "./ui/user-badges";
 import { SearchBar } from "./search-bar";
 
 export default async function Home() {

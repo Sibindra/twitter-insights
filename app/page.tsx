@@ -7,18 +7,13 @@ import Working from "@/components/working";
 import { supabase } from "./api/[supabase]/supabase";
 
 export default async function Main() {
-
-  
-
-
   return (
     <main>
       <Home />
       <Features />
       <Team />
       <Working />
-      {/* TODO: */}
-      {/* <Contact /> */}
+      <Contact />
       <Footer />
     </main>
   );
