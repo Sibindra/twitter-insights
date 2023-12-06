@@ -1,18 +1,15 @@
-"use client";
 import Contact from "@/components/contact";
 import Features from "@/components/features";
 import Home from "@/components/home";
 import Team from "@/components/team";
 import Footer from "@/components/footer";
 import Working from "@/components/working";
-import { useFrequentUsernames } from "@/lib/database/frequent-usernames";
+import { supabase } from "./api/[supabase]/supabase";
 
-export default function Main() {
-  const frequentUsernames = useFrequentUsernames();
-
+export default async function Main() {
   return (
     <main>
-      <Home frequestUsernames={frequentUsernames} />
+      <Home />
       <Features />
       <Team />
       <Working />

@@ -2,7 +2,7 @@ import { FaChartPie, FaHashtag } from "react-icons/fa";
 import { GrTechnology } from "react-icons/gr";
 import { GiClockwork, GiCrossMark, GiUpgrade } from "react-icons/gi";
 
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 
 const features = [
   {

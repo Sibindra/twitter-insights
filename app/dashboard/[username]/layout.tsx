@@ -1,16 +1,18 @@
-"use client";
 
 import Sidebar from "@/components/sidebar";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
+  params : { username },
 }: {
   children: React.ReactNode;
+  params: { username: string };
 }) {
+
   return (
     <div className="flex flex-row h-screen bg-slate-100">
       <div className="lg:w-1/6 w-auto bg-slate-50 lg:border-r">
-        <Sidebar />
+        <Sidebar username={username} />
       </div>
 
       {/* Main Content */}

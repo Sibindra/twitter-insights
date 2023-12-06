@@ -1,4 +1,4 @@
-import { UserDataProps } from "@/lib/fetches/user-details";
+import { UserDataProps } from "@/app/api/user-details";
 import Image from "next/image";
 import { MdLocationOn } from "react-icons/md";
 import {

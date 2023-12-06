@@ -29,7 +29,7 @@ export default function RootLayout({
       <html lang="en">
         <link rel="icon" href="logo.svg" sizes="any" />
         <body className={font.className}>
-          <NextTopLoader color="#F2CB81" />
+          {/* <NextTopLoader color="#F2CB81" /> */}
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

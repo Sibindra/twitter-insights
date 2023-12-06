@@ -1,5 +1,7 @@
+'use client'
+
 import QuestionsAnimation from "@/components/animations/questions.animation";
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 import {
   Accordion,
   AccordionContent,
